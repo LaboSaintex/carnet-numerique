@@ -37,6 +37,13 @@
       />
       
       <div class="m_activitiesPanel">
+        <img 
+          v-if="!['HomeView', 'CreateOrResumeView', 'ListView'].includes($root.do_navigation.view)"
+          class="carnet-numerique-logo"
+          @click="$root.navigation_back()" 
+          src="/images/logo-carnet-numerique.svg"
+          alt="Le carnet numérique"
+        >
         <div 
           :style="{ cursor, userSelect}" 
           class="vue-splitter-container clearfix" 
@@ -52,6 +59,16 @@
             >
               <div style="position: relative; width: 100%; height: 100%; overflow: hidden">
                 <!-- v-show="$root.do_navigation.view === 'ListView'" -->
+                <transition name="HomeView" :duration="500">
+                  <HomeView
+                    v-show="$root.do_navigation.view === 'HomeView'"
+                  />
+                </transition>
+                <transition name="CreateOrResumeView" :duration="500">
+                  <CreateOrResumeView
+                    v-show="$root.do_navigation.view === 'CreateOrResumeView'"
+                  />
+                </transition>
                 <transition name="ListView" :duration="500">
                   <ListView
                     v-show="$root.do_navigation.view === 'ListView'"
@@ -92,6 +109,7 @@
           />
 
           <pane 
+            v-if="false && $root.do_navigation.view !== 'ProjectView'"
             class="splitter-pane splitter-paneR" 
             :class="{ 'is--dragged' : is_dragged }"
             :split="split" 
@@ -206,6 +224,8 @@
 <script>
 import SystemBar from './SystemBar.vue';
 import TopBar from './TopBar.vue';
+import HomeView from './HomeView.vue';
+import CreateOrResumeView from './CreateOrResumeView.vue';
 import ListView from './ListView.vue';
 import ProjectView from './ProjectView.vue';
 import CaptureView from './CaptureView.vue';
@@ -230,6 +250,8 @@ export default {
   components: {
     SystemBar,
     TopBar,
+    HomeView,
+    CreateOrResumeView,
     ListView,
     ProjectView,
     CaptureView,

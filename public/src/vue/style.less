@@ -19,6 +19,7 @@
 
 @import "less/_text";
 
+@import "../../fonts/cobol/cobol.css";
 
 ::-moz-selection {
   background: rgba(151, 151, 151,0.25);
@@ -46,7 +47,7 @@ html {
 }
 
 body {
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Cobol', sans-serif;
   font-weight: 400;
   font-size: var(--font-size);
   line-height: var(--line-height);
@@ -770,6 +771,7 @@ body {
 .m_activitiesPanel {
   position: relative;
   width: 100%;
+  background-image: url('/images/background.png');
 
   html.touchevents & {
   }
@@ -813,7 +815,7 @@ body {
   -webkit-overflow-scrolling: touch;
   z-index: 1;
 
-  .bg-creme;
+  // .bg-creme;
   width: 100%;
   height: 100%;
   top: 0;
@@ -842,7 +844,7 @@ body {
   }
 }
 .m_projectview {
-  .bg-gris_clair;
+  // .bg-gris_clair;
 
   .m_project {
     min-height: 100%;
@@ -890,12 +892,12 @@ small {
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         .custom_scrollbar(8px, 5px, 6px);
-        .padding-sides-small;
-        grid-gap: @t-skipline;  
+        // .padding-sides-small;
+        // grid-gap: @t-skipline;  
 
         @supports (display: grid) {          
           grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
-          .padding-sides-medium;
+          //.padding-sides-medium;
         }    
       }
       .m_allmedias--list {
@@ -924,14 +926,15 @@ small {
       }
 
       .m_project--library--medias {
-        .padding-top-small;
-        .padding-sides-small;
+        // .padding-top-small;
+        padding-top: 220px;
+        .padding-sides-medium;
 
         @supports (display: grid) {
           .padding-sides-medium;
           grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); 
         }
-    
+
         .m_media {
           .padding-sides-small;
           
@@ -995,8 +998,9 @@ small {
 }
 
 .m_projects--list {
-  .padding-bottom-medium;
-  .padding-top-medium;
+  // .padding-bottom-medium;
+  // .padding-top-medium;
+  padding: 12rem;
 
   .flex-wrap;
   .flex-horizontally-start;
@@ -1008,15 +1012,28 @@ small {
     // grid-template-rows: max-content;
     grid-auto-rows: max-content;
     // grid-template-rows: auto;
-    grid-gap: @t-skipline /2;  
+    grid-gap: @t-skipline * 4;  
     -webkit-box-align: start;
     -ms-flex-align: start;
     align-items: start;
-    .padding-sides-small;
+    // .padding-sides-small;
   }
 
   > * {
     z-index: 1;
+    transform: rotate(2deg);
+  }
+  > :nth-child(2n) {
+    transform: translate(5px, -5px) rotate(-3deg);
+  }
+  > :nth-child(2n+1) {
+    transform: translate(5px, 5px) rotate(3deg);
+  }
+  > :nth-child(3n) {
+    transform: translate(-5px, 5px) rotate(2deg);
+  }
+  > :nth-child(3n+2) {
+    transform: translate(-5px, -5px) rotate(-2deg);
   }
 
   .m_project {
@@ -1041,7 +1058,7 @@ small {
     border-bottom: 2px solid @c-gris;
     // border-bottom-style: dashed;
     border-radius: @t-buttonradius;
-    .bg-blanc;
+    // .bg-blanc;
     .boxs-card-0;
 
     &:not(.is--not_authorized_to_admin) {
@@ -1056,12 +1073,13 @@ small {
 
 
 .m_project {
-  .bg-blanc;
+  // .bg-blanc;
   border-radius: 0px;
   // min-height: 100%;
   overflow-y: auto;
 
   .flex-wrap;
+  flex-direction: row-reverse;
   justify-content: center;
 
   .m_project--presentation {
@@ -1150,7 +1168,7 @@ small {
 
   .m_project--library {
     flex: 1 1 420px;
-    .bg-gris_clair;
+    // .bg-gris_clair;
   }
 
   .m_project--favMedias {
@@ -1211,14 +1229,16 @@ small {
 
 
 .m_actionbar {
-  .margin-small;
+  .margin-medium;
   margin-bottom: 0;
-  border-bottom: 4px solid @c-gris_tresclair;
+  // border-bottom: 4px solid @c-gris_tresclair;
+  text-align: center;
 
   .m_actionbar--buttonBar {
     display: flex;
     flex-flow: row wrap;
     align-items: flex-start;
+    justify-content: center;
   }
 
   .m_actionbar--text {
@@ -4687,4 +4707,18 @@ body[data-mode="export_publication"] {
   .alertify-logs {
     display: none;
   }
+}
+
+.carnet-numerique-logo {
+  padding: 1rem;
+  width: calc(7 * 100% / 27);
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.clickable {
+  cursor: pointer;
 }

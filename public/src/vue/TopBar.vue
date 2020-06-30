@@ -1,5 +1,6 @@
 <template>
   <div class="m_topbar"
+    v-if="false" 
     :class="{ 'is--collapsable' : !$root.screen_is_wide }"
   >
     <div class="m_topbar--left" >

@@ -23,7 +23,7 @@ import locale_strings from './locale_strings.js';
 import 'prismjs';
 
 // Vue.config.silent = false;
-// Vue.config.devtools = true;
+Vue.config.devtools = true;
 
 Vue.prototype.$eventHub = new Vue(); // Global event bus
 
@@ -124,7 +124,7 @@ let vm = new Vue({
     currentTime: '',
 
     do_navigation: {
-      view: 'ListView',
+      view: 'HomeView',
       current_slugProjectName: false
     },
     media_modal: {
@@ -428,6 +428,9 @@ let vm = new Vue({
   },
   computed: {
     currentProject: function() {
+      if (['HomeView', 'CreateOrResumeView'].includes(this.do_navigation.view)) {
+        return {};
+      }
       if (
         !this.store.hasOwnProperty('projects') ||
         Object.keys(this.store.projects).length === 0

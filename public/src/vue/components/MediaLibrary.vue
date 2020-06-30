@@ -1,6 +1,6 @@
 <template>
   <div class="m_project--library">
-    <div class="m_actionbar" v-show="$root.state.connected">
+    <div class="m_actionbar" v-show="$root.state.connected && false">
       <div class="m_actionbar--buttonBar">
         <button type="button" class="barButton barButton_capture" 
           v-if="((project.password === 'has_pass') || project.password !== 'has_pass')"
