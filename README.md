@@ -18,16 +18,28 @@ Pour vérifier sa présence, tapez la commande suivante :
 
 Si celle-ci n’affiche pas un numéro de version, alors il faut installer git :
 
+* sur Linux :
+
     sudo apt install git-core
 
+* sur Windows :
+
+    https://git-scm.com/book/fr/v2/D%C3%A9marrage-rapide-Installation-de-Git#_installation_sur_windows
+
 nvm (pour node version manager) permet d’installer plusieurs versions de node.js et de basculer de l’une à l’autre. Node.js est la plate-forme qui gère l’exécution du code côté serveur, en particulier le stockage des contenus du carnet numérique.
-Pour installer nvm lancez les commandes suivantes dans l’ordre :
+Pour installer nvm :
+
+* sur Linux, lancez les commandes suivantes dans l’ordre :
 
     sudo apt install build-essential libssl-dev
 
     sudo wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
 
     source ~/.bashrc
+
+* sur Windows, télécharger nvm-windows :
+
+    https://github.com/coreybutler/nvm-windows/releases
 
 À cette étape là vous devriez pouvoir envoyer des commandes à nvm. La ligne suivante installe la version 8.9.3 de Node.js :
 
@@ -46,8 +58,14 @@ Histoire d’être bien sur, vous pouvez taper node -v pour vérifier que Node.j
 
 python est nécessaire pour certaines dépendances de do•doc (en particulier sharp) que nous installerons par la suite
 
+* sur Linux :
+
     apt-get install python2.7
     ln -s /usr/bin/python2.7 /usr/bin/python
+
+* sur Windows, télécharger la version 2.7 :
+
+    https://www.python.org/downloads/windows/
 
 ## Récupérer et installer do•doc
 
@@ -71,7 +89,7 @@ Listez ensuite son contenu pour voir ce qui s’y trouve :
 
     ls
 
-Nous pouvons rapatrier l’intégralité du code source de do•doc en une fois avec git en tapant :
+Nous pouvons rapatrier l’intégralité du code source en une fois avec git en tapant dans un terminal git :
 
     git clone https://github.com/rocambille/carnet-numerique.git
 
