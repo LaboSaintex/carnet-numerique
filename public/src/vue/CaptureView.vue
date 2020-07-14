@@ -1015,12 +1015,7 @@ export default {
             videoBitsPerSecond: 4112000
           };
 
-          setTimeout(() => recordVideoFeed.startRecording(options), 500);
-
-          this.is_recording = true;
-          this.$root.settings.capture_mode_cant_be_changed = true;
-
-          this.$eventHub.$on('capture.stopRecording', () => {
+          const stopRecordVideoFeed = () => {
             this.$eventHub.$off('capture.stopRecording');
             recordVideoFeed.stopRecording(() => {
               this.is_recording = false;
@@ -1028,8 +1023,24 @@ export default {
               recordVideoFeed = null;
               return resolve(videoBlob);
             });
+          };
 
-          });
+          setTimeout(() => {
+            recordVideoFeed.startRecording(options);
+
+            const VIDEO_MAX_DURATION = 15000;
+
+            setTimeout(() => {
+              if(this.is_recording) {
+                stopRecordVideoFeed();
+              }
+            }, VIDEO_MAX_DURATION);
+          }, 500);
+
+          this.is_recording = true;
+          this.$root.settings.capture_mode_cant_be_changed = true;
+
+          this.$eventHub.$on('capture.stopRecording', stopRecordVideoFeed);
         });
       });
     },

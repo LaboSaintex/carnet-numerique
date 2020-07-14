@@ -37,13 +37,6 @@
       />
       
       <div class="m_activitiesPanel">
-        <img 
-          v-if="!['HomeView', 'CreateOrResumeView', 'ListView'].includes($root.do_navigation.view)"
-          class="carnet-numerique-logo"
-          @click="$root.navigation_back()" 
-          src="/images/logo-carnet-numerique.svg"
-          alt="Le carnet numérique"
-        >
         <div 
           :style="{ cursor, userSelect}" 
           class="vue-splitter-container clearfix" 
@@ -64,6 +57,11 @@
                     v-show="$root.do_navigation.view === 'HomeView'"
                   />
                 </transition>
+                <transition name="HomeView" :duration="500">
+                  <ConfigView
+                    v-show="$root.do_navigation.view === 'ConfigView'"
+                  />
+                </transition>
                 <transition name="CreateOrResumeView" :duration="500">
                   <CreateOrResumeView
                     v-show="$root.do_navigation.view === 'CreateOrResumeView'"
@@ -77,14 +75,12 @@
                     :projects="$root.store.projects"
                   />
                 </transition>
-                <transition name="ProjectView" :duration="500">
-                  <ProjectView
-                    v-if="['ProjectView', 'CaptureView'].includes($root.do_navigation.view)"
-                    :slugProjectName="$root.do_navigation.current_slugProjectName"
-                    :project="$root.currentProject"
-                    :read_only="!$root.state.connected"
-                  />
-                </transition>
+                <ProjectView
+                  v-if="$root.do_navigation.view.startsWith('ProjectView')"
+                  :slugProjectName="$root.do_navigation.current_slugProjectName"
+                  :project="$root.currentProject"
+                  :read_only="!$root.state.connected"
+                />
 
                 <transition name="CaptureView" :duration="500">
                   <CaptureView
@@ -225,6 +221,7 @@
 import SystemBar from './SystemBar.vue';
 import TopBar from './TopBar.vue';
 import HomeView from './HomeView.vue';
+import ConfigView from './ConfigView.vue';
 import CreateOrResumeView from './CreateOrResumeView.vue';
 import ListView from './ListView.vue';
 import ProjectView from './ProjectView.vue';
@@ -251,6 +248,7 @@ export default {
     SystemBar,
     TopBar,
     HomeView,
+    ConfigView,
     CreateOrResumeView,
     ListView,
     ProjectView,

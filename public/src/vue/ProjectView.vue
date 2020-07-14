@@ -1,45 +1,99 @@
 <template>
-  <div class="m_projectview">
+  <div class="m_projectview" style="width: 100vw; height: 100vh;">
     <Project
+      v-if="false"
       :slugProjectName="slugProjectName"
       :project="project"
       :read_only="read_only"
       :context="'full'"
     />
+    <transition name="ProjectView" :duration="500">
+      <StepList v-if="$root.do_navigation.view === 'ProjectView'" />
+    </transition>
+    <transition name="ProjectView" :duration="500">
+      <AuthorList
+        v-if="$root.do_navigation.view === 'ProjectView.authorList'"
+      />
+    </transition>
+    <transition name="ProjectView" :duration="500">
+      <Workshop v-if="$root.do_navigation.view === 'ProjectView.workshop'" />
+    </transition>
+    <transition name="ProjectView" :duration="500">
+      <Step1 v-if="$root.do_navigation.view === 'ProjectView.step1'" />
+    </transition>
+    <transition name="ProjectView" :duration="500">
+      <Step2 v-if="$root.do_navigation.view === 'ProjectView.step2'" />
+    </transition>
+    <transition name="ProjectView" :duration="500">
+      <Step3 v-if="$root.do_navigation.view === 'ProjectView.step3'" />
+    </transition>
+    <transition name="ProjectView" :duration="500">
+      <Step4 v-if="$root.do_navigation.view === 'ProjectView.step4'" />
+    </transition>
+    <transition name="ProjectView" :duration="500">
+      <Step5 v-if="$root.do_navigation.view === 'ProjectView.step5'" />
+    </transition>
+    <transition name="ProjectView" :duration="500">
+      <ProjectEnd v-if="$root.do_navigation.view === 'ProjectView.end'" />
+    </transition>
+    <CaptureView
+      v-if="
+        [
+          'ProjectView.step1',
+          'ProjectView.step2',
+          'ProjectView.step3',
+          'ProjectView.step4',
+          'ProjectView.step5',
+        ].includes($root.do_navigation.view)
+      "
+      :slugProjectName="$root.do_navigation.current_slugProjectName"
+      :project="$root.currentProject"
+      :read_only="!$root.state.connected"
+      style="position: absolute; top: 20%; left: 20%; width: 60%; height: 60%;"
+    />
   </div>
 </template>
 <script>
-import Project from './components/Project.vue';
+import StepList from "./components/StepList.vue";
+import AuthorList from "./components/AuthorList.vue";
+import Workshop from "./components/Workshop.vue";
+import Step1 from "./components/Step1.vue";
+import Step2 from "./components/Step2.vue";
+import Step3 from "./components/Step3.vue";
+import Step4 from "./components/Step4.vue";
+import Step5 from "./components/Step5.vue";
+import ProjectEnd from "./components/ProjectEnd.vue";
+import CaptureView from "./CaptureView.vue";
 
 export default {
   props: {
     slugProjectName: String,
     project: Object,
-    read_only: Boolean
+    read_only: Boolean,
   },
   components: {
-    Project
+    StepList,
+    AuthorList,
+    Workshop,
+    Step1,
+    Step2,
+    Step3,
+    Step4,
+    Step5,
+    ProjectEnd,
+    CaptureView,
   },
   data() {
-    return {
-    }
-  },
-  
-  created() {
-  },
-  mounted() {
-  },
-  beforeDestroy() {
+    return {};
   },
 
-  watch: {
-  },
-  computed: {
-  },
-  methods: {
-  }
-}
+  created() {},
+  mounted() {},
+  beforeDestroy() {},
+
+  watch: {},
+  computed: {},
+  methods: {},
+};
 </script>
-<style>
-
-</style>
+<style></style>

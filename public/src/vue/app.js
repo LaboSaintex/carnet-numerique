@@ -428,7 +428,7 @@ let vm = new Vue({
   },
   computed: {
     currentProject: function() {
-      if (['HomeView', 'CreateOrResumeView'].includes(this.do_navigation.view)) {
+      if (['HomeView', 'ConfigView', 'CreateOrResumeView'].includes(this.do_navigation.view)) {
         return {};
       }
       if (
@@ -1079,7 +1079,7 @@ let vm = new Vue({
     navigation_back() {
       if (this.do_navigation.view === 'CaptureView') {
         this.do_navigation.view = 'ProjectView';
-      } else if (this.do_navigation.view === 'ProjectView') {
+      } else if (this.do_navigation.view.startsWith('ProjectView')) {
         this.closeProject();
       }
     }
