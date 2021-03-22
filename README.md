@@ -4,8 +4,6 @@ Le carnet numérique est un outil de documentation basé sur l'outil [do•doc](
 
 # Installation
 
-**note:** la procédure d'installation est adaptée du tutoriel https://forum.latelier-des-chercheurs.fr/t/installer-do-doc-sur-un-serveur-dedie/210
-
 ## Installer les outils nécessaires
 
 Pour faciliter la mise à jour et le déploiement de do•doc, il faut installer git, nvm et python 2.7.
@@ -128,6 +126,8 @@ Vous devriez pouvoir lancer do•doc avec la commande :
 Un certain nombre de lignes apparaissent, elles permettent de « débugger » do•doc (pratique pour le développement). Si tout se passe bien la dernière ligne devrait être Server up and running. Go to https://localhost:8080. Vous pouvez alors ouvrir https://localhost:8080 dans votre navigateur.
 
 Pour stopper l'application, appuyez dans le terminal sur les touches Ctrl + C du clavier. À noter que si vous fermez le terminal, cela arrêtera aussi l'application.
+
+**note:** la procédure d'installation est adaptée du tutoriel https://forum.latelier-des-chercheurs.fr/t/installer-do-doc-sur-un-serveur-dedie/210
 
 # License
 
