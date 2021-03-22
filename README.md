@@ -18,7 +18,7 @@ Si celle-ci n’affiche pas un numéro de version, alors il faut installer git :
 
 * sur **Linux** :
 
-    sudo apt install git-core
+      sudo apt install git-core
 
 * sur **Windows** :
 
@@ -29,15 +29,13 @@ Pour installer nvm :
 
 * sur **Linux**, lancez les commandes suivantes dans l’ordre :
 
-    sudo apt install build-essential libssl-dev
-
-    sudo wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
-
-    source ~/.bashrc
+      sudo apt install build-essential libssl-dev
+      sudo wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+      source ~/.bashrc
 
 * sur **Windows**, télécharger nvm-windows :
 
-    https://github.com/coreybutler/nvm-windows/releases
+      https://github.com/coreybutler/nvm-windows/releases
 
 À cette étape là vous devriez pouvoir envoyer des commandes à nvm. Vous pouvez le vérifier avec la commande suivante qui affiche la version de nvm :
 
@@ -62,14 +60,14 @@ python est nécessaire pour certaines dépendances de do•doc (en particulier s
 
 * sur **Linux** :
 
-    apt-get install python2.7
-    ln -s /usr/bin/python2.7 /usr/bin/python
+      apt-get install python2.7
+      ln -s /usr/bin/python2.7 /usr/bin/python
 
 * sur **Windows**, télécharger la version 2.7 :
 
     https://www.python.org/downloads/windows/
 
-## Récupérer et installer do•doc
+## Récupérer et installer les carnets numériques
 
 Pour ces étapes là il faut connaître quelques commandes pour naviguer dans le disque dur de votre machine avec le terminal. La base, c’est :
 
