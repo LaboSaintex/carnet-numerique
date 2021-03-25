@@ -1,0 +1,7 @@
+<svg((.*?\n*)*)>((.*?\n*)*)<\/svg>
+This regular expression for selecting svg in a file
+7 Groups for the decorations Objects
+in each group we find Two elements
+- the non colored version
+- the colored-version with the yellow glow
+
