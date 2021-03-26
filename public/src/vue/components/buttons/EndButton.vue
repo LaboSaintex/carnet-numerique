@@ -844,14 +844,14 @@
        id="path4332"
        style="fill:none;stroke:#231f20;stroke-width:2.66666651;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
        d="m 1062.3777,523.23788 c -44.7093,0 -44.7093,0.084 -89.41866,0.084 -44.712,0 -44.712,-0.052 -89.42266,-0.052 -44.71333,0 -44.71333,-0.23867 -89.42667,-0.23867 -44.712,0 -44.712,0.79067 -89.42666,0.79067 -8.8,0 -16.24667,-7.464 -16.24667,-16.264 0,-25.74 0.192,-25.74 0.192,-51.48 0,-8.80133 7.25467,-15.94267 16.05467,-15.94267 44.71066,0 44.71066,-0.43866 89.42,-0.43866 44.71066,0 44.71066,0.0693 89.42133,0.0693 44.71466,0 44.71466,0.864 89.428,0.864 44.71202,0 44.71202,-0.672 89.42532,-0.672 8.8,0 15.9733,7.31867 15.9733,16.12 0,25.74 -0.3906,25.74 -0.3906,51.48 0,8.8 -6.7827,15.68 -15.5827,15.68 z" /><text
-       style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:34.32400004px;font-family:'Cobol Bold';-inkscape-font-specification:'Cobol Bold, Normal';writing-mode:lr;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333325;font-style:normal;text-anchor:start;text-align:start;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
+       style="font-variant:normal;font-weight:bold;font-stretch:normal;font-size:34.32400004px;font-family:'Cobol';-inkscape-font-specification:'Cobol, Normal';writing-mode:lr;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333325;font-style:normal;text-anchor:start;text-align:start;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
        id="text4336"
        x="804.24731"
        y="493.77213"><tspan
          x="804.24731 823.91528 839.4986 847.87378 861.36334 871.66071 880.03589 896.99219 907.28955 919.5434 927.91858 936.29376"
          y="493.77213"
          id="tspan4334"
-         style="stroke-width:1.33333325;-inkscape-font-specification:'Cobol Bold, Normal';font-family:'Cobol Bold';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:34.32400004px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">Voir le film</tspan></text>
+         style="stroke-width:1.33333325;-inkscape-font-specification:'Cobol, Normal';font-family:'Cobol';font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:34.32400004px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">Voir le film</tspan></text>
 </g></svg>
                   </template>
 <script>

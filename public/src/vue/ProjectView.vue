@@ -41,7 +41,7 @@
       <Step5 v-if="$root.do_navigation.view === 'ProjectView.step5'" />
     </transition>
     <transition name="ProjectView" :duration="500">
-      <ProjectEnd2 v-if="$root.do_navigation.view === 'ProjectView.end'" />
+      <ProjectEnd v-if="$root.do_navigation.view === 'ProjectView.end'" />
     </transition>
     <!--
       <CaptureView
@@ -70,9 +70,8 @@ import Step2 from "./components/Step2.vue";
 import Step3 from "./components/Step3.vue";
 import Step4 from "./components/Step4.vue";
 import Step5 from "./components/Step5.vue";
-import ProjectEnd from "./components/ProjectEnd.vue";
 import CaptureView from "./CaptureView.vue";
-import ProjectEnd2 from "./components/ProjectEnd2.vue";
+import ProjectEnd from "./components/ProjectEnd.vue";
 import BottomPathObjects from "./components/fixed_components/BottomPathObjects.vue";
 import NextArrow from "./components/fixed_components/NextArrow.vue";
 import BackgroundLogos from "./components/fixed_components/BackgroundLogos.vue";
@@ -93,7 +92,6 @@ export default {
     Step5,
     ProjectEnd,
     CaptureView,
-    ProjectEnd2,
     BottomPathObjects,
     NextArrow,
     BackgroundLogos

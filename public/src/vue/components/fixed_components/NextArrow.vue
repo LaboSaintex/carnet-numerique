@@ -419,7 +419,11 @@
   },
   computed: {
     nextView: function() {
-      return this.viewProgress[this.viewProgress.indexOf(this.currentView) + 1];
+      let viewIndex = this.viewProgress.indexOf(this.currentView) + 1;
+      if(viewIndex < this.viewProgress.length) {
+        return this.viewProgress[viewIndex];
+      }
+      return this.viewProgress[0];
     }
   },
   methods: {
@@ -429,3 +433,9 @@
   }
 };
 </script>
+<style scoped>
+  svg {
+    z-index: 1;
+    position: absolute;
+  }
+</style>
