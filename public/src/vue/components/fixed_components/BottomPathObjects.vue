@@ -7,26 +7,40 @@
   <div class="bottom-path-objects">
     <LinePath />
     <!-- Chosing the right version of the objects composing the path depending on which stage of the project viewing or creation -->
-    <ColoredBackpack v-if="this.indexOfPathProgress() >= 2"/>
-    <UncoloredBackpack v-else />
+    <transition name="ProjectView" :duration="500">
+      <ColoredBackpack v-if="this.indexOfPathProgress() >= 2"/>
+      <UncoloredBackpack v-else />
+    </transition>
 
-    <ColoredRobot v-if="this.indexOfPathProgress() >= 3"/>
-    <UncoloredRobot v-else/>
+    <transition name="ProjectView" :duration="500">
+      <ColoredRobot v-if="this.indexOfPathProgress() >= 3"/>
+      <UncoloredRobot v-else/>
+    </transition>
 
-    <ColoredSchoolTools v-if="this.indexOfPathProgress() >= 4"/>
-    <UncoloredSchoolTools v-else />
+    <transition name="ProjectView" :duration="500">
+      <ColoredSchoolTools v-if="this.indexOfPathProgress() >= 4"/>
+      <UncoloredSchoolTools v-else />
+    </transition>
 
-    <ColoredLearning v-if="this.indexOfPathProgress() >= 5"/>
-    <UncoloredLearning v-else />
+    <transition name="ProjectView" :duration="500">
+      <ColoredLearning v-if="this.indexOfPathProgress() >= 5"/>
+      <UncoloredLearning v-else />
+    </transition>
 
-    <ColoredLaptopGroup v-if="this.indexOfPathProgress() >= 6"/>
-    <UncoloredLaptopGroup v-else />
+    <transition name="ProjectView" :duration="500">
+      <ColoredLaptopGroup v-if="this.indexOfPathProgress() >= 6"/>
+      <UncoloredLaptopGroup v-else />
+    </transition>
 
-    <ColoredPlaneGroup v-if="this.indexOfPathProgress() >= 7"/>
-    <UncoloredPlaneGroup v-else />
+    <transition name="ProjectView" :duration="500">
+      <ColoredPlaneGroup v-if="this.indexOfPathProgress() >= 7"/>
+      <UncoloredPlaneGroup v-else />
+    </transition>
 
-    <ColoredFinishGroup v-if="this.indexOfPathProgress() >= 8"/>
-    <UncoloredFinishGroup v-else />
+    <transition name="ProjectView" :duration="500">
+      <ColoredFinishGroup v-if="this.indexOfPathProgress() >= 8"/>
+      <UncoloredFinishGroup v-else />
+    </transition>
   </div>
 </template>
 <script>
@@ -86,7 +100,6 @@ export default {
   },
   methods: {
     indexOfPathProgress: function() {
-      //console.log(this.pathProgress.indexOf($root.do_navigation.view));
       return this.pathProgress.indexOf(this.currentView);
     }
   }

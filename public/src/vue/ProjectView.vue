@@ -7,6 +7,13 @@
       :read_only="read_only"
       :context="'full'"
     />
+    <!-- 
+      Adding the fixed elements of the views
+      such as the logos the next arrow and the path animation
+    -->
+    <BackgroundLogos class="overlay-svg"/>
+    <BottomPathObjects :currentView="$root.do_navigation.view"/>
+    <NextArrow :currentView="$root.do_navigation.view" class="next-arrow"/>
     <transition name="ProjectView" :duration="500">
       <StepList v-if="$root.do_navigation.view === 'ProjectView'" />
     </transition>
@@ -34,9 +41,10 @@
       <Step5 v-if="$root.do_navigation.view === 'ProjectView.step5'" />
     </transition>
     <transition name="ProjectView" :duration="500">
-      <ProjectEnd v-if="$root.do_navigation.view === 'ProjectView.end'" />
+      <ProjectEnd2 v-if="$root.do_navigation.view === 'ProjectView.end'" />
     </transition>
-    <CaptureView
+    <!--
+      <CaptureView
       v-if="
         [
           'ProjectView.step1',
@@ -50,7 +58,7 @@
       :project="$root.currentProject"
       :read_only="!$root.state.connected"
       style="position: absolute; top: 20%; left: 20%; width: 60%; height: 60%;"
-    />
+    />-->
   </div>
 </template>
 <script>
@@ -64,7 +72,10 @@ import Step4 from "./components/Step4.vue";
 import Step5 from "./components/Step5.vue";
 import ProjectEnd from "./components/ProjectEnd.vue";
 import CaptureView from "./CaptureView.vue";
-
+import ProjectEnd2 from "./components/ProjectEnd2.vue";
+import BottomPathObjects from "./components/fixed_components/BottomPathObjects.vue";
+import NextArrow from "./components/fixed_components/NextArrow.vue";
+import BackgroundLogos from "./components/fixed_components/BackgroundLogos.vue";
 export default {
   props: {
     slugProjectName: String,
@@ -82,6 +93,10 @@ export default {
     Step5,
     ProjectEnd,
     CaptureView,
+    ProjectEnd2,
+    BottomPathObjects,
+    NextArrow,
+    BackgroundLogos
   },
   data() {
     return {};
@@ -96,4 +111,19 @@ export default {
   methods: {},
 };
 </script>
-<style></style>
+<style>
+  .overlay-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .next-arrow {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
