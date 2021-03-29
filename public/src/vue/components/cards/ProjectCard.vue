@@ -5,7 +5,7 @@
 <template>
 
   <div class="project-card">
-    <h6>Project Name</h6>
+    <h5>Project Name</h5>
     <img
       src="https://eskipaper.com/images/black-4.jpg"
       class="project-preview"
@@ -46,7 +46,7 @@ export default {
 }
 
 /* titles */
-.project-card h6 {
+.project-card h5 {
   text-align: center;
   font-family: Cobol;
   position: relative;
@@ -58,5 +58,12 @@ export default {
   width: 100%;
   height: auto;
   text-align: center;
+}
+/* open project button */
+.open-button {
+  z-index: 9;
+}
+.open-button svg:hover {
+  cursor: pointer;
 }
 </style>
