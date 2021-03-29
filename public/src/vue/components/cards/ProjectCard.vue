@@ -26,6 +26,7 @@ export default {
 </script>
 <style scoped>
 .project-card {
+  z-index: 1;
   margin: 0 5%;
   background-color: white;
   padding-left: 9px;
@@ -60,10 +61,11 @@ export default {
   text-align: center;
 }
 /* open project button */
-.open-button {
-  z-index: 9;
+OpenProjectButton {
+  position: relative;
+  z-index: 2;
 }
-.open-button svg:hover {
+OpenProjectButton:hover {
   cursor: pointer;
 }
 </style>
