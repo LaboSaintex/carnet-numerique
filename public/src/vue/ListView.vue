@@ -936,7 +936,8 @@
              style="fill:none;stroke:#231f20;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
              d="M 0,0 C -1.509,0.021 -2.507,1.265 -2.469,2.805 -2.43,4.38 -1.415,5.62 0.164,5.521 1.781,5.421 2.515,4.282 2.626,2.755 2.73,1.339 1.415,-0.02 0,0 Z" /></g></g></g></g>
   </svg>
-      <div class="m_actionbar">
+      <!-- Désactivation du bouton create a project par défaut de dodoc 2 -->
+      <!-- <div class="m_actionbar">
         <div class="m_actionbar--buttonBar">
           <button
             class="barButton barButton_createProject"
@@ -969,6 +970,7 @@
               </span>  
             </label>
           </div>
+
           <div>
             <template v-if="Object.keys(projects).length > 0">
               <template v-if="!show_medias_instead_of_projects">
@@ -1030,7 +1032,7 @@
             </template>          
           </div>
         </div>
-      </div>
+      </div> -->
       
       <transition-group
         v-if="!show_medias_instead_of_projects"
@@ -1077,7 +1079,6 @@
 <script>
 import BottomFooter from './components/BottomFooter.vue';
 import Project from './components/Project.vue';
-import CreateProject from './components/modals/CreateProject.vue';
 import MediaCard from './components/subcomponents/MediaCard.vue';
 import TagsAndAuthorFilters from './components/subcomponents/TagsAndAuthorFilters.vue';
 import { setTimeout } from 'timers';
@@ -1089,7 +1090,6 @@ export default {
     projects: Object
   },
   components: {
-    CreateProject,
     Project,
     BottomFooter,
     MediaCard,
