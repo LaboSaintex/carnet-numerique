@@ -1,6 +1,10 @@
 <template>
-  <div class="previous carousel-button"></div>
+  <div @click="$emit('left-scroll')" class="previous carousel-button"></div>
 </template>
+<script>
+export default {
+}
+</script>
 <style scoped>
 /* buttons */
 .carousel-button {

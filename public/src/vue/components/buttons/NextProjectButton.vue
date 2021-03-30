@@ -1,6 +1,10 @@
 <template>
-  <div class="next carousel-button"></div>
+  <div @click="$emit('right-scroll')" class="next carousel-button"></div>
 </template>
+<script>
+export default {
+}
+</script>
 <style scoped>
 /* buttons */
 .carousel-button {

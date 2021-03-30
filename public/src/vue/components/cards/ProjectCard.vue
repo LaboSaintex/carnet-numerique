@@ -5,9 +5,9 @@
 <template>
 
   <div class="project-card">
-    <h5>Project Name</h5>
+    <h5>{{ projectName }}</h5>
     <img
-      src="https://eskipaper.com/images/black-4.jpg"
+      :src="previewImageLink"
       class="project-preview"
     />
     <OpenProjectButton class="open-button" />
@@ -19,6 +19,10 @@
 import OpenProjectButton from "../buttons/OpenProjectButton.vue";
 
 export default {
+  props: {
+    projectName: String,
+    previewImageLink: String
+  },
   components: {
     OpenProjectButton,
   },
@@ -61,11 +65,10 @@ export default {
   text-align: center;
 }
 /* open project button */
-OpenProjectButton {
-  position: relative;
+.project-card svg {
   z-index: 2;
 }
-OpenProjectButton:hover {
+.project-card  svg:hover {
   cursor: pointer;
 }
 </style>
