@@ -4,7 +4,7 @@
       Adding the fixed elements of the views
       such as the logos and the path animation
     -->
-    <ProjectsCarousel :projectsList="this.list" />
+    <ProjectsCarousel :projectsList="this.$root.projects_that_are_accessible"/>
     <BackgroundLogos class="overlay-svg" />
     <BottomPathObjects :currentView="$root.do_navigation.view" />
   </div>
@@ -15,32 +15,6 @@ import BottomPathObjects from "./components/fixed_components/BottomPathObjects.v
 import ProjectsCarousel from "./components/ProjectsCarousel.vue";
 
 export default {
-  data() {
-    return {
-      list: [
-        {
-          project: "PROJET 1",
-          link: "https://eskipaper.com/images/black-4.jpg",
-        },
-        {
-          project: "PROJET 2",
-          link: "https://eskipaper.com/images/black-4.jpg",
-        },
-        {
-          project: "PROJET 3",
-          link: "https://eskipaper.com/images/black-4.jpg",
-        },
-        {
-          project: "PROJET 4",
-          link: "https://eskipaper.com/images/black-4.jpg",
-        },
-        {
-          project: "PROJET 5",
-          link: "https://eskipaper.com/images/black-4.jpg",
-        },
-      ],
-    };
-  },
   components: {
     BackgroundLogos,
     BottomPathObjects,

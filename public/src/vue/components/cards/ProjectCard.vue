@@ -10,7 +10,9 @@
       :src="previewImageLink"
       class="project-preview"
     />
-    <OpenProjectButton class="open-button" />
+    <div @click="this.viewProject">
+      <OpenProjectButton class="open-button" />
+    </div>
   </div>
 
 </template>
@@ -21,11 +23,18 @@ import OpenProjectButton from "../buttons/OpenProjectButton.vue";
 export default {
   props: {
     projectName: String,
-    previewImageLink: String
+    previewImageLink: String,
+    slugName: String
+  },
+  methods: {
+    viewProject() {
+      this.$root.do_navigation.current_slugProjectName = this.slugName;
+      this.$root.do_navigation.view = "ProjectView";
+    }
   },
   components: {
     OpenProjectButton,
-  },
+  }
 };
 </script>
 <style scoped>

@@ -11,13 +11,16 @@
     />
 
     <div class="projects-list">
-      <ProjectCard
-        v-for="(p, index) in viewedProjects"
-        :key="index"
-        :projectName="p.project"
-        :previewImageLink="p.link"
-        :class="{ card: true, middle: index === 1 && canScroll}"
-      />
+      <transition-group name="carousel" tag="div">
+        <ProjectCard
+          v-for="(p, i) in viewedProjects"
+          :key="i"
+          :projectName="p.name"
+          :previewImageLink="p.preview[1].path"
+          :slugName="p.slugFolderName"
+          :class="{ card: true, middle: i === 1 && canScroll }"
+        />
+      </transition-group>
     </div>
 
     <NextProjectButton
@@ -34,14 +37,11 @@ import PreviousProjectButton from "./buttons/PreviousProjectButton.vue";
 
 export default {
   props: {
-    // List of all the current Projects data fetched from a server
-    projectsList: {
-      Type: Array,
-    },
+    projectsList: Array
   },
   data() {
     return {
-      middleProject: Math.floor(this.projectsList.length / 2),
+      middleProject: Math.floor(this.$root.projects_that_are_accessible.length / 2),
     };
   },
   components: {
@@ -88,9 +88,17 @@ export default {
     viewedProjects: function () {
       if (this.canScroll) {
         return [
-          this.projectsList[this.middleProject == 0 ? this.projectsList.length - 1 : this.middleProject - 1],
+          this.projectsList[
+            this.middleProject == 0
+              ? this.projectsList.length - 1
+              : this.middleProject - 1
+          ],
           this.projectsList[this.middleProject],
-          this.projectsList[this.middleProject == this.projectsList.length - 1 ? 0 : this.middleProject + 1],
+          this.projectsList[
+            this.middleProject == this.projectsList.length - 1
+              ? 0
+              : this.middleProject + 1
+          ],
         ];
       }
       return this.projectsList;
@@ -123,5 +131,10 @@ export default {
 .projects-list .middle {
   position: relative;
   top: 25px;
+}
+
+/* Carousel */
+.projects-list > div {
+  display: flex;
 }
 </style>
