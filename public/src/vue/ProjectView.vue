@@ -1,5 +1,5 @@
 <template>
-  <div class="m_projectview" style="width: 100vw; height: 100vh;">
+  <div class="m_projectview" style="width: 100vw; height: 100vh">
     <Project
       v-if="false"
       :slugProjectName="slugProjectName"
@@ -11,9 +11,12 @@
       Adding the fixed elements of the views
       such as the logos the next arrow and the path animation
     -->
-    <BackgroundLogos class="overlay-svg"/>
-    <BottomPathObjects :currentView="$root.do_navigation.view"/>
-    <NextArrow :currentView="$root.do_navigation.view" class="next-arrow"/>
+    <BackgroundLogos class="overlay-svg" />
+    <BottomPathObjects :currentView="$root.do_navigation.view" />
+    <NextArrow
+      @saveRecordedVideo="this.updateSaveRecordedVideo"
+      :isVideoRecorded="this.isVideoRecorded"
+      :currentView="$root.do_navigation.view" class="next-arrow"/>
     <transition name="ProjectView" :duration="500">
       <StepList v-if="$root.do_navigation.view === 'ProjectView'" />
     </transition>
@@ -43,8 +46,8 @@
     <transition name="ProjectView" :duration="500">
       <ProjectEnd v-if="$root.do_navigation.view === 'ProjectView.end'" />
     </transition>
-    <!--
-      <CaptureView
+    <CaptureView
+      class="capture-camera"
       v-if="
         [
           'ProjectView.step1',
@@ -54,11 +57,14 @@
           'ProjectView.step5',
         ].includes($root.do_navigation.view)
       "
+      @videoRecorded="this.updateIsVideoRecorded"
+      @getBackToInitialState="this.reset"
+      :saveVideo="this.saveRecordedVideo"
       :slugProjectName="$root.do_navigation.current_slugProjectName"
       :project="$root.currentProject"
       :read_only="!$root.state.connected"
-      style="position: absolute; top: 20%; left: 20%; width: 60%; height: 60%;"
-    />-->
+      style="position: absolute"
+    />
   </div>
 </template>
 <script>
@@ -81,6 +87,12 @@ export default {
     project: Object,
     read_only: Boolean,
   },
+  data() {
+    return {
+      saveRecordedVideo: false,
+      isVideoRecorded: false
+    }
+  },
   components: {
     StepList,
     AuthorList,
@@ -94,10 +106,7 @@ export default {
     CaptureView,
     BottomPathObjects,
     NextArrow,
-    BackgroundLogos
-  },
-  data() {
-    return {};
+    BackgroundLogos,
   },
 
   created() {},
@@ -106,22 +115,40 @@ export default {
 
   watch: {},
   computed: {},
-  methods: {},
+  methods: {
+    reset: function() {
+      this.saveRecordedVideo = this.isVideoRecorded = false;
+    },
+    updateSaveRecordedVideo: function() {
+      this.saveRecordedVideo = true;
+    },
+    updateIsVideoRecorded: function() {
+      this.isVideoRecorded = true;
+    }
+  }
 };
 </script>
 <style>
-  .overlay-svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  .next-arrow {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+.overlay-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.next-arrow {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.capture-camera {
+  overflow-y: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 20vw;
+  max-width: 35vw;
+}
 </style>

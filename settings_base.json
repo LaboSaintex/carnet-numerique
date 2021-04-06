@@ -148,6 +148,9 @@
         },
         "nfc_tag": {
           "type": "string"
+        },
+        "birth_date": {
+          "type": "string"
         }
       }
     },

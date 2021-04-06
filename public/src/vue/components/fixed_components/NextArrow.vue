@@ -403,6 +403,10 @@
 <script>
   export default {
   props: {
+    isVideoRecorded: {
+      Type: Boolean,
+      required: true
+    },
     currentView: { 
       Type: String,
       required: true
@@ -428,7 +432,12 @@
   },
   methods: {
     updateView: function() {
-      this.$root.do_navigation.view = this.nextView;
+        if(this.isVideoRecorded) {
+          this.$root.do_navigation.view = this.nextView;
+          this.$emit('saveRecordedVideo');
+        } else if(!this.currentView.includes("step")) {
+          this.$root.do_navigation.view = this.nextView;
+        }
     }
   }
 };

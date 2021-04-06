@@ -1,5 +1,6 @@
 <template>
   <div class="m_mediaValidationButtons">
+    <!--
     <button type="button" class="bg-transparent button-arrow"
       @click="selectedMoveLeft"
     >
@@ -8,15 +9,15 @@
         <path fill="currentColor" d="M60.2,84.5l48.6-24.3l0,48.6L60.2,84.5z"/>
       </svg>
     </button>
-
+    -->
     <button
       type="button"
       class="button button-bg_rounded button-outline c-blanc"
       @mousedown.stop.prevent="validateButton(0)"
       @touchstart.stop.prevent="validateButton(0)"
-
       :class="{ 'is--selected' : selected_button === 0 }"
       @mouseover="selected_button = 0"
+      style="background-color: transparent;"
     >
       <template v-if="cancelButtonIsBackButton">
         <span class="">
@@ -24,6 +25,8 @@
         </span>
       </template>
       <template v-else>
+        <img class="redo-button" style="width: 100%; height: 100%; background-color: none" src="../../../../assets/buttons/redo.svg" />
+        <!--
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
           viewBox="0 0 168 168" style="enable-background:new 0 0 168 168;" xml:space="preserve">
         <polygon  points="42.6,57.2 57.5,42.4 84.1,69 110.8,42.4 125.6,57.2 99,83.9 125.6,110.5 110.8,125.4 
@@ -32,9 +35,11 @@
         <span class="">
           {{ $t('cancel') }}
         </span>
+        -->
       </template>
     </button>
 
+    <!--
     <button
       type="button"
       :disabled="read_only"
@@ -52,7 +57,8 @@
         {{ $t('save') }}
       </span>
     </button>
-
+    -->
+    <!--
     <button
       type="button"
       :disabled="read_only"
@@ -82,7 +88,7 @@
         <path fill="currentColor" d="M108.8,84.5l-48.6,24.3V60.2L108.8,84.5z"/>
       </svg>
     </button>
-
+    -->
     <div class="m_mediaValidationButtons--overlay"
       v-if="media_is_being_sent"
     >
@@ -92,7 +98,6 @@
   </div>
 </template>
 <script>
-
 
 export default {
   props: {
@@ -174,5 +179,8 @@ export default {
 }
 </script>
 <style>
-
+.m_mediaValidationButtons {
+  justify-content: center;
+  background-color: transparent;
+}
 </style>

@@ -51,7 +51,7 @@ module.exports = function(app) {
 
       let pageData = {};
 
-      pageData.pageTitle = 'do•doc';
+      pageData.pageTitle = 'Saint-ex carnet numérique';
       // full path on the storage space, as displayed in the footer
       pageData.folderPath = api.getFolderPath();
       pageData.slugProjectName = '';
