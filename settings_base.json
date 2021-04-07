@@ -71,6 +71,9 @@
         },      
         "description": {
           "type": "string"
+        },
+        "last_unfinished_step": {
+          "type": "string"
         }
       },
       "medias": {

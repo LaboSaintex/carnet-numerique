@@ -1400,7 +1400,6 @@ export default {
     */
     sendMedia({ fav = false }) {
         return new Promise((resolve, reject) => {
-          console.log("SAVING THE FUCKING VIDEO");
           console.log(`METHODS • CaptureView: sendMedia with fav=${fav}`);
           if (this.$root.state.dev_mode === "debug") {
             console.log(`METHODS • CaptureView / sendMedia`);
