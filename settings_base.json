@@ -71,6 +71,9 @@
         },      
         "description": {
           "type": "string"
+        },
+        "last_unfinished_step": {
+          "type": "string"
         }
       },
       "medias": {
@@ -147,6 +150,9 @@
           "type": "string"
         },
         "nfc_tag": {
+          "type": "string"
+        },
+        "birth_date": {
           "type": "string"
         }
       }

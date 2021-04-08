@@ -1088,8 +1088,8 @@ small {
     flex: 0 1 @t-folderwidth;
     min-width: @t-folderwidth;
     max-width: @t-folderwidth;
-    .bg-blanc;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    //.bg-blanc;
+    //box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 
     display: flex;
     flex-flow: column wrap;
@@ -2136,8 +2136,8 @@ small {
       flex: 0 1 auto;
       // transition: all .15s ease-out;
       overflow: auto;
-      .boxs-card-0;
-      .bg-blanc;
+      //.boxs-card-0;
+      //.bg-blanc;
 
       &:nth-child(1) {
         flex-basis: 90%;
@@ -2208,7 +2208,7 @@ small {
   .m_panel--previewCard {
     position: relative;
     flex: 1 1 auto;
-
+    .bg-noir;
     > div {
       position: absolute;
       width: 100%;
@@ -2508,7 +2508,8 @@ small {
       width: 100%;
       height: 100%;
       display: flex;
-      justify-content: space-between;
+      // justify-content: space-between;
+      justify-content: center;
       align-items: center;
       .padding-small;
 
@@ -2517,8 +2518,9 @@ small {
       }
 
       img {
-        width: 48px;
-        height: 48px;
+        // width: 48px;
+        // height: 48px;
+        width: 60%;
       }
 
       button {
