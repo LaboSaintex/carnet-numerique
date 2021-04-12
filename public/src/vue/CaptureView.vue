@@ -392,9 +392,11 @@
                 @touchstart.stop.prevent="captureOrStop()"
               >
                 <img
+                  style="font-family: Cobol; font-weight: lighter"
                   v-if="!is_recording"
                   src="../../assets/buttons/rec_or_redo.svg"
                 />
+                <!-- <RecOrRedo /> -->
                 <img v-else src="/images/i_stop.svg" />
               </button>
 
@@ -556,7 +558,7 @@ import "webrtc-adapter";
 import ImageTracer from "imagetracerjs";
 import { setTimeout } from "timers";
 import * as axios from "axios";
-
+import RecOrRedo from "./components/buttons/RecOrRedo.vue"
 export default {
   props: {
     saveVideo: {
@@ -575,6 +577,7 @@ export default {
     //StopmotionPanel,
     MediaValidationButtons,
     DistantFlux,
+    RecOrRedo
   },
   data() {
     return {
