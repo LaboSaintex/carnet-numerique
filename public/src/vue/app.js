@@ -450,7 +450,8 @@ let vm = new Vue({
         return {};
       }
     },
-    current_publication() {
+    current_publication: {
+      get: function() {
       if (this.settings.current_publication.slug) {
         if (
           this.store.publications.hasOwnProperty(
@@ -463,6 +464,8 @@ let vm = new Vue({
         }
       }
       return false;
+      },
+      set: function(newVal) {}
     },
     projects_that_are_accessible() {
       const type = 'projects';
