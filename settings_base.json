@@ -74,6 +74,9 @@
         },
         "last_unfinished_step": {
           "type": "string"
+        },
+        "workshop_type": {
+          "type": "string"
         }
       },
       "medias": {
