@@ -636,6 +636,9 @@
           this.updateFoldersMetaFile();
           this.$root.do_navigation.view = this.nextView;
         } else if(!this.currentView.includes("step")) {
+          if(this.currentView === "ProjectView.authorList") {
+            this.$eventHub.$emit('get-selected-authors');
+          }
           this.$root.do_navigation.view = this.nextView;
           this.updateFoldersMetaFile();
         }

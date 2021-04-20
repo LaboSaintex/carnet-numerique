@@ -77,6 +77,12 @@
         },
         "workshop_type": {
           "type": "string"
+        },
+        "age_group": {
+          "type": "string"
+        },
+        "number_of_authors": {
+          "type": "number"
         }
       },
       "medias": {

@@ -3,30 +3,40 @@
     <div class="profile">
       <p>Clique pour prendre une photo !</p>
     </div>
-    <select name="author">
+    <select 
+    @change="$emit('author-selected', cardIndex, selectedAuthor)" name="author"
+     v-model="selectedAuthor"
+    >
       <option value="" selected disabled>[prénom]</option>
-      <option 
-        v-for="author in authors" :key="author" 
-        value="author">
-        {{ author }} 
+      <option v-for="author in authors" :key="author" :value="author">
+        {{ $root.store.authors[author].name }}
       </option>
     </select>
   </div>
 </template>
 <script>
 export default {
-    props: {
-        authors: {
-            Type: Array,
-            required: true
-        }
+  props: {
+    cardIndex: {
+      Type: Number,
+      required: true
+    },
+    authors: {
+      Type: Array,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      selectedAuthor: ""
     }
-}
+  }
+};
 </script>
 <style scoped>
 .author {
-  min-width: 50px;
-  min-height: 50px;
+  min-width: 35px;
+  min-height: 35px;
   padding: 0px;
 }
 
@@ -45,7 +55,7 @@ export default {
 .author select option[value=""] {
   text-align: center;
   font-weight: lighter;
-} 
+}
 
 .author .profile {
   margin: 0 auto 1vh auto;
@@ -54,8 +64,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom-left-radius:-50px;
-  border-bottom-right-radius:-50px;
   filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.2));
 }
 
