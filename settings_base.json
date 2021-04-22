@@ -166,6 +166,25 @@
         }
       }
     },
+    "config": {
+      "fields": {
+        "workshop_type": {
+          "type": "string"
+        },
+        "workshop_title": {
+          "type": "string"
+        },
+        "workshop_tags": {
+          "type": "array"
+        },
+        "workshop_members": {
+          "type": "number"
+        },
+        "workshop_age_group": {
+          "type": "string"
+        }
+      }
+    },
     "publications": {
       "path": "_publications",
       "preview": {
