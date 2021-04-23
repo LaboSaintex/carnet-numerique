@@ -5,7 +5,7 @@
             <li
             v-for="(step, index) in this.steps_list_text" :key="index"
             :class="{done: index < indexOfLastUnfinishedStep}">
-                {{ step }}
+                {{ step.msg }}<span style="color: rgba(0,0,0,0)">{{ step.space }}</span>{{ step.text }}
             </li>
         </ul>
     </div>
@@ -17,13 +17,13 @@ export default {
     data() {
         return {
             steps_list_text: [
-                "Présentation de l'équipe", 
-                "Présentation de l'atelier",
-                "Etape 1 : Qu'allons-nous faire ?",
-                "Etape 2 : Avec quoi allons-nous le faire ?",
-                "Etape 3 : Comment allons-nous faire ?",
-                "Etape 4 : Création",
-                "Etape 5 : Tests"
+                {msg: "Présentation de l'équipe"}, 
+                {msg: "Présentation de l'atelier"},
+                {msg: "Etape ",space: "1", text: "1 : Qu'allons-nous faire ?"},
+                {msg: "Etape 2 : Avec quoi allons-nous le faire ?"},
+                {msg: "Etape 3 : Comment allons-nous faire ?"},
+                {msg: "Etape 4 : Création"},
+                {msg: "Etape 5 : Tests"}
             ],
             steps_list: [
                 "ProjectView.authorList", 
