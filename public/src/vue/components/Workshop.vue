@@ -53,15 +53,16 @@ img {
 textarea {
   position: absolute;
   bottom: 10%;
-  left: 0;
-  width: 100%;
-  height: 50%;
-  padding: 0 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 45%;
+  padding: 5% 5%;
   border: none;
   outline: none;
   background-color: rgba(0, 0, 0, 0);
   font-family: Cobol;
-  font-weight: Cobol, normal;
+  font-weight: 'Cobol, Normal';
   resize: none;
 }
 </style>
