@@ -42,7 +42,9 @@ export default {
         authors: [],
         keywords: this.$root.store.config.workshop_tags,
         age_group: this.$root.store.config.workshop_age_group,
-        number_of_authors: this.$root.store.config.workshop_members
+        number_of_authors: this.$root.store.config.workshop_members,
+        last_unfinished_step: "ProjectView.authorList",
+        description: ""
       };
       
       console.log(projectdata);
