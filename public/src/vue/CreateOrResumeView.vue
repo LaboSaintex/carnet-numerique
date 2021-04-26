@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div v-if="$root.do_navigation.view === 'CreateOrResumeView'">
     <BackgroundLogos class="overlay" />
-    <BottomPathObjects class="overlay" />
+    <BottomPathObjects v-if="$root.do_navigation.view === 'CreateOrResumeView'" class="overlay" />
 
     <div class="buttons-container">
       <div @click="createAndOpenProject">
