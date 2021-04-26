@@ -19,7 +19,28 @@
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
-     id="defs6"><clipPath
+     id="defs6">
+           <filter id="sofGlow" x="-20%" y="-20%" height="180%" width="180%" filterUnits="userSpaceOnUse">
+        <!-- Thicken out the original shape -->
+        <feMorphology operator="dilate" radius="10" in="SourceAlpha" result="thicken" />
+
+        <!-- Use a gaussian blur to create the soft blurriness of the glow -->
+        <feGaussianBlur in="thicken" stdDeviation="10" result="blurred" />
+
+        <!-- Change the colour -->
+        <feFlood flood-color="rgba(255,231,81,0.79)" result="glowColor" />
+
+        <!-- Color in the glows -->
+        <feComposite in="glowColor" in2="blurred" operator="in" result="softGlow_colored" />
+
+        <!--	Layer the effects together -->
+        <feMerge>
+          <feMergeNode in="softGlow_colored"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+
+      </filter>
+     <clipPath
        id="clipPath20"
        clipPathUnits="userSpaceOnUse"><path
          id="path18"
@@ -42,6 +63,7 @@
        y="0"
        x="0"
        maskUnits="userSpaceOnUse"><g
+       
          id="g224"><g
            id="g222"
            clip-path="url(#clipPath200)"><g
@@ -397,7 +419,7 @@
      transform="matrix(1.3333333,0,0,-1.3333333,0,960)"
      inkscape:label="interface carnet numérique"
      inkscape:groupmode="layer"
-     id="g10"><g
+     id="g10" style="filter:url(#sofGlow)"><g
        id="g290"><g
          id="g292" /><g
          id="g388"><g

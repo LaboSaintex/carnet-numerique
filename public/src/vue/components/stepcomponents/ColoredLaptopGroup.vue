@@ -15,7 +15,28 @@
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
-     id="defs6"><clipPath
+     id="defs6">
+           <filter id="sofGlow" x="-20%" y="-20%" height="180%" width="180%" filterUnits="userSpaceOnUse">
+        <!-- Thicken out the original shape -->
+        <feMorphology operator="dilate" radius="10" in="SourceAlpha" result="thicken" />
+
+        <!-- Use a gaussian blur to create the soft blurriness of the glow -->
+        <feGaussianBlur in="thicken" stdDeviation="10" result="blurred" />
+
+        <!-- Change the colour -->
+        <feFlood flood-color="rgba(255,231,81,0.79)" result="glowColor" />
+
+        <!-- Color in the glows -->
+        <feComposite in="glowColor" in2="blurred" operator="in" result="softGlow_colored" />
+
+        <!--	Layer the effects together -->
+        <feMerge>
+          <feMergeNode in="softGlow_colored"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+
+      </filter>
+     <clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath20"><path
          d="M 0,718.734 H 1277.745 V 0 H 0 Z"
@@ -37,7 +58,7 @@
        y="0"
        width="1"
        height="1"
-       id="mask206"><g
+       id="mask206"><g 
          id="g224"><g
            clip-path="url(#clipPath200)"
            id="g222"><g
@@ -661,6 +682,7 @@
          d="M 0,718.734 H 1277.745 V 0 H 0 Z"
          id="path2514" /></clipPath></defs><g
      id="g10"
+     style="filter:url(#sofGlow)"
      transform="matrix(1.3333333,0,0,-1.3333333,0,958.312)"><g
        id="g290"><g
          id="g292" /><g
