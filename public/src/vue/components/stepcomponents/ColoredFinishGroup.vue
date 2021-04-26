@@ -22,6 +22,42 @@
       ></rdf:RDF>
     </metadata>
     <defs id="defs6">
+      <filter
+        id="sofGlow"
+        x="-20%"
+        y="-20%"
+        height="180%"
+        width="180%"
+        filterUnits="userSpaceOnUse"
+      >
+        <!-- Thicken out the original shape -->
+        <feMorphology
+          operator="dilate"
+          radius="10"
+          in="SourceAlpha"
+          result="thicken"
+        />
+
+        <!-- Use a gaussian blur to create the soft blurriness of the glow -->
+        <feGaussianBlur in="thicken" stdDeviation="10" result="blurred" />
+
+        <!-- Change the colour -->
+        <feFlood flood-color="rgba(255,231,81,0.79)" result="glowColor" />
+
+        <!-- Color in the glows -->
+        <feComposite
+          in="glowColor"
+          in2="blurred"
+          operator="in"
+          result="softGlow_colored"
+        />
+
+        <!--	Layer the effects together -->
+        <feMerge>
+          <feMergeNode in="softGlow_colored" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
       <clipPath clipPathUnits="userSpaceOnUse" id="clipPath18">
         <path d="M 0,720 H 1280 V 0 H 0 Z" id="path16" />
       </clipPath>
@@ -1084,7 +1120,7 @@
         <path d="M 0,720 H 1280 V 0 H 0 Z" id="path1138" />
       </clipPath>
     </defs>
-    <g id="g10" transform="matrix(1.3333333,0,0,-1.3333333,0,960)">
+    <g id="g10" style="filter:url(#sofGlow)" transform="matrix(1.3333333,0,0,-1.3333333,0,960)">
       <g id="g148" transform="translate(-1.6034,255.9807)" />
       <g id="g488">
         <g id="g490" />
