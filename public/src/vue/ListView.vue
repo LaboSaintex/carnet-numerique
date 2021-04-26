@@ -1,5 +1,5 @@
 <template>
-  <div class="centered">
+  <div v-if="$root.do_navigation.view === 'ListView'" class="centered">
     <!-- 
       Adding the fixed elements of the views
       such as the logos and the path animation
