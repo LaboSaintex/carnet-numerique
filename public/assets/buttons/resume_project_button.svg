@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -148,7 +149,7 @@
          id="path826"
          inkscape:connector-curvature="0" /></g></g></g><text
    transform="matrix(1,0,0,-1,711.6562,386.1958)"
-   style="font-variant:normal;font-weight:bold;font-stretch:normal;font-size:29.94799995px;font-family:'Cobol Bold';-inkscape-font-specification:Cobol-Bold;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   style="font-variant:normal;font-weight:bold;font-stretch:normal;font-size:29.94799995px;font-family:'Cobol';-inkscape-font-specification:Cobol, Normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
    id="text830"><tspan
      x="0 17.549528 32.343842 47.138153 57.350422 72.14473 86.939041 101.73335 111.94563 126.73994 135.72433 150.51865 165.31296 174.29736 189.09167 199.30394 212.00189 220.14775 233.44466"
      y="0"
