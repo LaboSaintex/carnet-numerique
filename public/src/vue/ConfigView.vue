@@ -68,6 +68,7 @@
               id="age-group"
               v-model="$root.store.config.workshop_age_group"
             >
+              <option :value="'ALL'">tout</option>
               <option :value="'6-12'">6-12 ans</option>
               <option :value="'8-15'">8-15 ans</option>
               <option :value="'12-18'">12-18 ans</option>
@@ -80,10 +81,10 @@
           <h1>Temps :</h1>
           <div class="workshop-titles">
             <div class="label-rows">
-              <label v-for="i in 5" :key="i">Video <span v-if="i === 1" style="color: rgba(0,0,0,0)">1</span>{{ i }} :</label>
-            </div>
-            <div class="input-rows">
-              <input v-for="i in 5" :key="i" type="number" value="10"/>
+              <div class="video-time-row" v-for="i in 5" :key="i">
+                <label>Video <span v-if="i === 1" style="color: rgba(0,0,0,0)">1</span>{{ i }} :</label>
+                <input type="number" v-model.number="$root.store.config.video_durations[i - 1]"/>
+              </div>
             </div>
           </div>
         </div>
@@ -124,6 +125,9 @@ export default {
     ConfigViewMessage,
   },
   methods: {},
+  beforeCreate() {
+    this.$root.store.config.video_durations = new Array(5).fill(15);
+  },
   watch: {
     "workshop.type": function () {
       if (this.workshop.type === "Autre") {
@@ -224,5 +228,14 @@ select {
 }
 .title-input label {
   margin-right: 20px;
+}
+.video-time-row {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.video-time-row input {
+  max-width: 70px;
 }
 </style>
