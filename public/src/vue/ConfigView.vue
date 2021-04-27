@@ -139,7 +139,6 @@ export default {
     tags: function () {
       this.$root.store.config.workshop_tags = [];
       this.$root.store.config.workshop_tags = this.tags.split(";");
-      console.log(this.tags.split(";"));
     },
     custom_type: function () {
       if (this.workshop.type === "Autre") {

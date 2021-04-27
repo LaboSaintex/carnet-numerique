@@ -84,6 +84,9 @@
         },
         "number_of_authors": {
           "type": "number"
+        },
+        "video_durations": {
+          "type": "array"
         }
       },
       "medias": {

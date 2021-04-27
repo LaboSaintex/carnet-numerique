@@ -1198,9 +1198,9 @@ export default {
           setTimeout(() => {
             recordVideoFeed.startRecording(options);
 
-            const VIDEO_MAX_DURATION = this.$root.store.config.video_durations[
-              parseInt(this.$root.do_navigation.view.substr(this.$root.do_navigation.view.length - 1)) - 1
-            ] * 1000;
+            const VIDEO_MAX_DURATION = parseInt(this.$root.currentProject.video_durations[
+              this.$root.do_navigation.view.substr(this.$root.do_navigation.view.length - 1) - 1
+            ].duration) * 1000;
 
             setTimeout(() => {
               if (this.is_recording) {
