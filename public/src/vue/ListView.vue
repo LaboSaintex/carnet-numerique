@@ -39,26 +39,15 @@ export default {
   },
   computed: {
     suggestionsList: function() {
-      let workshops = [];
-      this.projects.forEach(project => {
-        workshops.push(project.workshop_type);
-      });
-      return Array.from(new Set(workshops));
+      return [...new Set(
+        this.projects.map(project => project.workshop_type)
+      )];
     },
     projects: function() {
-      if(this.search === "") {
-        return this.$root.projects_that_are_accessible;
-      }
-      console.log("SEARCH PROJECT");
-      let projectsList = [];
-      this.$root.projects_that_are_accessible.forEach(project => {
-        if(project.workshop_type != null) {
-          if(project.workshop_type.toLowerCase().includes(this.search.toLowerCase())) {
-            projectsList.push(project);
-          }
-        }
-      });
-      return projectsList;
+      return this.$root.projects_that_are_accessible.filter(project => (
+        project.workshop_type != null
+        && project.workshop_type.toLowerCase().includes(this.search.toLowerCase())
+      ));
     }
   }
 };
@@ -109,5 +98,9 @@ ul {
 }
 ul li {
   margin-top: 5px;
+}
+
+ul li:hover {
+  cursor: pointer;
 }
 </style>
