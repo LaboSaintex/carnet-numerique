@@ -8,24 +8,34 @@
           <div class="workshop">
             <div class="workshop-type">
               <div v-for="type in workshop_types" :key="type.id">
-                <input type="radio" :name="type.name" :value="type.value" v-model="workshop.type"/>
+                <input
+                  type="radio"
+                  :name="type.name"
+                  :value="type.value"
+                  v-model="workshop.type"
+                />
                 <label>{{ type.value }}</label>
               </div>
-              <input type="text" placeholder="ex: Découvertes" value="" v-model="custom_type"/>
+              <input
+                type="text"
+                placeholder="ex: Découvertes"
+                value=""
+                v-model="custom_type"
+              />
             </div>
 
             <div class="workshop-titles">
-              <div class="input-row">
+              <div class="label-rows">
                 <label for="workshop-title">Titre: </label>
+                <label for="workshop-tags">Tags: </label>
+              </div>
+              <div class="input-rows">
                 <input
                   type="text"
                   name="workshop-title"
                   placeholder="Création d'un robot"
                   v-model="$root.store.config.workshop_title"
                 />
-              </div>
-              <div class="input-row">
-                <label for="workshop-tags">Tags: </label>
                 <input
                   type="text"
                   name="workshop-tags"
@@ -41,7 +51,7 @@
           <h1>Participants :</h1>
 
           <div class="input-row">
-            <label for="n">Nombre:</label>
+            <label for="n">Nombre :</label>
             <select
               name="number"
               id="n"
@@ -58,6 +68,7 @@
               id="age-group"
               v-model="$root.store.config.workshop_age_group"
             >
+              <option :value="'ALL'">tout</option>
               <option :value="'6-12'">6-12 ans</option>
               <option :value="'8-15'">8-15 ans</option>
               <option :value="'12-18'">12-18 ans</option>
@@ -66,6 +77,17 @@
           </div>
         </div>
 
+        <div>
+          <h1>Temps :</h1>
+          <div class="workshop-titles">
+            <div class="label-rows">
+              <div class="video-time-row" v-for="i in 5" :key="i">
+                <label>Video <span v-if="i === 1" style="color: rgba(0,0,0,0)">1</span>{{ i }} :</label>
+                <input type="number" v-model.number="$root.store.config.video_durations[i - 1]"/>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="members"></div>
       </div>
     </div>
@@ -77,12 +99,24 @@ export default {
   data() {
     return {
       tags: "",
-      workshop: {"type": ""},
+      workshop: { type: "" },
       custom_type: "",
       workshop_types: [
-        { id: "Atelier-Robotique", name: "robotique", value: "Atelier Robotique"},
-        { id: "Atelier-Scientifique", name: "scientifique", value: "Atelier Scientifique"},
-        { id: "goûter-numérique", name: "robotique", value: "goûter numérique"},
+        {
+          id: "Atelier-Robotique",
+          name: "robotique",
+          value: "Atelier Robotique",
+        },
+        {
+          id: "Atelier-Scientifique",
+          name: "scientifique",
+          value: "Atelier Scientifique",
+        },
+        {
+          id: "goûter-numérique",
+          name: "robotique",
+          value: "goûter numérique",
+        },
         { id: "autre", name: "autre", value: "Autre" },
       ],
     };
@@ -90,26 +124,27 @@ export default {
   components: {
     ConfigViewMessage,
   },
-  methods: {
+  methods: {},
+  beforeCreate() {
+    this.$root.store.config.video_durations = new Array(5).fill(15);
   },
   watch: {
-    "workshop.type": function() {
-      if(this.workshop.type === "Autre") {
+    "workshop.type": function () {
+      if (this.workshop.type === "Autre") {
         this.$root.store.config.workshop_type = this.custom_type;
       } else {
         this.$root.store.config.workshop_type = this.workshop.type;
       }
-    },  
+    },
     tags: function () {
       this.$root.store.config.workshop_tags = [];
       this.$root.store.config.workshop_tags = this.tags.split(";");
-      console.log(this.tags.split(";"));
     },
-    custom_type: function() {
-      if(this.workshop.type === "Autre") {
+    custom_type: function () {
+      if (this.workshop.type === "Autre") {
         this.$root.store.config.workshop_type = this.custom_type;
       }
-    }
+    },
   },
 };
 </script>
@@ -130,7 +165,7 @@ export default {
   z-index: 1000;
   display: flex;
   flex-flow: row nowrap;
-  width: 93%;
+  width: 95%;
   justify-content: space-evenly;
 }
 h1 {
@@ -141,13 +176,40 @@ h1 {
   display: flex;
   flex-flow: row nowrap;
 }
+.workshop-type {
+  margin-right: 20px;
+}
+.workshop-titles {
+  display: flex;
+  flex-flow: row nowrap;
+}
+.workshop-titles input,
+.workshop-titles label {
+  margin-top: 10px;
+  margin-right: 20px;
+}
+.label-rows {
+  display: flex;
+  flex-flow: column nowrap;
+  width: max-content;
+}
+.label-rows label {
+  width: max-content;
+  margin-left: 0px;
+}
+.input-row label {
+  margin-right: 20px;
+}
 label {
   font-family: Cobol;
   text-transform: inherit;
   font-weight: normal;
   font-size: 1.8vw;
 }
-input[type="text"] {
+input {
+  max-width: 200px;
+}
+input[type="text"], input[type="number"] {
   border: 2px solid black;
   border-radius: 0px;
   background-color: rgb(200, 200, 200);
@@ -158,9 +220,6 @@ select {
   background-color: rgb(200, 200, 200);
   max-width: 120px;
 }
-.workshop-titles {
-  margin-left: 2%;
-}
 .input-row {
   display: flex;
   flex-flow: row nowrap;
@@ -168,5 +227,14 @@ select {
 }
 .title-input label {
   margin-right: 20px;
+}
+.video-time-row {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.video-time-row input {
+  max-width: 70px;
 }
 </style>

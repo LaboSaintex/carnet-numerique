@@ -84,6 +84,9 @@
         },
         "number_of_authors": {
           "type": "number"
+        },
+        "video_durations": {
+          "type": "array"
         }
       },
       "medias": {
@@ -183,6 +186,9 @@
         },
         "workshop_age_group": {
           "type": "string"
+        },
+        "video_durations": {
+          "type": "array"
         }
       }
     },

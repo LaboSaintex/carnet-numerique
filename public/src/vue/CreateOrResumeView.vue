@@ -40,11 +40,13 @@ export default {
         name: this.$root.store.config.workshop_title,
         password: '',
         authors: [],
-        keywords: this.$root.store.config.workshop_tags,
+        keywords: this.$root.store.config.workshop_tags.map(tag => ({"tag": tag})),
         age_group: this.$root.store.config.workshop_age_group,
         number_of_authors: this.$root.store.config.workshop_members,
         last_unfinished_step: "ProjectView.authorList",
-        description: ""
+        description: "",
+        workshop_type: this.$root.store.config.workshop_type,
+        video_durations: this.$root.store.config.video_durations.map(duration => ({"duration": duration}))
       };
       
       console.log(projectdata);
