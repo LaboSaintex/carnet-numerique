@@ -14,4 +14,4 @@ foreach($videos as $video) {
 }
 var_dump($videosFile);
 file_put_contents("$projectPath/videosFile.txt", $videosFile);
-echo(shell_exec("cd $projectPath && ffmpeg -f concat -safe 0 -i videosFile.txt -c copy output.webm")); 
+echo(shell_exec("cd $projectPath && ffmpeg -f concat -safe 0 -i videosFile.txt -c copy output.webm && touch output.webm.txt")); 
