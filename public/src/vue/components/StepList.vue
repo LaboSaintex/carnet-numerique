@@ -32,7 +32,8 @@ export default {
                 "ProjectView.step2",
                 "ProjectView.step3",
                 "ProjectView.step4",
-                "ProjectView.step5"
+                "ProjectView.step5",
+                "ProjectView.end"
             ]
         }
     },

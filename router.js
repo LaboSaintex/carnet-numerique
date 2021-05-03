@@ -1,6 +1,7 @@
 const path = require('path'),
   fs = require('fs-extra'),
-  archiver = require('archiver');
+  archiver = require('archiver'),
+  { exec } = require('child_process');
 
 const sockets = require('./core/sockets'),
   dev = require('./core/dev-log'),
@@ -23,6 +24,23 @@ module.exports = function(app) {
   app.get('/publication/print/:pdfName', showPDF);
   app.get('/publication/video/:videoName', showVideo);
   app.post('/file-upload/:type/:slugFolderName', postFile2);
+  app.post('/myvideo-upload', (req, res) => {
+    console.log(req.body);
+    exec(`php /home/selmi/Documents/carnet-numerique/public/src/generate.php ${
+      Object.keys(req.body).map((key) => `${key}=${req.body[key]}`).join(' ')
+    }`, (err, stdout, stderr) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      if (stderr) {
+        console.log(stderr);
+        return;
+      }
+      console.log('exec outputed', stdout);
+    })
+    res.send('VIDEO GENERATED');
+  });
 
   remote_api.init(app);
 

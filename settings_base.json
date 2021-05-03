@@ -87,6 +87,9 @@
         },
         "video_durations": {
           "type": "array"
+        },
+        "video_generated": {
+          "type": "boolean"
         }
       },
       "medias": {

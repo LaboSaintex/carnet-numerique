@@ -16,7 +16,7 @@
           v-for="(p, i) in viewedProjects"
           :key="i"
           :projectName="p.name"
-          :previewImageLink="p.preview[1].path != undefined ? p.preview[1].path : ''"
+          :previewImageLink="p.preview != undefined ? p.preview[1].path : ''"
           :slugName="p.slugFolderName"
           :class="{ card: true, middle: i === 1 && canScroll }"
         />
