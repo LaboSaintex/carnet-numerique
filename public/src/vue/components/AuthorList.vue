@@ -60,6 +60,10 @@ export default {
        * of a given age group
        */
       listOfAuthors: function() {
+        if(this.$root.currentProject.age_group === "ALL") {
+          return this.$root.allAuthors.map(author => author.slugFolderName);
+        }
+        
         let authorsOfAgeGroup = [];
         let currentAuthorAge;
         let ageBoundaries = this.$root.currentProject.age_group.split("-");
