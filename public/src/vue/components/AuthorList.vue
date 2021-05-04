@@ -35,7 +35,7 @@ export default {
     },
     mounted() {
         this.$eventHub.$once('get-selected-authors', () => {
-          
+          this.$root.currentProject.authors = [];
           this.selectedAuthors.forEach(author => {
             console.log(author);
             if(author != "") {
