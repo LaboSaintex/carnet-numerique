@@ -632,9 +632,8 @@
         if(this.currentView === "ProjectView") {
           this.$root.do_navigation.view = this.$root.currentProject.last_unfinished_step;
         } else if(this.isVideoRecorded) {
-          this.$emit('saveRecordedVideo');
+          this.$emit('saveRecordedVideo', this.nextView);
           this.updateFoldersMetaFile();
-          this.$root.do_navigation.view = this.nextView;
         } else if(!this.currentView.includes("step")) {
           if(this.currentView === "ProjectView.authorList") {
             this.$eventHub.$emit('get-selected-authors');

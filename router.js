@@ -1,6 +1,7 @@
 const path = require('path'),
   fs = require('fs-extra'),
-  archiver = require('archiver');
+  archiver = require('archiver'),
+  { exec } = require('child_process');
 
 const sockets = require('./core/sockets'),
   dev = require('./core/dev-log'),
@@ -10,6 +11,9 @@ const sockets = require('./core/sockets'),
   exporter = require('./core/exporter'),
   importer = require('./core/importer'),
   remote_api = require('./core/remote_api');
+
+// USING DOTENV MODULE TO GET THE NODE ENV VARS
+require('dotenv').config();
 
 module.exports = function(app) {
   /**
@@ -23,6 +27,23 @@ module.exports = function(app) {
   app.get('/publication/print/:pdfName', showPDF);
   app.get('/publication/video/:videoName', showVideo);
   app.post('/file-upload/:type/:slugFolderName', postFile2);
+  app.post('/myvideo-upload', (req, res) => {
+    console.log(req.body);
+    exec(`php ` + process.env.VIDEO_GENERATOR_SCRIPT  + ` ${
+      Object.keys(req.body).map((key) => `${key}=${req.body[key]}`).join(' ')
+    }`, (err, stdout, stderr) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      if (stderr) {
+        console.log(stderr);
+        return;
+      }
+      console.log('exec outputed', stdout);
+    })
+    res.send('VIDEO GENERATED');
+  });
 
   remote_api.init(app);
 

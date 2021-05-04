@@ -46,7 +46,8 @@ export default {
         last_unfinished_step: "ProjectView.authorList",
         description: "",
         workshop_type: this.$root.store.config.workshop_type,
-        video_durations: this.$root.store.config.video_durations.map(duration => ({"duration": duration}))
+        video_durations: this.$root.store.config.video_durations.map(duration => ({"duration": duration})),
+        video_generated: false
       };
       
       console.log(projectdata);

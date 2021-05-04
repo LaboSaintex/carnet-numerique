@@ -90,7 +90,8 @@ export default {
   data() {
     return {
       saveRecordedVideo: false,
-      isVideoRecorded: false
+      isVideoRecorded: false,
+      nextView: ""
     }
   },
   components: {
@@ -118,9 +119,11 @@ export default {
   methods: {
     reset: function() {
       this.saveRecordedVideo = this.isVideoRecorded = false;
+      this.$root.do_navigation.view = this.nextView;
     },
-    updateSaveRecordedVideo: function() {
+    updateSaveRecordedVideo: function(event) {
       this.saveRecordedVideo = true;
+      this.nextView = event;
     },
     updateIsVideoRecorded: function() {
       this.isVideoRecorded = true;
