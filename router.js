@@ -12,6 +12,9 @@ const sockets = require('./core/sockets'),
   importer = require('./core/importer'),
   remote_api = require('./core/remote_api');
 
+// USING DOTENV MODULE TO GET THE NODE ENV VARS
+require('dotenv').config();
+
 module.exports = function(app) {
   /**
    * routing event
@@ -26,7 +29,7 @@ module.exports = function(app) {
   app.post('/file-upload/:type/:slugFolderName', postFile2);
   app.post('/myvideo-upload', (req, res) => {
     console.log(req.body);
-    exec(`php /home/selmi/Documents/carnet-numerique/public/src/generate.php ${
+    exec(`php ` + process.env.VIDEO_GENERATOR_SCRIPT  + ` ${
       Object.keys(req.body).map((key) => `${key}=${req.body[key]}`).join(' ')
     }`, (err, stdout, stderr) => {
       if (err) {

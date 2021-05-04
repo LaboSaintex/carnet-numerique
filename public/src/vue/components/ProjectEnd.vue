@@ -65,6 +65,9 @@ export default {
               video_generated: true,
             },
           });
+        })
+        .catch((error) => {
+          console.log("VIDEO GENERATE REQUEST FAILED : " + error);
         });
     }
   },
