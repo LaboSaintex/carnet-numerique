@@ -30,9 +30,25 @@ export default {
     return {
     }
   },
+  computed: {
+    isCurrentConfigValid: function() {
+      return (this.$root.store.config.workshop_type !== undefined
+        && this.$root.store.config.workshop_type !== ""
+        && this.$root.store.config.workshop_title !== undefined
+        && this.$root.store.config.workshop_title !== ""
+        && this.$root.store.config.workshop_age_group !== undefined
+        && this.$root.store.config.workshop_age_group !== ""
+        && this.$root.store.config.workshop_members !== undefined
+        && this.$root.store.config.workshop_members !== null);
+    }
+  },
   methods: {
     createAndOpenProject: function() {
-      this.newProject();
+      if(this.isCurrentConfigValid) {
+        this.newProject();
+        return;
+      }
+      alert("Les valeurs de configuration du projet sont incompletes");
     },
     newProject: function(event) {
       console.log('newProject');
@@ -40,7 +56,7 @@ export default {
         name: this.$root.store.config.workshop_title,
         password: '',
         authors: [],
-        keywords: this.$root.store.config.workshop_tags.map(tag => ({"tag": tag})),
+        keywords: this.$root.store.config.workshop_tags !== undefined ? this.$root.store.config.workshop_tags.map(tag => ({"tag": tag})) : [],
         age_group: this.$root.store.config.workshop_age_group,
         number_of_authors: this.$root.store.config.workshop_members,
         last_unfinished_step: "ProjectView.authorList",
