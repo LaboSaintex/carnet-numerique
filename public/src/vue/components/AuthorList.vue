@@ -35,7 +35,7 @@ export default {
     },
     mounted() {
         this.$eventHub.$once('get-selected-authors', () => {
-          
+          this.$root.currentProject.authors = [];
           this.selectedAuthors.forEach(author => {
             console.log(author);
             if(author != "") {
@@ -60,6 +60,10 @@ export default {
        * of a given age group
        */
       listOfAuthors: function() {
+        if(this.$root.currentProject.age_group === "ALL") {
+          return this.$root.allAuthors.map(author => author.slugFolderName);
+        }
+        
         let authorsOfAgeGroup = [];
         let currentAuthorAge;
         let ageBoundaries = this.$root.currentProject.age_group.split("-");
