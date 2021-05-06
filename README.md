@@ -61,7 +61,7 @@ python est nécessaire pour certaines dépendances de do•doc (en particulier s
 * sur **Linux** :
 
       apt-get install python2.7
-      ln -s /usr/bin/python2.7 /usr/bin/python
+      sudo ln -s /usr/bin/python2.7 /usr/bin/python
 
 * sur **Windows**, télécharger la version 2.7 :
 
@@ -130,6 +130,52 @@ Un certain nombre de lignes apparaissent, elles permettent de « débugger » do
 Pour stopper l'application, appuyez dans le terminal sur les touches Ctrl + C du clavier. À noter que si vous fermez le terminal, cela arrêtera aussi l'application.
 
 **note:** la procédure d'installation est adaptée du tutoriel https://forum.latelier-des-chercheurs.fr/t/installer-do-doc-sur-un-serveur-dedie/210
+
+## Utilisation du carnet numérique
+
+### Utilisation et localisation des vidéos
+
+Tout d'abord pour que la génération de la video puisse fonctionner il vous faut php, si vous avez une distribution linux qui n'a pas php ce qui est extrêmement rare, alors il faut installer et vérifier ensuite :
+
+    sudo apt install php
+    php --version
+
+Si vous êtes sur windows alors vous n'avez pas php d'office il faut installer et vérifier avec :
+
+- Téléchargez le paquet puis installer https://www.apachefriends.org/xampp-files/8.0.5/xampp-windows-x64-8.0.5-0-VS16-installer.exe
+
+Puis refermez le terminal et rouvrez en un autre pour avoir la liste des paths a jour pour vérifier :
+
+    php --version
+
+
+Quand vous allez assembler votre video celle-ci se trouve dans dodoc2/_projects/nom_du_projet/ sous le nom de output.webm
+
+### Créer des auteurs pour pouvoir les selectionner dans les projets ensuite
+
+Le carnet numérique crée un dossier dodoc2 dans le dossier Documents de votre pc
+- [Windows]() : LettreDisque:\Users\utilisateur\Documents\dodoc2
+- [linux]() : /home/utilisateur/Documents/dodoc2
+
+Ce dossier contient plusieurs sous-dossiers comme _projects ou se trouve les projets avec leurs contenus vidéos texte etc et _authors. Dans le dossier _authors contient des sous-dossiers utilisateurs c'est aussi ici qu'on créée les auteurs.
+
+Pour faciliter la tache de creation d'utilisateurs il y a un script python a placer dans le dossier dodoc2/_authors
+
+Pour copier le script dans le dossier _authors
+- [Windows]() : copy authors.py %USERPROFILE%\Documents\dodoc2\\_authors 
+- [linux]() : cp authors.py ~/Documents/dodoc2/_authors/
+
+Pour utiliser ce script il suffit de se placer dans le dossier _authors et d'exécuter avec l'interpréteur python de version 3.
+
+Sur linux vous avez déjà plusieurs versions de python mais pour être sur exécutez avec python3.
+
+Sur Windows il faut installer la version 3 de python et l'exécuter avec cette version
+je conseille fortement après installation de changer le nom de l'exécutable python.exe en python3.exe
+pour pouvoir utiliser différentes versions de python au choix dans le terminal :
+
+    python3 authors.py
+
+Pensez a créer les Utilisateurs avant de lancer le carnet numérique.
 
 # License
 
