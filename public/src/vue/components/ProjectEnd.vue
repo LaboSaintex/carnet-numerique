@@ -57,6 +57,10 @@ export default {
       axios.post("/myvideo-upload", {projectPath: this.$root.currentProject.fullFolderPath})
         .then((response) => {
           console.log(response);
+          this.$socketio.listFolder({
+            type: 'projects',
+            slugFolderName: this.$root.currentProject.slugFolderName
+          });
           this.$root.currentProject.video_generated = true;
           this.$root.editFolder({
             type: "projects",
