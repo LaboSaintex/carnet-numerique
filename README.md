@@ -177,6 +177,17 @@ pour pouvoir utiliser différentes versions de python au choix dans le terminal 
 
 Pensez a créer les Utilisateurs avant de lancer le carnet numérique.
 
+# Script d'installation
+
+Dans le dossier carnet-installer se trouve l'installateur pour distributions debian du carnet numérique.
+il suffit de rajouter les droites d'execution et de se donner d'exécuter le script carnet_installer.sh avec la commande suivante
+
+    chmod 774 carnet_installer.sh
+    ./carnet_installer.sh
+
+Ce script s'occupe de réaliser toute la procédure d'installation mais permet aussi d'ajouter une commande carnet et aussi un raccourci launcher dans le Bureau.
+qui permet de lancer le serveur local et d'ouvrir un navigateur sur le carnet numérique.
+
 # License
 
 This app is under a [Creative Commons BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/) license. It can be used, modified and shared freely as long as no commercial use is made and the attribution and link to [L’Atelier des Chercheurs](https://latelier-des-chercheurs.fr/) are kept.

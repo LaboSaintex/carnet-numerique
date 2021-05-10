@@ -1,0 +1,3 @@
+#!/bin/bash
+konsole --workdir=~/carnet-numerique --hold -e "~/.nvm/versions/node/v8.9.3/bin/npm run debug" &
+firefox --kiosk https://localhost:8080 &
