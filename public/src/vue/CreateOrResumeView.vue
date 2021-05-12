@@ -26,10 +26,6 @@ export default {
     BackgroundLogos,
     BottomPathObjects,
   },
-  data() {
-    return {
-    }
-  },
   computed: {
     isCurrentConfigValid: function() {
       return (this.$root.store.config.workshop_type !== undefined
@@ -53,6 +49,7 @@ export default {
     newProject: function(event) {
       console.log('newProject');
       let projectdata = {
+        music_name: this.$root.store.config.music_name,
         name: this.$root.store.config.workshop_title,
         password: '',
         authors: [],

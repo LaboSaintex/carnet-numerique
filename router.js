@@ -1,7 +1,7 @@
 const path = require('path'),
   fs = require('fs-extra'),
   archiver = require('archiver'),
-  { exec } = require('child_process');
+  { exec, execSync } = require('child_process');
 
 const sockets = require('./core/sockets'),
   dev = require('./core/dev-log'),
@@ -26,10 +26,24 @@ module.exports = function(app) {
   app.get('/publication/web/:publication', exportPublication);
   app.get('/publication/print/:pdfName', showPDF);
   app.get('/publication/video/:videoName', showVideo);
+  app.get("/_musics/musics", (req, res) => {
+    exec("ls -1 ~/Documents/dodoc2/_musics", (error, stdout, stderr) => {
+      if (error) {
+          console.log(`error: ${error.message}`);
+          return;
+      }
+      if (stderr) {
+          console.log(`stderr: ${stderr}`);
+          return;
+      }
+      console.log(`MUSICS LIST: ${stdout}`);
+      res.send(stdout);
+  });
+  });
   app.post('/file-upload/:type/:slugFolderName', postFile2);
   app.post('/myvideo-upload', (req, res) => {
     console.log(req.body);
-    exec(`php ` + process.env.VIDEO_GENERATOR_SCRIPT  + ` ${
+    execSync(`php ` + process.env.VIDEO_GENERATOR_SCRIPT  + ` ${
       Object.keys(req.body).map((key) => `${key}=${req.body[key]}`).join(' ')
     }`, (err, stdout, stderr) => {
       if (err) {

@@ -39,7 +39,7 @@
 
   "structure" : {
     "projects": {
-      "path": "",
+      "path": "_projects",
       "preview": {
         "width": 1200,
         "height": 1200,
@@ -90,6 +90,9 @@
         },
         "video_generated": {
           "type": "boolean"
+        },
+        "music_name": {
+          "type": "string"
         }
       },
       "medias": {
@@ -192,6 +195,9 @@
         },
         "video_durations": {
           "type": "array"
+        },
+        "music_name": {
+          "type": "string"
         }
       }
     },

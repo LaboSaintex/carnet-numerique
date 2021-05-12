@@ -75,6 +75,16 @@
               <option :value="'+18'">+ de 18 ans</option>
             </select>
           </div>
+          <h1>Musique :</h1>
+          <div class="input-row">
+            <select
+              name="music"
+              id="music"
+              v-model="$root.store.config.music_name"
+            >
+              <option v-for="music in this.musics_list" :key="music" :value="music">{{ music }}</option>
+            </select>
+          </div>
         </div>
 
         <div>
@@ -95,9 +105,12 @@
 </template>
 <script>
 import ConfigViewMessage from "./components/viewmessages/ConfigViewMessage.vue";
+import axios from "axios";
+
 export default {
   data() {
     return {
+      musics_list: [],
       tags: "",
       workshop: { type: "" },
       custom_type: "",
@@ -120,6 +133,14 @@ export default {
         { id: "autre", name: "autre", value: "Autre" },
       ],
     };
+  },
+  created() {
+    axios.get("/_musics/musics").then(response => {
+      console.log("RECEIVED MUSICS LIST");
+      console.log(response.data);
+      this.musics_list = response.data.split("\n");
+      this.musics_list.pop();
+    });
   },
   components: {
     ConfigViewMessage,
@@ -236,5 +257,8 @@ select {
 }
 .video-time-row input {
   max-width: 70px;
+}
+#music {
+  max-width: inherit;
 }
 </style>
