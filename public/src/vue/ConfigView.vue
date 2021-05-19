@@ -135,7 +135,7 @@ export default {
     };
   },
   created() {
-    axios.get("/_musics/musics").then(response => {
+    axios.get("/musics").then(response => {
       console.log("RECEIVED MUSICS LIST");
       console.log(response.data);
       this.musics_list = response.data.split("\n");
