@@ -28,7 +28,6 @@
 import EndButton from "./buttons/EndButton.vue";
 import EndMessage from "./viewmessages/EndMessage.vue";
 import Loader from "./fixed_components/Loader.vue";
-import axios from "axios";
 
 export default {
   components: {
@@ -71,19 +70,15 @@ export default {
     }, 
     generateVideo: function () {
       this.generateClicked = true;
-      console.log("sending VIDEO GENERATE REQUEST");
-      this.$eventHub.$once('server_video_generated', this.updateAndShowPlayer);
-      axios.post("/myvideo-upload", {
+      console.log("SENDING VIDEO GENERATE REQUEST");
+      this.$socketio.socket.emit("videoRequest", {
         projectPath: this.$root.currentProject.fullFolderPath,
         musicPath: "/_musics/" + this.$root.currentProject.music_name
-        }
-        ). then((response) => {
-          console.log(response);
-          this.updateAndShowPlayer();
-        })
-        .catch((error) => {
-          console.log("VIDEO GENERATE REQUEST FAILED : " + error);
-        });
+      });
+      this.$socketio.socket.on("videoGenerated", () => {
+        console.log("PROJECT'S VIDEO GENERATED");
+        this.updateAndShowPlayer();
+      });
     }
   },
 };

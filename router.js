@@ -1,7 +1,7 @@
 const path = require('path'),
   fs = require('fs-extra'),
   archiver = require('archiver'),
-  { exec, execSync } = require('child_process');
+  { exec } = require('child_process');
 
 const sockets = require('./core/sockets'),
   dev = require('./core/dev-log'),
@@ -41,23 +41,6 @@ module.exports = function(app) {
   });
   });
   app.post('/file-upload/:type/:slugFolderName', postFile2);
-  app.post('/myvideo-upload', (req, res) => {
-    console.log(req.body);
-    execSync(`php ` + process.env.VIDEO_GENERATOR_SCRIPT  + ` ${
-      Object.keys(req.body).map((key) => `${key}=${req.body[key]}`).join(' ')
-    }`, (err, stdout, stderr) => {
-      if (err) {
-        console.log(err);
-        return;
-      }
-      if (stderr) {
-        console.log(stderr);
-        return;
-      }
-      console.log('exec outputed', stdout);
-    })
-    res.send('VIDEO GENERATED');
-  });
 
   remote_api.init(app);
 

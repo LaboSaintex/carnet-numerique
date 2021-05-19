@@ -2,7 +2,8 @@ const dev = require('./dev-log'),
   api = require('./api'),
   auth = require('./auth'),
   exporter = require('./exporter'),
-  file = require('./file');
+  file = require('./file'),
+  { exec } = require('child_process');
 
 module.exports = (function() {
   dev.log(`Sockets module initialized at ${api.getCurrentDate()}`);
@@ -74,6 +75,30 @@ module.exports = (function() {
       socket.on('listClientsInfo', d => onListClientsInfo(socket, d));
 
       socket.on('disconnect', d => onClientDisconnect(socket));
+
+      socket.on('videoRequest', d => onVideoRequest(socket, d));
+    });
+  }
+
+  /**************************************************************** GENERATING VIDEO ********************/
+
+  function onVideoRequest(socket, d) {
+    dev.log("GENERATING VIDEO WITH DATA : ", d);
+    
+    let generate = exec(`php ` + process.env.VIDEO_GENERATOR_SCRIPT  + ` ${
+      Object.keys(d).map((key) => `${key}=${d[key]}`).join(' ')
+    }`, (err, stdout, stderr) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      if (stderr) {
+        console.log(stderr);
+        return;
+      }
+    });
+    generate.on('exit', () => {
+      api.sendEventWithContent("videoGenerated", {}, io, socket);
     });
   }
 
