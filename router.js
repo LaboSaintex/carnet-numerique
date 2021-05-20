@@ -20,31 +20,27 @@ module.exports = function(app) {
    * routing event
    */
   app.get('/', showIndex);
-  app.get('/:project', loadFolderOrMedia);
   app.get('/:project/media/:metaFileName', loadFolderOrMedia);
   app.get('/publication/:publication', printPublication);
   app.get('/publication/web/:publication', exportPublication);
   app.get('/publication/print/:pdfName', showPDF);
   app.get('/publication/video/:videoName', showVideo);
-  app.post('/file-upload/:type/:slugFolderName', postFile2);
-  app.post('/myvideo-upload', (req, res) => {
-    console.log(req.body);
-    exec(`php ` + process.env.VIDEO_GENERATOR_SCRIPT  + ` ${
-      Object.keys(req.body).map((key) => `${key}=${req.body[key]}`).join(' ')
-    }`, (err, stdout, stderr) => {
-      if (err) {
-        console.log(err);
-        return;
+  app.get("/musics", (req, res) => {
+    exec("ls -1 ~/Documents/dodoc2/_musics", (error, stdout, stderr) => {
+      if (error) {
+          console.log(`error: ${error.message}`);
+          return;
       }
       if (stderr) {
-        console.log(stderr);
-        return;
+          console.log(`stderr: ${stderr}`);
+          return;
       }
-      console.log('exec outputed', stdout);
-    })
-    res.send('VIDEO GENERATED');
+      console.log(`MUSICS LIST: ${stdout}`);
+      res.send(stdout);
   });
-
+  });
+  app.post('/file-upload/:type/:slugFolderName', postFile2);
+  app.get('/:project', loadFolderOrMedia);
   remote_api.init(app);
 
   // app.ws('/_collaborative-editing', collaborativeEditing);

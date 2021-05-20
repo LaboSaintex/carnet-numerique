@@ -7,14 +7,14 @@
     <transition name="ProjectView" :duration="500">
       <div>
         <EndMessage class="overlay-svg" />
-
         <div v-if="!$root.currentProject.video_generated" class="centered overlay-svg">
-          <div @click="generateVideo" class="clickable">
-            <EndButton />
+          <div @click="generateVideo" :class="{ clickable: !generateClicked }">
+            <EndButton v-if="!generateClicked"/>
+            <Loader v-else/>
           </div>
         </div>
 
-        <div v-if="$root.currentProject.video_generated" class="centered overlay-svg">
+        <div v-else class="centered overlay-svg">
           <vue-plyr class="video-player">
             <video :src="generatedVideoPath" controls preload="auto" />
           </vue-plyr>
@@ -27,16 +27,18 @@
 <script>
 import EndButton from "./buttons/EndButton.vue";
 import EndMessage from "./viewmessages/EndMessage.vue";
-import axios from "axios";
+import Loader from "./fixed_components/Loader.vue";
 
 export default {
   components: {
     EndButton,
     EndMessage,
+    Loader
   },
   data() {
     return {
-      generatedVideoPath: this.$root.currentProject.slugFolderName + "/output.webm",
+      generateClicked: false,
+      generatedVideoPath: "/_projects/" + this.$root.currentProject.slugFolderName + "/output.webm",
       plyr_options: {
         controls: [
           "play-large",
@@ -52,27 +54,31 @@ export default {
     };
   },
   methods: {
+     updateAndShowPlayer: function() {
+      this.$socketio.listFolder({
+        type: 'projects',
+        slugFolderName: this.$root.currentProject.slugFolderName
+      });
+      this.$root.currentProject.video_generated = true;
+      this.$root.editFolder({
+        type: "projects",
+        slugFolderName: this.$root.currentProject.slugFolderName,
+        data: {
+          video_generated: true,
+        },
+      });
+    }, 
     generateVideo: function () {
-      console.log("sending VIDEO GENERATE REQUEST");
-      axios.post("/myvideo-upload", {projectPath: this.$root.currentProject.fullFolderPath})
-        .then((response) => {
-          console.log(response);
-          this.$socketio.listFolder({
-            type: 'projects',
-            slugFolderName: this.$root.currentProject.slugFolderName
-          });
-          this.$root.currentProject.video_generated = true;
-          this.$root.editFolder({
-            type: "projects",
-            slugFolderName: this.$root.currentProject.slugFolderName,
-            data: {
-              video_generated: true,
-            },
-          });
-        })
-        .catch((error) => {
-          console.log("VIDEO GENERATE REQUEST FAILED : " + error);
-        });
+      this.generateClicked = true;
+      console.log("SENDING VIDEO GENERATE REQUEST");
+      this.$socketio.socket.emit("videoRequest", {
+        projectPath: this.$root.currentProject.fullFolderPath,
+        musicPath: "/_musics/" + this.$root.currentProject.music_name
+      });
+      this.$socketio.socket.on("videoGenerated", () => {
+        console.log("PROJECT'S VIDEO GENERATED");
+        this.updateAndShowPlayer();
+      });
     }
   },
 };
