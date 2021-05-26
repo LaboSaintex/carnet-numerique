@@ -73,7 +73,12 @@ export default {
       console.log("SENDING VIDEO GENERATE REQUEST");
       this.$socketio.socket.emit("videoRequest", {
         projectPath: this.$root.currentProject.fullFolderPath,
-        musicPath: "/_musics/" + this.$root.currentProject.music_name
+        musicPath: "/_musics/" + (this.$root.currentProject.music_name != undefined ? this.$root.currentProject.music_name : ""),
+        clip1_desc: this.$root.currentProject.clip1_desc,
+        clip2_desc: this.$root.currentProject.clip2_desc,
+        clip3_desc: this.$root.currentProject.clip3_desc,
+        clip4_desc: this.$root.currentProject.clip4_desc,
+        clip5_desc: this.$root.currentProject.clip5_desc,
       });
       this.$socketio.socket.on("videoGenerated", () => {
         console.log("PROJECT'S VIDEO GENERATED");

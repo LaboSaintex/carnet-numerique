@@ -83,10 +83,9 @@ module.exports = (function() {
   /**************************************************************** GENERATING VIDEO ********************/
 
   function onVideoRequest(socket, d) {
-    dev.log("GENERATING VIDEO WITH DATA : ", d);
-    
+    dev.log("GENERATING VIDEO WITH DATA : ");
     let generate = exec(`php ` + process.env.VIDEO_GENERATOR_SCRIPT  + ` ${
-      Object.keys(d).map((key) => `${key}=${d[key]}`).join(' ')
+      Object.keys(d).map((key) => `${key}='${d[key]}'`).join(' ')
     }`, (err, stdout, stderr) => {
       if (err) {
         console.log(err);
