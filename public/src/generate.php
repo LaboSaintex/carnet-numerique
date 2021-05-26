@@ -39,6 +39,11 @@ if($parameters["project_desc"] !== "") {
 	shell_exec("cd $projectPath && ffmpeg -f lavfi -i color=size=1280x720:duration=5:rate=30:color=black -vf 'drawtext=fontfile=$fontPath:fontsize=46:fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2:textfile=project_desc.txt' project_desc.webm");
 	unlink("$projectPath/project_desc.txt");
 	$videosFile .= "file 'project_desc.webm'\n";
+} 
+if(array_key_exists("participants", $parameters)) {
+	file_put_contents("$projectPath/participants.txt", "Participants :\n" . $parameters["participants"]);
+	shell_exec("cd $projectPath && ffmpeg -f lavfi -i color=size=1280x720:duration=2:rate=30:color=black -vf 'drawtext=fontfile=$fontPath:fontsize=46:fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2:textfile=participants.txt' participants.webm");
+	unlink("$projectPath/participants.txt");
 }
 
 $videos =  glob("$projectPath/clip*.webm");
@@ -46,9 +51,10 @@ foreach($videos as $video) {
 	if($video != "originalVideos") {
 		$videosFile .= "file ". "'{$video}'\n";
 	}
+} 
+if(array_key_exists("participants", $parameters)) {
+	$videosFile .= "file '$projectPath/participants.webm'";
 }
-
-
 array_map('unlink', glob("$projectPath/*webm.txt"));
 file_put_contents("$projectPath/videosFile.txt", $videosFile);
 if($musicPath == "/_musics/") {
