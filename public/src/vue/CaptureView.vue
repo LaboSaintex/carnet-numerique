@@ -548,11 +548,15 @@
       DESCRIPTION MIXED AND ADDED AS AN OVERLAYED TEXT ON EACH CLIP
       AT THE FINAL VIEW PROJECT END WITH THE GENRATE VIDEO PHP SCRIPT.
     --> 
-    <input 
+    <textarea 
+      rows="2"
+      cols="31"
+      wrap="hard"
       type="text"
+      style="max-width: 470px; margin: 0 auto"
       v-model="$root.currentProject[`clip${$root.do_navigation.view.substr($root.do_navigation.view.length - 1)}_desc`]" 
       placeholder="ajouter une description ..." 
-    />
+    ></textarea>
   </div>
 </template>
 <script>
