@@ -9,6 +9,7 @@ $parameters = array_reduce($argv, function($carry, $arg) {
 $projectPath = $parameters['projectPath'];
 $musicPath = $parameters['musicPath'];
 $fontPath = getcwd() . "/public/fonts/cobol/Cobol-Bold.ttf";
+$logoPath = getcwd() . "/public/images/saintex.jpg";
 
 // Adding descriptions for each clip and fade in and fade out filters
 $clipsToDescribe =  glob("$projectPath/*.webm");
@@ -23,8 +24,24 @@ for($i = 1; $i <= count($clipsToDescribe); $i++) {
 }
 array_map('unlink', glob("$projectPath/*desc.txt"));
 
+shell_exec("cd $projectPath && ffmpeg -t 2 -f lavfi -i color=c=black:s=1280x720 -r 30 blank.webm");
+shell_exec("cd $projectPath && ffmpeg -i blank.webm -i $logoPath -filter_complex '[0:v][1:v] overlay=(main_w/2)-(overlay_w/2):(main_h/2)-(overlay_h/2)-150' -pix_fmt yuv420p -c:a copy logo.webm");
+
+$workshop = $parameters["workshop_type"];
+$title = $parameters["title"];
+shell_exec("cd $projectPath && ffmpeg -i logo.webm -vf 'drawtext=text=$workshop:fontfile=$fontPath:fontcolor=white:fontsize=46:x=(w-text_w)/2:y=(h-text_h)/2, drawtext=text=$title:fontfile=$fontPath:fontcolor=white:fontsize=46:x=(w-text_w)/2:y=((h-text_h)/2)+lh+5' opening.webm");
+unlink("$projectPath/blank.webm");
+unlink("$projectPath/logo.webm");
+
+$videosFile = "file 'opening.webm'\n";
+if($parameters["project_desc"] !== "") {
+	file_put_contents("$projectPath/project_desc.txt", $parameters["project_desc"]);
+	shell_exec("cd $projectPath && ffmpeg -f lavfi -i color=size=1280x720:duration=5:rate=30:color=black -vf 'drawtext=fontfile=$fontPath:fontsize=46:fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2:textfile=project_desc.txt' project_desc.webm");
+	unlink("$projectPath/project_desc.txt");
+	$videosFile .= "file 'project_desc.webm'\n";
+}
+
 $videos =  glob("$projectPath/clip*.webm");
-$videosFile = "";
 foreach($videos as $video) {
 	if($video != "originalVideos") {
 		$videosFile .= "file ". "'{$video}'\n";
