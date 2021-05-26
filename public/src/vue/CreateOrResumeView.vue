@@ -60,7 +60,12 @@ export default {
         description: "",
         workshop_type: this.$root.store.config.workshop_type,
         video_durations: this.$root.store.config.video_durations.map(duration => ({"duration": duration})),
-        video_generated: false
+        video_generated: false,
+        clip1_desc: "",
+        clip2_desc: "",
+        clip3_desc: "",
+        clip4_desc: "",
+        clip5_desc: "",
       };
       
       console.log(projectdata);

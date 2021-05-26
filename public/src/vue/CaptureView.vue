@@ -543,6 +543,16 @@
         }
       "
     />
+    <!-- 
+      UPDATING THE CLIP'S DESCRIPTION 
+      DESCRIPTION MIXED AND ADDED AS AN OVERLAYED TEXT ON EACH CLIP
+      AT THE FINAL VIEW PROJECT END WITH THE GENRATE VIDEO PHP SCRIPT.
+    --> 
+    <input 
+      type="text"
+      v-model="$root.currentProject[`clip${$root.do_navigation.view.substr($root.do_navigation.view.length - 1)}_desc`]" 
+      placeholder="ajouter une description ..." 
+    />
   </div>
 </template>
 <script>
@@ -965,23 +975,26 @@ export default {
       // if (event.target.tagName.toLowerCase() === 'input' || event.target.tagName.toLowerCase() === 'textarea') {
       //   return false;
       // }
+      // Blocking the event keys, because it interferes also with the input field for the clip description
 
+      /*
       switch (event.key) {
         case "w":
         case "z":
         case "ArrowLeft":
-          this.previousMode();
+          //this.previousMode();
           break;
         case "s":
         case "ArrowRight":
-          this.nextMode();
+          //this.nextMode();
           break;
         case "a":
         case "q":
         case " ":
-          this.captureOrStop();
+          //this.captureOrStop();
           break;
       }
+      */
     },
     changeStreamTo(new_stream) {
       console.log("METHODS • CaptureView: changeStreamTo");
