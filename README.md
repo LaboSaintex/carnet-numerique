@@ -184,7 +184,7 @@ Pensez a créer les Utilisateurs avant de lancer le carnet numérique.
 Dans le dossier carnet-installer se trouve l'installateur pour distributions debian du carnet numérique.
 il suffit de rajouter les droites d'execution et d'exécuter le script carnet_installer.sh avec la commande suivante
 
-    chmod 774 carnet_installer.sh
+    chmod 774 carnet-installer.sh
     ./carnet_installer.sh
 
 Ce script s'occupe de réaliser toute la procédure d'installation mais permet aussi d'ajouter une commande carnet et aussi un raccourci launcher dans le Bureau.
@@ -195,7 +195,7 @@ Ce script ajoute aussi une commande de mise à jour carnet-maj et ajoute au pass
 Ce script ajoute aussi un désinstalleur du carnet numérique dans Documents, il ne supprimera pas le dossier dodoc2 contenant vos anciens projets, dès que la procédure
 est faite un message vous notifie.
 
-Les scripts de mise à jour et de désinstallation ne marchent que pour un carnet installé avec l'installeur.
+Les scripts de mise à jour et de désinstallation ne marchent que pour un carnet installé avec l'installeur. Ne pas oublier de rajouter le script de création des auteurs dans le dossier dodoc2/_authors
 
 # License
 
