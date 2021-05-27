@@ -190,9 +190,9 @@ il suffit de rajouter les droites d'execution et d'exécuter le script carnet_in
 Ce script s'occupe de réaliser toute la procédure d'installation mais permet aussi d'ajouter une commande carnet et aussi un raccourci launcher dans le Bureau.
 qui permet de lancer le serveur local et d'ouvrir un navigateur sur le carnet numérique.
 
-Ce script ajoute aussi une commande de mise à jour carnet-maj et ajoute au passage un raccourci au bureau qui permet de mettre à jour le carnet.
+Ce script ajoute aussi une commande de mise à jour carnet-maj et ajoute au passage le script dans Documents qui permet de mettre à jour le carnet.
 
-Ce script ajoute aussi un désinstalleur du carnet numérique dans le Bureau, il ne supprimera pas le dossier dodoc2 contenant vos anciens projets, dès que la procédure
+Ce script ajoute aussi un désinstalleur du carnet numérique dans Documents, il ne supprimera pas le dossier dodoc2 contenant vos anciens projets, dès que la procédure
 est faite un message vous notifie.
 
 Les scripts de mise à jour et de désinstallation ne marchent que pour un carnet installé avec l'installeur.

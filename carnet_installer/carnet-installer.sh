@@ -37,18 +37,18 @@ cp ./carnet.sh ~/Desktop/carnet.sh
 mkdir ~/Documents/dodoc2 ~/Documents/dodoc2/_authors ~/Documents/dodoc2/_projects ~/Documents/dodoc2/_musics
 
 # installing the updater for carnet numérique
-cp ./carnet-maj.sh ~/Desktop
-sudo chown $USER ~/Desktop/carnet-maj.sh
-chmod 774 ~/Desktop/carnet-maj.sh
+cp ./carnet-maj.sh ~/Documents
+sudo chown $USER ~/Documents/carnet-maj.sh
+chmod 774 ~/Documents/carnet-maj.sh
 
 sudo cp ./carnet-maj /usr/bin
 sudo chown $USER /usr/bin/carnet-maj
 chmod 774 /usr/bin/carnet-maj
 
 # Adding the uninstaller script in user's Desktop
-cp ./carnet-uninstaller.sh ~/Desktop
-sudo chown $USER ~/Desktop/carnet-uninstaller.sh
-chmod 774 ~/Desktop/carnet-uninstaller.sh
+cp ./carnet-uninstaller.sh ~/Documents
+sudo chown $USER ~/Documents/carnet-uninstaller.sh
+chmod 774 ~/Documents/carnet-uninstaller.sh
 
 # fetching carnet-numerique in user's home folder
 cd ~
