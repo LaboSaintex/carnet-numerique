@@ -60,7 +60,7 @@ python est nécessaire pour certaines dépendances de do•doc (en particulier s
 
 * sur **Linux** :
 
-      apt-get install python2.7
+      sudo apt-get install python2.7
       sudo ln -s /usr/bin/python2.7 /usr/bin/python
 
 * sur **Windows**, télécharger la version 2.7 :
@@ -135,7 +135,7 @@ Pour stopper l'application, appuyez dans le terminal sur les touches Ctrl + C du
 
 ### Utilisation et localisation des vidéos
 
-Tout d'abord pour que la génération de la video puisse fonctionner il vous faut php, si vous avez une distribution linux qui n'a pas php ce qui est extrêmement rare, alors il faut installer et vérifier ensuite :
+Tout d'abord pour que la génération de la video puisse fonctionner il vous faut php, si vous avez une distribution linux qui n'a pas php, alors il faut installer et vérifier ensuite :
 
     sudo apt install php
     php --version
@@ -150,6 +150,8 @@ Puis refermez le terminal et rouvrez en un autre pour avoir la liste des paths a
 
 
 Quand vous allez assembler votre video celle-ci se trouve dans dodoc2/_projects/nom_du_projet/ sous le nom de output.webm
+
+- à la première utilisation du carnet numérique ne pas oublier de créer les dossier dans Documents/dodoc2, _projects, _authors, _musics
 
 ### Créer des auteurs pour pouvoir les selectionner dans les projets ensuite
 
@@ -180,13 +182,20 @@ Pensez a créer les Utilisateurs avant de lancer le carnet numérique.
 # Script d'installation
 
 Dans le dossier carnet-installer se trouve l'installateur pour distributions debian du carnet numérique.
-il suffit de rajouter les droites d'execution et de se donner d'exécuter le script carnet_installer.sh avec la commande suivante
+il suffit de rajouter les droites d'execution et d'exécuter le script carnet_installer.sh avec la commande suivante
 
     chmod 774 carnet_installer.sh
     ./carnet_installer.sh
 
 Ce script s'occupe de réaliser toute la procédure d'installation mais permet aussi d'ajouter une commande carnet et aussi un raccourci launcher dans le Bureau.
 qui permet de lancer le serveur local et d'ouvrir un navigateur sur le carnet numérique.
+
+Ce script ajoute aussi une commande de mise à jour carnet-maj et ajoute au passage un raccourci au bureau qui permet de mettre à jour le carnet.
+
+Ce script ajoute aussi un désinstalleur du carnet numérique dans le Bureau, il ne supprimera pas le dossier dodoc2 contenant vos anciens projets, dès que la procédure
+est faite un message vous notifie.
+
+Les scripts de mise à jour et de désinstallation ne marchent que pour un carnet installé avec l'installeur.
 
 # License
 

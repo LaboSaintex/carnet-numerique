@@ -44,3 +44,19 @@ cd public
 npm install
 npm run build
 
+# Adding folders for projects authors and musics
+mdkir ~/Documents/dodoc2 ~/Documents/dodoc2/_authors ~/Documents/dodoc2/_projects ~/Documents/dodoc2/_musics
+
+# installing the updater for carnet numérique
+cp ./carnet-maj.sh ~/Desktop
+sudo chown $USER ~/Desktop/carnet-maj.sh
+chmod 774 ~/Desktop/carnet-maj.sh
+
+sudo cp ./carnet-maj /usr/bin
+sudo chown $USER /usr/bin/carnet-maj
+chmod 774 /usr/bin/carnet-maj
+
+# Adding the uninstaller script in user's Desktop
+cp ./carnet-uninstaller.sh ~/Desktop
+sudo chown $USER ~/Desktop/carnet-uninstaller.sh
+chmod 774 ~/Desktop/carnet-uninstaller.sh
