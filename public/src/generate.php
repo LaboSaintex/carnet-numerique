@@ -14,7 +14,7 @@ $logoPath = getcwd() . "/public/images/saintex.jpg";
 // Adding descriptions for each clip and fade in and fade out filters
 $clipsToDescribe =  glob("$projectPath/*.webm");
 $clipFrameRate = (int) shell_exec("cd $projectPath && ffprobe -v error -select_streams v -of default=noprint_wrappers=1:nokey=1 -show_entries stream=r_frame_rate $clipsToDescribe[0]");
-
+$clipFrameRate = $clipFrameRate > 60 ? 30 : $clipFrameRate;
 for($i = 1; $i <= count($clipsToDescribe); $i++) {
 	$clipIndex = $i - 1;
 	$clipFrames = (int) shell_exec("cd $projectPath && ffprobe -v error -select_streams v:0 -count_packets -show_entries stream=nb_read_packets -of csv=p=0 $clipsToDescribe[$clipIndex]");
