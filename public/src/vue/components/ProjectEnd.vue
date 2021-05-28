@@ -71,7 +71,7 @@ export default {
     generateVideo: function () {
       this.generateClicked = true;
       console.log("SENDING VIDEO GENERATE REQUEST");
-      this.$socketio.socket.emit("videoRequest", {
+      let generateSettings = {
         projectPath: this.$root.currentProject.fullFolderPath,
         musicPath: "/_musics/" + (this.$root.currentProject.music_name != undefined ? this.$root.currentProject.music_name : ""),
         clip1_desc: this.$root.currentProject.clip1_desc,
@@ -79,7 +79,18 @@ export default {
         clip3_desc: this.$root.currentProject.clip3_desc,
         clip4_desc: this.$root.currentProject.clip4_desc,
         clip5_desc: this.$root.currentProject.clip5_desc,
-      });
+        project_desc: this.$root.currentProject.description,
+        workshop_type: this.$root.currentProject.workshop_type,
+        title: this.$root.currentProject.name,
+      }
+      if(this.$root.currentProject.authors !== undefined) {
+        generateSettings.participants = "";
+        this.$root.currentProject.authors.forEach(author => {
+          generateSettings.participants += `${author.name}\n`;
+        });
+      }
+      console.log("GENERATE SETTINGS : \n" + JSON.stringify(generateSettings));
+      this.$socketio.socket.emit("videoRequest", generateSettings);
       this.$socketio.socket.on("videoGenerated", () => {
         console.log("PROJECT'S VIDEO GENERATED");
         this.updateAndShowPlayer();
