@@ -33,6 +33,23 @@ sudo chown $USER ./carnet.sh
 chmod 774 ./carnet.sh
 cp ./carnet.sh ~/Desktop/carnet.sh
 
+# Adding folders for projects authors and musics
+mkdir ~/Documents/dodoc2 ~/Documents/dodoc2/_authors ~/Documents/dodoc2/_projects ~/Documents/dodoc2/_musics
+
+# installing the updater for carnet numérique
+cp ./carnet-maj.sh ~/Documents
+sudo chown $USER ~/Documents/carnet-maj.sh
+chmod 774 ~/Documents/carnet-maj.sh
+
+sudo cp ./carnet-maj /usr/bin
+sudo chown $USER /usr/bin/carnet-maj
+chmod 774 /usr/bin/carnet-maj
+
+# Adding the uninstaller script in user's Desktop
+cp ./carnet-uninstaller.sh ~/Documents
+sudo chown $USER ~/Documents/carnet-uninstaller.sh
+chmod 774 ~/Documents/carnet-uninstaller.sh
+
 # fetching carnet-numerique in user's home folder
 cd ~
 git clone https://github.com/rocambille/carnet-numerique.git
@@ -43,4 +60,3 @@ npm install
 cd public
 npm install
 npm run build
-

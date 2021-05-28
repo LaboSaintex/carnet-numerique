@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd ~/carnet-numerique
+git pull
+cd public
+~/.nvm/versions/node/v8.9.3/bin/npm run build
+echo -e "\033[0;32mUPDATED successfully : carnet-numerique  YOU CAN EXIT THIS SHELL NOW"
