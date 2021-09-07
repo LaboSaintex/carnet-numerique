@@ -36,6 +36,9 @@ cp ./carnet.sh ~/Desktop/carnet.sh
 # Adding folders for projects authors and musics
 mkdir ~/Documents/dodoc2 ~/Documents/dodoc2/_authors ~/Documents/dodoc2/_projects ~/Documents/dodoc2/_musics
 
+# installing the script to create authors
+ln authors.py ~/Documents/dodoc2/_authors/
+
 # installing the updater for carnet numérique
 cp ./carnet-maj.sh ~/Documents
 sudo chown $USER ~/Documents/carnet-maj.sh
@@ -52,7 +55,7 @@ chmod 774 ~/Documents/carnet-uninstaller.sh
 
 # fetching carnet-numerique in user's home folder
 cd ~
-git clone https://github.com/rocambille/carnet-numerique.git
+git clone https://github.com/LaboSaintex/carnet-numerique.git
 
 # installing and intializing the project node modules and building
 cd carnet-numerique
