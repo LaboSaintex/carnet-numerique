@@ -2,7 +2,25 @@
 
 Le carnet numérique est un outil de documentation basé sur l'outil [do•doc](https://latelier-des-chercheurs.fr/outils/dodoc).
 
-# Installation
+# Script d'installation
+
+Dans le dossier carnet-installer se trouve l'installateur pour distributions debian du carnet numérique.
+il suffit de rajouter les droites d'execution et d'exécuter le script carnet_installer.sh avec la commande suivante
+
+    chmod 774 carnet-installer.sh
+    ./carnet_installer.sh
+
+Ce script s'occupe de réaliser toute la procédure d'installation mais permet aussi d'ajouter une commande carnet et aussi un raccourci launcher dans le Bureau.
+qui permet de lancer le serveur local et d'ouvrir un navigateur sur le carnet numérique.
+
+Ce script ajoute aussi une commande de mise à jour carnet-maj et ajoute au passage le script dans Documents qui permet de mettre à jour le carnet.
+
+Ce script ajoute aussi un désinstalleur du carnet numérique dans Documents, il ne supprimera pas le dossier dodoc2 contenant vos anciens projets, dès que la procédure
+est faite un message vous notifie.
+
+Les scripts de mise à jour et de désinstallation ne marchent que pour un carnet installé avec l'installeur. Ne pas oublier de rajouter le script de création des auteurs dans le dossier dodoc2/_authors
+
+# Installation manuelle
 
 ## Installer les outils nécessaires
 
@@ -91,7 +109,7 @@ Listez ensuite son contenu pour voir ce qui s’y trouve :
 
 Nous pouvons rapatrier l’intégralité du code source en une fois avec git en tapant dans un terminal git :
 
-    git clone https://github.com/rocambille/carnet-numerique.git
+    git clone https://github.com/LaboSaintex/carnet-numerique.git
 
 Cela va automatiquement créer un dossier du nom de carnet-numerique dans le dossier courant.
 
@@ -119,11 +137,11 @@ Revenez maintenant dans le dossier principal de do•doc :
 
     cd ../
 
-## Excuter le carnet numérique
+# Excuter le carnet numérique
 
 Vous devriez pouvoir lancer do•doc avec la commande :
 
-    npm run debug
+    npm run start
 
 Un certain nombre de lignes apparaissent, elles permettent de « débugger » do•doc (pratique pour le développement). Si tout se passe bien la dernière ligne devrait être Server up and running. Go to https://localhost:8080. Vous pouvez alors ouvrir https://localhost:8080 dans votre navigateur.
 
@@ -131,9 +149,9 @@ Pour stopper l'application, appuyez dans le terminal sur les touches Ctrl + C du
 
 **note:** la procédure d'installation est adaptée du tutoriel https://forum.latelier-des-chercheurs.fr/t/installer-do-doc-sur-un-serveur-dedie/210
 
-## Utilisation du carnet numérique
+# Utilisation du carnet numérique
 
-### Utilisation et localisation des vidéos
+## Utilisation et localisation des vidéos
 
 Tout d'abord pour que la génération de la video puisse fonctionner il vous faut php, si vous avez une distribution linux qui n'a pas php, alors il faut installer et vérifier ensuite :
 
@@ -153,7 +171,7 @@ Quand vous allez assembler votre video celle-ci se trouve dans dodoc2/_projects/
 
 - à la première utilisation du carnet numérique ne pas oublier de créer les dossier dans Documents/dodoc2, _projects, _authors, _musics
 
-### Créer des auteurs pour pouvoir les selectionner dans les projets ensuite
+## Créer des auteurs pour pouvoir les selectionner dans les projets ensuite
 
 Le carnet numérique crée un dossier dodoc2 dans le dossier Documents de votre pc
 - [Windows]() : LettreDisque:\Users\utilisateur\Documents\dodoc2
@@ -163,9 +181,9 @@ Ce dossier contient plusieurs sous-dossiers comme _projects ou se trouve les pro
 
 Pour faciliter la tache de creation d'utilisateurs il y a un script python a placer dans le dossier dodoc2/_authors
 
-Pour copier le script dans le dossier _authors
-- [Windows]() : copy authors.py %USERPROFILE%\Documents\dodoc2\\_authors 
-- [linux]() : cp authors.py ~/Documents/dodoc2/_authors/
+Pour lier le script dans le dossier _authors
+- [Windows]() : mklink /h authors.py %USERPROFILE%\Documents\dodoc2\\_authors 
+- [linux]() : ln authors.py ~/Documents/dodoc2/_authors/
 
 Pour utiliser ce script il suffit de se placer dans le dossier _authors et d'exécuter avec l'interpréteur python de version 3.
 
@@ -178,24 +196,6 @@ pour pouvoir utiliser différentes versions de python au choix dans le terminal 
     python3 authors.py
 
 Pensez a créer les Utilisateurs avant de lancer le carnet numérique.
-
-# Script d'installation
-
-Dans le dossier carnet-installer se trouve l'installateur pour distributions debian du carnet numérique.
-il suffit de rajouter les droites d'execution et d'exécuter le script carnet_installer.sh avec la commande suivante
-
-    chmod 774 carnet-installer.sh
-    ./carnet_installer.sh
-
-Ce script s'occupe de réaliser toute la procédure d'installation mais permet aussi d'ajouter une commande carnet et aussi un raccourci launcher dans le Bureau.
-qui permet de lancer le serveur local et d'ouvrir un navigateur sur le carnet numérique.
-
-Ce script ajoute aussi une commande de mise à jour carnet-maj et ajoute au passage le script dans Documents qui permet de mettre à jour le carnet.
-
-Ce script ajoute aussi un désinstalleur du carnet numérique dans Documents, il ne supprimera pas le dossier dodoc2 contenant vos anciens projets, dès que la procédure
-est faite un message vous notifie.
-
-Les scripts de mise à jour et de désinstallation ne marchent que pour un carnet installé avec l'installeur. Ne pas oublier de rajouter le script de création des auteurs dans le dossier dodoc2/_authors
 
 # License
 
