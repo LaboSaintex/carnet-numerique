@@ -124,7 +124,7 @@ let vm = new Vue({
     currentTime: '',
 
     do_navigation: {
-      view: 'HomeView',
+      view: 'CreateOrResumeView',
       current_slugProjectName: false
     },
     media_modal: {
