@@ -7,6 +7,7 @@
       <div @click="createAndOpenProject">
         <CreateProjectButton class="buttons"/>
       </div>
+
       <div @click="$root.do_navigation.view = 'ListView'">
         <ResumeProjectButton class="buttons" />
       </div>
@@ -40,11 +41,12 @@ export default {
   },
   methods: {
     createAndOpenProject: function() {
-      if(this.isCurrentConfigValid) {
-        this.newProject();
+      // if(this.isCurrentConfigValid) {
+        this.$root.do_navigation.view = 'ConfigView'
+        // this.newProject();
         return;
-      }
-      alert("Les valeurs de configuration du projet sont incompletes");
+      // }
+      // alert("Les valeurs de configuration du projet sont incompletes");
     },
     newProject: function(event) {
       console.log('newProject');
@@ -53,7 +55,7 @@ export default {
         name: this.$root.store.config.workshop_title,
         password: '',
         authors: [],
-        keywords: this.$root.store.config.workshop_tags !== undefined ? this.$root.store.config.workshop_tags.map(tag => ({"tag": tag})) : [],
+        keywords: this.$root.store.confsig.workshop_tags !== undefined ? this.$root.store.config.workshop_tags.map(tag => ({"tag": tag})) : [],
         age_group: this.$root.store.config.workshop_age_group,
         number_of_authors: this.$root.store.config.workshop_members,
         last_unfinished_step: "ProjectView.authorList",
