@@ -57,7 +57,7 @@ if(array_key_exists("participants", $parameters)) {
 array_map('unlink', glob("$projectPath/*webm.txt"));
 file_put_contents("$projectPath/videosFile.txt", $videosFile);
 if($musicPath == "/_musics/") {
-	echo(shell_exec("cd $projectPath && ffmpeg -f concat -safe 0 -i videosFile.txt -crf 20 -c:v libx264 -b:v 10000K -b:a 192K output.webm"));
+	echo(shell_exec("cd $projectPath && ffmpeg -f concat -safe 0 -i videosFile.txt -b:v 10000K -crf 20 -b:a 192K output.webm"));
 } else {
-	echo(shell_exec("cd $projectPath && ffmpeg -f concat -safe 0 -i videosFile.txt -crf 20 -c:v libx264 -b:v 10000K -b:a 192K assembled.webm && ffmpeg -i assembled.webm -i ../..$musicPath -filter_complex ' [1:0] apad ' -shortest -y -b:v 3000K -b:a 192K assembled.webm output.webm"));
+	echo(shell_exec("cd $projectPath && ffmpeg -f concat -safe 0 -i videosFile.txt -b:v 10000K -crf 20 -b:a 192K assembled.webm && ffmpeg -i assembled.webm -i ../..$musicPath -filter_complex ' [1:0] apad ' -shortest -y -b:v 3000K -b:a 192K assembled.webm output.webm"));
 }
