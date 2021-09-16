@@ -17,13 +17,13 @@ export default {
     data() {
         return {
             steps_list_text: [
-                {msg: "Présentation de l'équipe"}, 
-                {msg: "Présentation de l'atelier"},
-                {msg: "Etape ",space: "1", text: "1 : Qu'allons-nous faire ?"},
-                {msg: "Etape 2 : Avec quoi allons-nous le faire ?"},
-                {msg: "Etape 3 : Comment allons-nous faire ?"},
-                {msg: "Etape 4 : Création"},
-                {msg: "Etape 5 : Tests"}
+                {msg: "Exemple: Présentation de l'équipe"}, 
+                {msg: "Exemple: Présentation de l'atelier"},
+                {msg: "Exemple: Etape ",space: "1", text: "1 : Qu'allons-nous faire ?"},
+                {msg: "Exemple: Etape 2 : Avec quoi allons-nous le faire ?"},
+                {msg: "Exemple: Etape 3 : Comment allons-nous faire ?"},
+                {msg: "Exemple: Etape 4 : Création"},
+                {msg: "Exemple: Etape 5 : Tests"}
             ],
             steps_list: [
                 "ProjectView.authorList", 

@@ -1,4 +1,5 @@
 <template>
+<div>
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -274,13 +275,15 @@
          d="M 0,720 H 1280 V 0 H 0 Z"
          id="path646" /></clipPath></defs><g
      id="g10"
-     transform="matrix(1.3333333,0,0,-1.3333333,0,960)"><text
+     transform="matrix(1.3333333,0,0,-1.3333333,0,960)">
+      <text
        transform="matrix(1,0,0,-1,378.1074,635.2266)"
        style="font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36px;font-family:'Cobol';-inkscape-font-specification:Cobol, Normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
        id="text634"><tspan
          x="0 18.360001 30.743999 48.528 66.311996 84.096001 94.896004 106.272 117.072 123.444 134.244 157.032 174.81599 182.916 198.17999 206.964 215.748 233.532 251.31599 268.09201 281.70001 299.48401 317.26801 335.052 351.828 362.62799 373.608 389.94839 398.73239 411.00839 428.79239 439.59241"
          y="0"
-         id="tspan632">Etape 1 : Qu’allons-nous faire ?</tspan></text>
+         id="tspan632">Etape 1 : </tspan>
+      </text>
 <text
        transform="matrix(1,0,0,-1,332.1953,575.0371)"
        style="font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18px;font-family:'Cobol';-inkscape-font-specification:Cobol, Normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -332,7 +335,13 @@
          d="m 0,0 c -0.014,-0.417 -0.306,-6.574 -4.569,-8.673 -2.025,-0.997 -4.174,-0.7 -5.971,-0.451 -1.26,0.174 -3.838,0.562 -6.396,2.481 -2.948,2.213 -4.085,5.12 -4.477,6.319 2.843,-0.885 5.264,-1.382 7.038,-1.676 2.471,-0.41 3.706,-0.615 5.5,-0.5 2.627,0.169 4.797,0.911 6.125,1.375 C -1.595,-0.722 -0.657,-0.311 0,0 Z"
          style="fill:none;stroke:#181817;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
          id="path1112" /></g></g></svg>
+        <form>
+          <label for="step-input" style="position: absolute; left: 30%; top: 4%;color: black;"> Ecrivez ici ce que vous allez faire lors de cette étape </label>
+          <input id="step-input" type="text" autofocus style="position: absolute; left: 40%; top: 7%;display: inline-block;color: black;z-index: 60000;min-width: 3em;max-width: 15rem;min-height: 1em;border: 1px solid black;" />
+        </form>
+  </div>
 </template>
+
 <script>
 export default ({
 })

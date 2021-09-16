@@ -1,4 +1,5 @@
 <template>
+<div>
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -431,6 +432,11 @@
            id="path1478"
            style="fill:none;stroke:#181817;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
            d="m 0,0 c -0.015,-0.417 -0.306,-6.573 -4.57,-8.673 -2.025,-0.997 -4.173,-0.699 -5.97,-0.451 -1.261,0.174 -3.838,0.562 -6.397,2.481 -2.948,2.213 -4.084,5.12 -4.477,6.319 2.844,-0.884 5.265,-1.381 7.039,-1.676 2.471,-0.41 3.706,-0.615 5.5,-0.5 2.627,0.169 4.796,0.911 6.125,1.375 C -1.595,-0.722 -0.657,-0.31 0,0 Z" /></g></g></g></svg>
+        <form>
+          <label for="step-input" style="position: absolute; left: 30%; top: 4%;color: black;"> Ecrivez ici ce que vous allez faire lors de cette étape </label>
+          <input id="step-input" type="text" autofocus style="position: absolute; left: 40%; top: 7%;display: inline-block;color: black;z-index: 60000;min-width: 3em;max-width: 15rem;min-height: 1em;border: 1px solid black;" />
+        </form>
+</div>
 </template>
 <script>
 export default ({})
