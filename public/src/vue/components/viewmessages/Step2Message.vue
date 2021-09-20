@@ -380,7 +380,7 @@
          transform="matrix(1,0,0,-1,378.1074,635.2266)"><tspan
            id="tspan734"
            y="0"
-           x="0 18.360001 30.743999 48.528 66.311996 84.096001 94.896004 115.416 126.216 132.588 143.388 163.368 182.16 199.944 217.728 228.528 246.312 264.09601 280.44 289.224 300.02399 315.28799 324.07199 332.85599 350.64001 368.42401 385.20001 398.80801 416.59201 434.37601 452.16 468.936 479.73599 488.51999 506.30399 517.104 528.08398 544.42798 553.21198 565.48798 583.27197 594.07202">Etape 2 : Avec quoi allons-nous le faire ?</tspan></text>
+           x="0 18.360001 30.743999 48.528 66.311996 84.096001 94.896004 115.416 126.216 132.588 143.388 163.368 182.16 199.944 217.728 228.528 246.312 264.09601 280.44 289.224 300.02399 315.28799 324.07199 332.85599 350.64001 368.42401 385.20001 398.80801 416.59201 434.37601 452.16 468.936 479.73599 488.51999 506.30399 517.104 528.08398 544.42798 553.21198 565.48798 583.27197 594.07202">Etape 2 : </tspan></text>
 <text
          id="text1438"
          style="font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18px;font-family:'Cobol';-inkscape-font-specification:Cobol, Normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -434,7 +434,7 @@
            d="m 0,0 c -0.015,-0.417 -0.306,-6.573 -4.57,-8.673 -2.025,-0.997 -4.173,-0.699 -5.97,-0.451 -1.261,0.174 -3.838,0.562 -6.397,2.481 -2.948,2.213 -4.084,5.12 -4.477,6.319 2.844,-0.884 5.265,-1.381 7.039,-1.676 2.471,-0.41 3.706,-0.615 5.5,-0.5 2.627,0.169 4.796,0.911 6.125,1.375 C -1.595,-0.722 -0.657,-0.31 0,0 Z" /></g></g></g></svg>
         <form>
           <label for="step-input" style="position: absolute; left: 30%; top: 4%;color: black;"> Ecrivez ici ce que vous allez faire lors de cette étape </label>
-          <input id="step-input" type="text" autofocus style="position: absolute; left: 40%; top: 7%;display: inline-block;color: black;z-index: 60000;min-width: 3em;max-width: 15rem;min-height: 1em;border: 1px solid black;" />
+          <input id="step-input" type="text" autofocus style="position: absolute; left: 40%; top: 7.5%;display: inline-block;color: black;z-index: 60000;min-width: 3em;max-width: 15rem;min-height: 1em;border: 1px solid black;" />
         </form>
 </div>
 </template>

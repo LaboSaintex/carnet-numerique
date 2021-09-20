@@ -63,10 +63,15 @@ export default {
         workshop_type: this.$root.store.config.workshop_type,
         video_durations: this.$root.store.config.video_durations.map(duration => ({"duration": duration})),
         video_generated: false,
+        clip1_name: "",
         clip1_desc: "",
+        clip2_name: "",
         clip2_desc: "",
+        clip3_name: "",
         clip3_desc: "",
+        clip4_name: "",
         clip4_desc: "",
+        clip5_name: "",
         clip5_desc: "",
       };
       

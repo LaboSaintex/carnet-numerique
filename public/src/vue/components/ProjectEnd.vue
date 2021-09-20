@@ -74,6 +74,11 @@ export default {
       let generateSettings = {
         projectPath: this.$root.currentProject.fullFolderPath,
         musicPath: "/_musics/" + (this.$root.currentProject.music_name != undefined ? this.$root.currentProject.music_name : ""),
+        clip1_name: this.$root.currentProject.clip1_name,
+        clip2_name: this.$root.currentProject.clip2_name,
+        clip3_name: this.$root.currentProject.clip3_name,
+        clip4_name: this.$root.currentProject.clip4_name,
+        clip5_name: this.$root.currentProject.clip5_name,
         clip1_desc: this.$root.currentProject.clip1_desc,
         clip2_desc: this.$root.currentProject.clip2_desc,
         clip3_desc: this.$root.currentProject.clip3_desc,
