@@ -543,6 +543,19 @@
         }
       "
     />
+
+    <!-- TITLE TEST -->
+
+    <textarea 
+      rows="2"
+      cols="5"
+      wrap="hard"
+      type="text"
+      style="position: absolute; left: 30%; top: 2vh; max-width: 470px; max-height: 3rem; margin: 0 auto"
+      v-model="$root.currentProject[`clip${$root.do_navigation.view.substr($root.do_navigation.view.length - 1)}_name`]" 
+      placeholder="ajouter un titre..." 
+    >
+    </textarea>
     <!-- 
       UPDATING THE CLIP'S DESCRIPTION 
       DESCRIPTION MIXED AND ADDED AS AN OVERLAYED TEXT ON EACH CLIP
