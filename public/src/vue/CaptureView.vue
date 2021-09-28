@@ -544,8 +544,8 @@
       "
     />
 
-    <!-- TITLE TEST -->
-
+    <!-- TITLE TEST, not deleting this because it will be useful -->
+<!-- 
     <textarea 
       rows="2"
       cols="5"
@@ -555,7 +555,7 @@
       v-model="$root.currentProject[`clip${$root.do_navigation.view.substr($root.do_navigation.view.length - 1)}_name`]" 
       placeholder="ajouter un titre..." 
     >
-    </textarea>
+    </textarea> -->
     <!-- 
       UPDATING THE CLIP'S DESCRIPTION 
       DESCRIPTION MIXED AND ADDED AS AN OVERLAYED TEXT ON EACH CLIP
