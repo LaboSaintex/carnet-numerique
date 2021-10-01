@@ -94,16 +94,31 @@
         "music_name": {
           "type": "string"
         },
+        "clip1_name": {
+          "type": "string"
+        },
         "clip1_desc": {
+          "type": "string"
+        },
+        "clip2_name": {
           "type": "string"
         },
         "clip2_desc": {
           "type": "string"
         },
+        "clip3_name": {
+          "type": "string"
+        },
         "clip3_desc": {
           "type": "string"
         },
+        "clip4_name": {
+          "type": "string"
+        },
         "clip4_desc": {
+          "type": "string"
+        },
+        "clip5_name": {
           "type": "string"
         },
         "clip5_desc": {

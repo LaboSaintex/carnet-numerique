@@ -575,7 +575,7 @@
          transform="matrix(1,0,0,-1,379.7139,635.3125)"><tspan
            id="tspan942"
            y="0"
-           x="0 18.360001 30.743999 48.528 66.311996 84.096001 94.896004 116.208 127.008 133.38 144.17999 165.20399 179.35201 197.136 213.192 227.37601 236.16 253.944 271.728">Etape 4 : Création </tspan></text>
+           x="0 18.360001 30.743999 48.528 66.311996 84.096001 94.896004 116.208 127.008 133.38 144.17999 165.20399 179.35201 197.136 213.192 227.37601 236.16 253.944 271.728">Etape 4 : </tspan></text>
 <text
          id="text2184"
          style="font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18px;font-family:'Cobol';-inkscape-font-specification:Cobol, Normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -624,10 +624,6 @@
            id="path2224"
            style="fill:none;stroke:#181817;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
            d="m 0,0 c -0.015,-0.417 -0.306,-6.573 -4.57,-8.673 -2.025,-0.997 -4.173,-0.699 -5.97,-0.451 -1.261,0.174 -3.838,0.562 -6.397,2.481 -2.948,2.213 -4.084,5.12 -4.477,6.319 2.844,-0.885 5.265,-1.381 7.039,-1.676 2.471,-0.41 3.706,-0.615 5.5,-0.5 2.627,0.169 4.796,0.911 6.125,1.375 C -1.595,-0.722 -0.657,-0.311 0,0 Z" /></g></g></g></svg>
-        <form>
-          <label for="step-input" style="position: absolute; left: 30%; top: 4%;color: black;"> Ecrivez ici ce que vous allez faire lors de cette étape </label>
-          <input id="step-input" type="text" autofocus style="position: absolute; left: 40%; top: 7%;display: inline-block;color: black;z-index: 60000;min-width: 3em;max-width: 15rem;min-height: 1em;border: 1px solid black;" />
-        </form>
 </div>
 </template>
 <script>
