@@ -29,7 +29,7 @@
     "imagetracerjs": "^1.2.3",
     "instascan": "^1.0.0",
     "jquery": "^3.4.0",
-    "moment": "^2.22.2",
+    "moment": "^2.29.2",
     "node-lessify": "^0.1.5",
     "node-sass": "^4.10.0",
     "path": "^0.12.7",
