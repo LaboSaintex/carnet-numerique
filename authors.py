@@ -13,16 +13,16 @@ print("""
 
 add = ""
 while(add.upper() != "N"):
-    add = raw_input("Voulez vous ajouter une personne Y/n : ")
+    add = input("Voulez vous ajouter une personne Y/n : ")
     if(add == ""):
         add = "Y"
     if(add.upper() == "Y"):
-        nom = raw_input("Veuillez entrer le prenom et le nom separe d'un seul espace : ")
+        nom = input("Veuillez entrer le prenom et le nom separe d'un seul espace : ")
 
         birthDate = ""
         isValid = False
         while(birthDate == "" or not(isValid)):
-            birthDate = raw_input("Veuillez entrer la date de naissance ecrite dans ce format DD/MM/YYYY : ")
+            birthDate = input("Veuillez entrer la date de naissance ecrite dans ce format DD/MM/YYYY : ")
             if(len(birthDate) == 10 and birthDate[2] == "/" and birthDate[5] == "/"):
                 try:
                     datetime.date(int(birthDate[6:]), int(birthDate[3:5]), int(birthDate[0:2]))

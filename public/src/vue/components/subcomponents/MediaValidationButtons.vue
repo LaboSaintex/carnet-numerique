@@ -21,11 +21,11 @@
     >
       <template v-if="cancelButtonIsBackButton">
         <span class="">
-          ‹ {{ $t('back') }}
+          {{ $t('back') }}
         </span>
       </template>
       <template v-else>
-        <img class="redo-button" style="width: 100%; height: 100%; background-color: none" src="../../../../assets/buttons/redo.svg" />
+        <img class="redo-button" style="width: 60%; background-color: none" src="../../../../assets/buttons/redo.svg" />
         <!--
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
           viewBox="0 0 168 168" style="enable-background:new 0 0 168 168;" xml:space="preserve">
@@ -180,6 +180,7 @@ export default {
 </script>
 <style>
 .m_mediaValidationButtons {
+  padding-top: 0;
   justify-content: center;
   background-color: transparent;
 }

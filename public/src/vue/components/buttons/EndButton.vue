@@ -848,10 +848,10 @@
        id="text4336"
        x="804.24731"
        y="493.77213"><tspan
-         x="804.24731 823.91528 839.4986 847.87378 861.36334 871.66071 880.03589 896.99219 907.28955 919.5434 927.91858 936.29376"
+         x="804"
          y="493.77213"
          id="tspan4334"
-         style="stroke-width:1.33333325;-inkscape-font-specification:'Cobol, Normal';font-family:'Cobol';font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:34.32400004px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">Voir le film</tspan></text>
+         style="stroke-width:1.33333325;-inkscape-font-specification:'Cobol, Normal';font-family:'Cobol';font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:34.32400004px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">Créer le film</tspan></text>
 </g></svg>
                   </template>
 <script>

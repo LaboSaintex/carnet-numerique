@@ -90,10 +90,10 @@
        transform="matrix(1,0,0,-1,502.3837,644.858)"
        style="font-variant:normal;font-weight:bold;font-stretch:normal;font-size:24px;font-family:'Cobol';-inkscape-font-specification:Cobol, Normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
        id="text824"><tspan
-         style="-inkscape-font-specification:'Cobol, Normal, Bold';font-family:'Cobol';font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:24.0000006px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal"
-         x="0 14.064 24.719999 32.928001 44.784 56.639999 66.071999 77.928001 89.783997 96.984001 102.84 114.696 121.896 133.752 145.608 152.808 162.26401 174.12 181.32001 190.776 196.17599 208.032 216.29041 227.1864 233.0424 244.22639 251.42641 263.28241 272.71439 282.14639 294.00241 303.4584 315.31439 322.5144"
+         style="-inkscape-font-specification:'Cobol, Normal, Bold';font-family:'Cobol';font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:18.0000006px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal"
+         x="0"
          y="0"
-         id="tspan822">Retourne là ou tu t’étais arrêté !</tspan></text>
+         id="tspan822">Voici quelques exemples d'étapes !</tspan></text>
 <g
        id="g826"><g
          id="g828"

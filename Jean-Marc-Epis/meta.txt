@@ -1,7 +1,0 @@
-name: Jean-Marc Epis
-
-----
-
-birth_date: 2000-08-24
-
-----

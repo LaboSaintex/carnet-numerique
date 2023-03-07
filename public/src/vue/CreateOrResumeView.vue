@@ -41,12 +41,8 @@ export default {
   },
   methods: {
     createAndOpenProject: function() {
-      // if(this.isCurrentConfigValid) {
         this.$root.do_navigation.view = 'ConfigView'
-        // this.newProject();
         return;
-      // }
-      // alert("Les valeurs de configuration du projet sont incompletes");
     },
     newProject: function(event) {
       console.log('newProject');

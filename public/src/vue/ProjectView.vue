@@ -119,7 +119,7 @@ export default {
   methods: {
     reset: function() {
       this.saveRecordedVideo = this.isVideoRecorded = false;
-      this.$root.do_navigation.view = this.nextView;
+      this.$root.do_navigation.view = this.nextView || currentView; 
     },
     updateSaveRecordedVideo: function(event) {
       this.saveRecordedVideo = true;
@@ -141,6 +141,7 @@ export default {
 }
 .next-arrow {
   position: relative;
+  z-index: 3;
   top: 0;
   left: 0;
   width: 100%;
@@ -151,7 +152,7 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-height: 20vw;
+  max-height: 25vw;
   max-width: 35vw;
 }
 </style>

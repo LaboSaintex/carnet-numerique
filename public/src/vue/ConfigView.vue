@@ -84,6 +84,7 @@
             >
               <option v-for="music in this.musics_list" :key="music" :value="music">{{ music }}</option>
             </select>
+            <audio v-if="$root.store.config.music_name !== undefined" :src="'/_musics/' + $root.store.config.music_name" controls>
           </div>
         </div>
 
