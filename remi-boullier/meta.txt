@@ -1,7 +1,0 @@
-name: remi boullier
-
-----
-
-birth_date: 1998-04-26
-
-----

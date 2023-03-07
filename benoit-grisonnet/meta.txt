@@ -1,7 +1,0 @@
-name: benoit grisonnet
-
-----
-
-birth_date: 1986-05-24
-
-----
