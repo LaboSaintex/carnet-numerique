@@ -262,7 +262,7 @@ select {
 }
 .input-row {
   display: flex;
-  flex-flow: row nowrap;
+  flex-direction: column;
   margin-bottom: 2vh;
 }
 .title-input label {
