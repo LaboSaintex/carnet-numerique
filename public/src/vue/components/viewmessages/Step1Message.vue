@@ -334,6 +334,7 @@
        transform="translate(263.2511,532.2149)"><path
          d="m 0,0 c -0.014,-0.417 -0.306,-6.574 -4.569,-8.673 -2.025,-0.997 -4.174,-0.7 -5.971,-0.451 -1.26,0.174 -3.838,0.562 -6.396,2.481 -2.948,2.213 -4.085,5.12 -4.477,6.319 2.843,-0.885 5.264,-1.382 7.038,-1.676 2.471,-0.41 3.706,-0.615 5.5,-0.5 2.627,0.169 4.797,0.911 6.125,1.375 C -1.595,-0.722 -0.657,-0.311 0,0 Z"
          style="fill:none;stroke:#181817;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+
          id="path1112" /></g>
 
         <g
@@ -359,5 +360,3 @@ export default ({
   }
 });
 </script>
-
-<!-- v-model="projectdata.clip1_name" v-on:input="projectdata.clip1_name = $event.target.value" -->
