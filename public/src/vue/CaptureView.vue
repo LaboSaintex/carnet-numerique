@@ -337,52 +337,11 @@
           </transition>
         </div>
 
-        <!--
-        <StopmotionPanel 
-          v-if="$root.store.stopmotions.hasOwnProperty(current_stopmotion)"        
-          :stopmotiondata="$root.store.stopmotions[current_stopmotion]"
-          :slugProjectName="slugProjectName"
-          :read_only="read_only"
-          :videoStream="videoStream"
-          @close="current_stopmotion = false"
-          @new_single_image="updateSingleImage"
-          @show_live_feed="(state) => { is_showing_live_feed = state }"
-          @validating_video="(state) => { is_validating_stopmotion_video = state }"
-        >
-        </StopmotionPanel>     
-        -->
-
         <div class="m_panel--buttons">
           <div v-if="!is_recorded" 
             class="m_panel--buttons--row"
             :class="{ 'bg-orange': is_recording }"
           >
-            <!--
-            <button
-              type="button"
-              @click="show_capture_settings = !show_capture_settings"
-              class="button c-rouge font-small bg-transparent"
-              :disabled="is_recording || is_making_stopmotion"
-            >
-              <svg 
-                class="inline-svg inline-svg_larger"
-                version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                viewBox="0 0 140 140" xml:space="preserve"
-              >
-                <path style="fill: currentColor" d="M122.7,88.8v-10c0-1.1,0.6-2.1,1.6-2.6l9.6-4.9l-2-5.8l-11,1.6c-1.1,0.2-2.2-0.3-2.9-1.2l-6-8.1
-                  c-0.7-0.9-0.8-2.1-0.3-3l4.8-9.6l-5.2-3.6l-7.7,7.5c-0.8,0.8-2,1-3.1,0.7l-9.9-3c-1.1-0.3-1.9-1.3-2.1-2.4L86.8,34h-6.4l-1.7,10.4
-                  c-0.2,1.1-0.9,2-2,2.4L66.8,50c-1.1,0.3-2.2,0.1-3.1-0.7L55.9,42l-5.1,3.7l4.9,9.4c0.5,1,0.4,2.1-0.2,3l-6,8.2
-                  c-0.6,0.9-1.8,1.4-2.9,1.2L35.8,66L34,71.8l9.7,4.8c1,0.5,1.7,1.5,1.7,2.6v10c0,1.1-0.6,2.1-1.6,2.6l-9.6,4.9l2,5.9l10.9-1.6
-                  c1.1-0.2,2.2,0.3,2.9,1.2l6,8.1c0.7,0.9,0.8,2.1,0.3,3l-4.8,9.6l5.1,3.6l7.7-7.5c0.8-0.8,2-1,3.1-0.7l9.9,3
-                  c1.1,0.3,1.9,1.3,2.1,2.4l1.9,10.4h6.4l1.7-10.4c0.2-1.1,0.9-2,2-2.4l9.9-3.2c1.1-0.3,2.2-0.1,3.1,0.7l7.8,7.3l5.1-3.7l-4.9-9.4
-                  c-0.5-1-0.4-2.1,0.2-3l6-8.1c0.7-0.9,1.8-1.4,2.9-1.2l10.8,1.5l1.8-5.9l-9.7-4.8C123.3,90.9,122.7,89.9,122.7,88.8z M84,104.5
-                  c-11.7,0-21.1-9.2-21.1-20.5c0-11.3,9.5-20.5,21.1-20.5s21.1,9.2,21.1,20.5C105.1,95.3,95.7,104.5,84,104.5z"/>
-              </svg>
-              <span class="">
-                {{ $t('settings') }}
-              </span>
-            </button>
-            -->
             <div class="m_panel--buttons--row--captureButton">
               <button
                 type="button"
@@ -438,47 +397,6 @@
                 </svg>
               </button>
             </div>
-            <!--
-            <div class="m_panel--buttons--row--options">
-              <div v-if="selected_mode === 'vecto'">
-                <label>
-                  {{ $t('smoothing') }}
-                </label>
-                <input class="margin-none" type="range" v-model="vecto.blurradius" min="0" max="20">
-              </div>
-
-              <div
-                v-if="selected_mode === 'stopmotion' && stopmotion.onion_skin_img && is_showing_live_feed"
-              >
-                <label>
-                  {{ $t('onion_skin') }}
-                </label>
-                <input class="margin-none" type="range" v-model="stopmotion.onion_skin_opacity" min="0" max=".9" step="0.01">
-              </div>
-
-              <button
-                type="button"
-                v-if="selected_mode === 'stopmotion' && !is_making_stopmotion"
-                @click="show_stopmotion_list = !show_stopmotion_list"
-                class="button c-bleumarine font-small bg-transparent"
-              >
-                <span class="">
-                  {{ $t('stopmotion_list') }}
-                </span>
-              </button>
-
-              <span class="switch switch-xs" v-if="selected_mode === 'video'">
-                <input 
-                  class="switch" 
-                  id="recordVideoWithAudio" 
-                  type="checkbox" 
-                  v-model="recordVideoWithAudio"
-                  :disabled="is_recording"
-                />
-                <label for="recordVideoWithAudio">{{ $t('with_sound') }}</label>
-              </span>
-            </div>
-            -->
           </div>
 
           <transition name="slideup" :duration="400">
@@ -494,43 +412,6 @@
         </div>
       </div>
     </div>
-    <!--
-  <div class="m_captureview--modeSelector">
-      <button type="button" class="bg-transparent" 
-        v-show="!$root.settings.capture_mode_cant_be_changed"
-        @mousedown.stop.prevent="previousMode()"        
-        @touchstart.stop.prevent="previousMode()"        
-      >
-        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="169px"
-          height="169px" viewBox="0 0 169 169" style="enable-background:new 0 0 169 169;" xml:space="preserve">
-          <path fill="currentColor" d="M60.2,84.5l48.6-24.3l0,48.6L60.2,84.5z"/>
-        </svg>
-      </button>
-      
-      <div 
-        v-for="mode in available_modes"
-        :key="mode.key"
-      >
-        <input type="radio" :id="mode.key" :value="mode.key" :disabled="$root.settings.capture_mode_cant_be_changed" v-model="selected_mode">
-        <label :for="mode.key">
-          <div class="picto">
-            <img :src="mode.picto">
-          </div>
-          <span>{{ $t(mode.key) }}</span>
-        </label>
-      </div>
-      <button type="button" class="bg-transparent"
-        v-show="!$root.settings.capture_mode_cant_be_changed"
-        @mousedown.stop.prevent="nextMode()"        
-        @touchstart.stop.prevent="nextMode()"        
-      >
-        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="169px"
-          height="169px" viewBox="0 0 169 169" style="enable-background:new 0 0 169 169;" xml:space="preserve">
-          <path fill="currentColor" d="M108.8,84.5l-48.6,24.3V60.2L108.8,84.5z"/>
-        </svg>        
-      </button>
-    </div>
-    -->
 
     <DistantFlux
       v-if="$root.settings.capture_options.distant_flux.active"
@@ -544,18 +425,6 @@
       "
     />
 
-    <!-- TITLE TEST, not deleting this because it will be useful -->
-<!-- 
-    <textarea 
-      rows="2"
-      cols="5"
-      wrap="hard"
-      type="text"
-      style="position: absolute; left: 30%; top: 2vh; max-width: 470px; max-height: 3rem; margin: 0 auto"
-      v-model="$root.currentProject[`clip${$root.do_navigation.view.substr($root.do_navigation.view.length - 1)}_name`]" 
-      placeholder="ajouter un titre..." 
-    >
-    </textarea> -->
     <!-- 
       UPDATING THE CLIP'S DESCRIPTION 
       DESCRIPTION MIXED AND ADDED AS AN OVERLAYED TEXT ON EACH CLIP
@@ -574,7 +443,6 @@
 </template>
 <script>
 import MediaContent from "./components/subcomponents/MediaContent.vue";
-//import StopmotionPanel from './components/subcomponents/StopmotionPanel.vue';
 import MediaValidationButtons from "./components/subcomponents/MediaValidationButtons.vue";
 import DistantFlux from "./components/subcomponents/DistantFlux.vue";
 
@@ -599,7 +467,6 @@ export default {
   },
   components: {
     MediaContent,
-    //StopmotionPanel,
     MediaValidationButtons,
     DistantFlux,
   },
@@ -607,29 +474,10 @@ export default {
     return {
       selected_mode: "",
       available_modes: [
-        /**
-        { 
-          picto: '/images/i_icone-dodoc_image.svg',
-          key: 'photo'
-        },*/
         {
           picto: "/images/i_icone-dodoc_video.svg",
           key: "video",
         },
-        /**
-        {
-          picto: '/images/i_icone-dodoc_anim.svg',
-          key: 'stopmotion'
-        },
-        {
-          picto: '/images/i_icone-dodoc_audio.svg',
-          key: 'audio'
-        },
-        {
-          picto: '/images/i_icone-dodoc_vecto.svg',
-          key: 'vecto'
-        }
-        */
       ],
 
       recordVideoFeed: undefined,
@@ -793,12 +641,6 @@ export default {
       console.log(
         `WATCH • Capture: selected_devicesId.audioinput = ${this.selected_devicesId.audioinput}`
       );
-      // this.stopAllFeeds().then(() => {
-      //   if(this.$refs.hasOwnProperty('videoElement') && this.$refs.videoElement !== undefined) {
-      //     this.$refs.videoElement.setSinkId(this.selected_devicesId.audioinput);
-      //     // this.startMode();
-      //   }
-      // });
       this.$root.settings.capture_options.selected_devicesId.audioinput = this.selected_devicesId.audioinput;
     },
     "selected_devicesId.audiooutput": function () {
@@ -856,31 +698,8 @@ export default {
         this.$refs.videoElement.play();
       }
     },
-    /** 
-    'current_stopmotion': function() {
-      this.$root.settings.capture_mode_cant_be_changed = this.current_stopmotion ? this.current_stopmotion : false;
-    },
-    'show_stopmotion_list': function() {
-      if(this.show_stopmotion_list) {
-        this.$socketio.listFolders({ type: 'stopmotions' }); 
-      }
-    }
-    */
   },
   computed: {
-    /**
-    is_making_stopmotion() {
-      const is_making_stopmotion = this.current_stopmotion ? true : false;
-      if(is_making_stopmotion) {
-        this.show_capture_settings = false;
-      }
-      return is_making_stopmotion;
-    },
-    stopmotions() {
-      let stopmotions = Object.values(this.$root.store.stopmotions);
-      stopmotions = this.$_.sortBy(stopmotions, function(o) { return o.date_created; }).reverse();
-      return stopmotions;
-    },*/
     sorted_available_devices() {
       return this.$_.groupBy(this.available_devices, "kind");
     },
@@ -988,31 +807,6 @@ export default {
       if (this.media_to_validate || this.is_validating_stopmotion_video) {
         return false;
       }
-
-      // disabled because it clashes with the input type range from stopmotion panel
-      // if (event.target.tagName.toLowerCase() === 'input' || event.target.tagName.toLowerCase() === 'textarea') {
-      //   return false;
-      // }
-      // Blocking the event keys, because it interferes also with the input field for the clip description
-
-      /*
-      switch (event.key) {
-        case "w":
-        case "z":
-        case "ArrowLeft":
-          //this.previousMode();
-          break;
-        case "s":
-        case "ArrowRight":
-          //this.nextMode();
-          break;
-        case "a":
-        case "q":
-        case " ":
-          //this.captureOrStop();
-          break;
-      }
-      */
     },
     changeStreamTo(new_stream) {
       console.log("METHODS • CaptureView: changeStreamTo");
@@ -1135,49 +929,6 @@ export default {
         );
       });
     },
-    /**
-    startAudioFeed() {
-      return new Promise((resolve, reject) => {
-        console.log('METHODS • CaptureView: startAudioFeed');
-        // this.$alertify
-        //   .closeLogOnClick(true)
-        //   .delay(4000)
-        //   .log('METHODS • CaptureView: startAudioFeed');
-          
-        this.getAudioFeed()
-          .then((stream) => {
-            this.audioStream = stream;
-            resolve(stream);
-          })
-          .catch((err) => {
-            this.$alertify.error(err);
-            reject();
-          });
-      });
-    },
-    
-    getAudioFeed() {
-      return new Promise((resolve, reject) => {
-        console.log('METHODS • CaptureView: getAudioFeed');
-
-        if(this.selected_devicesId.audioinput === '') {
-          reject(this.$t('notifications.audio_source_not_set'));
-        }
-        const constraints = {
-          video: false,
-          audio: {
-            optional: [{ sourceId: this.selected_devicesId.audioinput }]
-          }
-        };
-        navigator.getUserMedia(constraints,
-          (stream) => {
-            return resolve(stream);
-          },
-          (err) => {
-            return reject(this.$t('notifications.failed_to_start_video_change_source_or_res'));
-          });
-      });
-    },*/
 
     getStaticImageFromVideoElement() {
       return new Promise((resolve, reject) => {
@@ -1199,9 +950,6 @@ export default {
           "image/jpeg",
           0.95
         );
-        // if(imageData === "data:,") {
-        //   return reject(this.$t('notifications.video_stream_not_available'));
-        // }
       });
     },
 
@@ -1250,32 +998,6 @@ export default {
         });
       });
     },
-    /**
-    startRecordAudioFeed() {
-      return new Promise((resolve, reject) => {
-        if(!!this.audioStream) {
-          let recordAudioFeed = RecordRTC(this.audioStream, {
-            type: 'audio'
-          });
-          recordAudioFeed.startRecording();
-
-          this.is_recording = true;
-          this.$root.settings.capture_mode_cant_be_changed = true;
-
-          this.$eventHub.$on('capture.stopRecording', () => {
-            this.$eventHub.$off('capture.stopRecording');
-
-            recordAudioFeed.stopRecording(() => {
-              this.is_recording = false;
-              const audioBlob = recordAudioFeed.getBlob();
-              recordAudioFeed = null;
-              return resolve(audioBlob);
-            });
-          });
-        }
-      });
-    },
-    */
     captureOrStop() {
       this.capture_button_pressed = true;
       window.setTimeout(() => {
@@ -1344,96 +1066,6 @@ export default {
         };
       }
     },
-    /**
-    addStopmotionImage() {
-        const smdata = {
-          name: this.slugProjectName + '-' + this.$moment().format('YYYYMMDD_HHmmss'),
-          linked_project: this.slugProjectName,
-          authors: this.$root.settings.current_author.hasOwnProperty('name') ? [{ name: this.$root.settings.current_author.name }] : ''
-        };
-
-        this.getStaticImageFromVideoElement().then(imageData => {
-          if(!this.current_stopmotion) {
-            // create stopmotion
-            this.$eventHub.$on('socketio.folder_created_or_updated', (fdata) => {
-              if(fdata.id === this.$root.justCreatedFolderID) {
-                this.$eventHub.$off('socketio.folder_created_or_updated');
-                this.current_stopmotion = fdata.slugFolderName;
-                this.addImageToStopmotion(imageData);
-              }
-            });
-            this.$root.createFolder({ 
-              type: 'stopmotions', 
-              data: smdata
-            });      
-          } else {
-            // append to stopmotion
-            this.addImageToStopmotion(imageData);
-          }
-        });
-
-    },
-    addImageToStopmotion(imageData) {
-      console.log('METHODS • CaptureView: addImageToStopmotion');
-      this.$root.createMedia({
-        slugFolderName: this.current_stopmotion,
-        type: 'stopmotions',
-        rawData: imageData,
-        additionalMeta: {
-          type: 'image'
-        }
-      });
-    },
-    startVectoFeed() {
-      return new Promise((resolve, reject) => {
-        console.log('METHODS • CaptureView: startVectoFeed');
-        if(this.selected_devicesId.videoinput === '') {
-          return reject(this.$t('notifications.video_source_not_set'));
-        }
-
-        this.ideal_camera_resolution = this.available_camera_resolutions[0];
-  
-        this.startCameraFeed()
-          .then(() => {
-            let scanToVecto = () => {
-              if(this.selected_mode !== 'vecto' || !this.videoStream) {
-                return;
-              } else if(this.media_to_validate) {
-                window.setTimeout(scanToVecto, 1000);
-                return;
-              }
-              this.getStaticImageFromVideoElement().then(imageData => {
-                ImageTracer.imageToSVG(
-                  URL.createObjectURL(imageData),
-                  (svgstr) => {
-                    this.vecto.svgstr = svgstr;
-                    window.setTimeout(scanToVecto, 1000);
-                  },
-                  { 
-                    colorsampling: false,
-                    numberofcolors: 2, 
-                    colorquantcycles: 1,
-                    scale: 1,
-                    strokewidth: 1,
-                    blurradius: this.vecto.blurradius,
-                    pal : [{r:255,g:255,b:255,a:255}, {r:0,g:0,b:0,a:255}]
-                    // pal : [{r:255,g:255,b:255,a:255}, {r:214,g:0,b:103,a:255}]
-                  }
-                );
-              });
-            };
-            window.setTimeout(scanToVecto, 500);
-
-            resolve();
-          })
-          .catch((err) => {
-            this.$alertify.error(err);
-            reject();
-          });
-
-      });
-    }, 
-    */
     sendMedia({ fav = false }) {
         return new Promise((resolve, reject) => {
           console.log(`METHODS • CaptureView: sendMedia with fav=${fav}`);
@@ -1558,19 +1190,6 @@ export default {
     updateSingleImage($event) {
       this.stopmotion.onion_skin_img = $event;
     },
-    /**
-    loadStopmotionMedias(slugFolderName) {
-      if(Object.values(this.$root.store.stopmotions[slugFolderName].medias).length === 0) {
-        this.$socketio.listMedias({
-          type: 'stopmotions',
-          slugFolderName
-        });
-      }
-    },
-    loadStopmotion(slugFolderName) {
-      this.current_stopmotion = slugFolderName;
-    }
-    */
   },
 };
 
