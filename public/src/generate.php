@@ -41,7 +41,6 @@ $videosFile .= "file 'opening.webm'\n";{
 	file_put_contents("$projectPath/project_desc.txt", $parameters["project_desc"]);
 	shell_exec("cd $projectPath && ffmpeg -f lavfi -i color=size=1280x720:duration=3:rate=30:color=black -vf 'drawtext=fontfile=$fontPath:fontsize=46:fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2:textfile=project_desc.txt' project_desc.webm");
 	unlink("$projectPath/project_desc.txt");
-	$videosFile .= "file 'project_desc.webm'\n";
 } 
 if(array_key_exists("participants", $parameters)) {
 	file_put_contents("$projectPath/participants.txt", "Participants :\n" . $parameters["participants"]);
