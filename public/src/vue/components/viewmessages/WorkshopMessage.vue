@@ -1,4 +1,6 @@
-<template>
+<!-- Ceci est le message qu'il y à entre authorlist et step1, c'est le message pour taper la description du projet que l'on a décider de supprimer -->
+
+<!-- <template>
   <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -267,4 +269,4 @@
          width="413.30295"
          id="rect1030" /></flowRegion><flowPara
        id="flowPara1032" /></flowRoot></svg>
-</template>
+</template> -->

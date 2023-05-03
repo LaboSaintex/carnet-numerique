@@ -24,8 +24,7 @@ export default {
                 {msg: "Exemple d'étape 5 : Tests"}
             ],
             steps_list: [
-                "ProjectView.authorList", 
-                "ProjectView.workshop",
+                "ProjectView.authorList",
                 "ProjectView.step1",
                 "ProjectView.step2",
                 "ProjectView.step3",

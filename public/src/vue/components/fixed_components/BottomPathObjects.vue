@@ -93,7 +93,6 @@ export default {
       pathProgress: [
         "ProjectView",
         "ProjectView.authorList",
-        "ProjectView.workshop",
         "ProjectView.step1",
         "ProjectView.step2",
         "ProjectView.step3",

@@ -19,33 +19,30 @@
       :currentView="$root.do_navigation.view"
       class="next-arrow"
     />
-    <transition name="ProjectView" :duration="500">
+    <transition name="ProjectView" :duration="0">
       <StepList v-if="$root.do_navigation.view === 'ProjectView'" />
     </transition>
-    <transition name="ProjectView" :duration="500">
+    <transition name="ProjectView" :duration="0">
       <AuthorList
         v-if="$root.do_navigation.view === 'ProjectView.authorList'"
       />
     </transition>
-    <transition name="ProjectView" :duration="500">
-      <Workshop v-if="$root.do_navigation.view === 'ProjectView.workshop'" />
-    </transition>
-    <transition name="ProjectView" :duration="500">
+    <transition name="ProjectView" :duration="0">
       <Step1 v-if="$root.do_navigation.view === 'ProjectView.step1'" />
     </transition>
-    <transition name="ProjectView" :duration="500">
+    <transition name="ProjectView" :duration="0">
       <Step2 v-if="$root.do_navigation.view === 'ProjectView.step2'" />
     </transition>
-    <transition name="ProjectView" :duration="500">
+    <transition name="ProjectView" :duration="0">
       <Step3 v-if="$root.do_navigation.view === 'ProjectView.step3'" />
     </transition>
-    <transition name="ProjectView" :duration="500">
+    <transition name="ProjectView" :duration="0">
       <Step4 v-if="$root.do_navigation.view === 'ProjectView.step4'" />
     </transition>
-    <transition name="ProjectView" :duration="500">
+    <transition name="ProjectView" :duration="0">
       <Step5 v-if="$root.do_navigation.view === 'ProjectView.step5'" />
     </transition>
-    <transition name="ProjectView" :duration="500">
+    <transition name="ProjectView" :duration="0">
       <ProjectEnd v-if="$root.do_navigation.view === 'ProjectView.end'" />
     </transition>
     <CaptureView
@@ -72,7 +69,6 @@
 <script>
 import StepList from "./components/StepList.vue";
 import AuthorList from "./components/AuthorList.vue";
-import Workshop from "./components/Workshop.vue";
 import Step1 from "./components/Step1.vue";
 import Step2 from "./components/Step2.vue";
 import Step3 from "./components/Step3.vue";
@@ -99,7 +95,6 @@ export default {
   components: {
     StepList,
     AuthorList,
-    Workshop,
     Step1,
     Step2,
     Step3,

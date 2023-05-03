@@ -88,7 +88,7 @@
   data() {
     return {
       viewProgress: [
-        "ProjectView", "ProjectView.authorList", "ProjectView.workshop",
+        "ProjectView", "ProjectView.authorList",
         "ProjectView.step1", "ProjectView.step2", "ProjectView.step3",
         "ProjectView.step4", "ProjectView.step5", "ProjectView.end"
       ]
