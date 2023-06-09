@@ -90,11 +90,9 @@
                 {{ music }}
               </option>
             </select>
-            <audio
-              v-if="$root.store.config.music_name !== undefined"
-              :src="'/_musics/' + $root.store.config.music_name"
-              controls
-            />
+
+            <audio v-if="$root.store.config.music_name !== undefined" :src="'/_musics/' + $root.store.config.music_name" controls>
+
           </div>
         </div>
 
