@@ -24,6 +24,7 @@ for($i = 1; $i <= count($clipsToDescribe); $i++) {
 	//file_put_contents("$projectPath/clip${i}_name.txt", $parameters["clip${i}_name"]);
 	shell_exec("cd $projectPath && ffmpeg -i $clipsToDescribe[$clipIndex] -vf 'drawtext=fontfile=$fontPath: textfile=clip${i}_desc.txt: fontcolor=white: fontsize=46: box=1: boxcolor=black@0.5: boxborderw=5: x=(w-text_w)/2: y=(h-text_h-50): fix_bounds=true, fade=t=in:st=0:d=0.3,fade=t=out:st=$clipDuration:d=0.3' -b:v 3000K -b:a 192K clip${i}.webm");	
 	//shell_exec("cd $projectPath && ffmpeg -i $clipsToDescribe[$clipIndex] -vf 'drawtext=fontfile=$fontPath: textfile=clip${i}_name.txt: fontcolor=white: fontsize=46: box=1: boxcolor=black@0.5: boxborderw=5: x=(w-text_w)/2: y=(h-text_h-500): fix_bounds=true, fade=t=in:st=0:d=0.5,fade=t=out:st=$clipDuration:d=0.5' -b:v 3000K -b:a 192K clip${i}.webm");
+
 }
 array_map('unlink', glob("$projectPath/*desc.txt"));
 
