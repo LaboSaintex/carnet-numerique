@@ -18,6 +18,7 @@
       :isVideoRecorded="this.isVideoRecorded"
       :currentView="$root.do_navigation.view"
       class="next-arrow"
+      v-if="$root.do_navigation.view !== 'ProjectView.end'"
     />
     <transition name="ProjectView" :duration="0">
       <StepList v-if="$root.do_navigation.view === 'ProjectView'" />
