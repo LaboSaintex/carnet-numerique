@@ -60,10 +60,12 @@
                 "
               >
                 <!-- v-show="$root.do_navigation.view === 'ListView'" -->
-                <transition name="HomeView" :duration="500">
-                  <HomeView v-show="$root.do_navigation.view === 'HomeView'" />
+                <transition name="HomeView" :duration="0">
+                  <HomeView
+                    v-show="$root.do_navigation.view === 'HomeView'"
+                  />
                 </transition>
-                <transition name="CreateOrResumeView" :duration="500">
+                <transition name="CreateOrResumeView" :duration="0">
                   <CreateOrResumeView
                     v-show="$root.do_navigation.view === 'CreateOrResumeView'"
                   />
@@ -88,7 +90,7 @@
                   :read_only="!$root.state.connected"
                 />
 
-                <transition name="CaptureView" :duration="500">
+                <transition name="CaptureView" :duration="0">
                   <CaptureView
                     v-if="$root.do_navigation.view === 'CaptureView'"
                     :slugProjectName="
@@ -152,14 +154,14 @@
               </button>
 
               <div style="position: relative; height: 100%; overflow: hidden">
-                <transition name="ListView" :duration="500">
+                <transition name="ListView" :duration="0">
                   <Publications
                     v-if="$root.settings.show_publi_panel"
                     :publications="$root.store.publications"
                     :read_only="!$root.state.connected"
                   />
                 </transition>
-                <transition name="ProjectView" :duration="500">
+                <transition name="ProjectView" :duration="0">
                   <PagePublication
                     v-if="
                       $root.settings.current_publication.slug !== false &&
