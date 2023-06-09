@@ -1,7 +1,5 @@
 <template>
-  <div id="app"
-    :class="{ 'is--wide' : $root.screen_is_wide }"
-  >
+  <div id="app" :class="{ 'is--wide': $root.screen_is_wide }">
     <template v-if="$root.store.request.display === 'standalone'">
       <div class="m_standaloneMedia">
         <MediaContent
@@ -14,20 +12,22 @@
         />
       </div>
     </template>
-    <template v-else-if="$root.state.mode === 'live' && !$root.state.authentificated">
+    <template
+      v-else-if="$root.state.mode === 'live' && !$root.state.authentificated"
+    >
       <SessionPassword
         v-if="$root.showSessionPasswordModal"
-        @close="$root.showSessionPasswordModal = false"      
+        @close="$root.showSessionPasswordModal = false"
         :read_only="!$root.state.connected"
       />
     </template>
-    <template 
-      v-else-if="$root.state.mode === 'live' && $root.store.request.display !== 'standalone'"
-    >    
-      <SystemBar
-        v-if="$root.settings.enable_system_bar"
-        :withTitleBar="true"
-      />
+    <template
+      v-else-if="
+        $root.state.mode === 'live' &&
+        $root.store.request.display !== 'standalone'
+      "
+    >
+      <SystemBar v-if="$root.settings.enable_system_bar" :withTitleBar="true" />
 
       <TopBar
         :has_back_button="$root.do_navigation.view !== 'ListView'"
@@ -35,22 +35,30 @@
         :project="$root.currentProject"
         :authors="$root.store.authors"
       />
-      
+
       <div class="m_activitiesPanel">
-        <div 
-          :style="{ cursor, userSelect}" 
-          class="vue-splitter-container clearfix" 
+        <div
+          :style="{ cursor, userSelect }"
+          class="vue-splitter-container clearfix"
         >
-          <pane 
-            class="splitter-pane splitter-paneL" 
-            :class="{ 'is--dragged' : is_dragged }"
-            :split="split" :style="{ [type]: activity_panel_percent+'%'}"
+          <pane
+            class="splitter-pane splitter-paneL"
+            :class="{ 'is--dragged': is_dragged }"
+            :split="split"
+            :style="{ [type]: activity_panel_percent + '%' }"
           >
-            <div 
+            <div
               class="m_activitiesPanel--do"
-              :class="{ 'is--large' : activitiesPanel_is_comfortable }"
+              :class="{ 'is--large': activitiesPanel_is_comfortable }"
             >
-              <div style="position: relative; width: 100%; height: 100%; overflow: hidden">
+              <div
+                style="
+                  position: relative;
+                  width: 100%;
+                  height: 100%;
+                  overflow: hidden;
+                "
+              >
                 <!-- v-show="$root.do_navigation.view === 'ListView'" -->
                 <transition name="HomeView" :duration="0">
                   <HomeView
@@ -85,56 +93,63 @@
                 <transition name="CaptureView" :duration="0">
                   <CaptureView
                     v-if="$root.do_navigation.view === 'CaptureView'"
-                    :slugProjectName="$root.do_navigation.current_slugProjectName"
+                    :slugProjectName="
+                      $root.do_navigation.current_slugProjectName
+                    "
                     :project="$root.currentProject"
                     :read_only="!$root.state.connected"
                   />
                 </transition>
               </div>
             </div>
-
           </pane>
 
-          <Resizer 
-            :class="{ 'is--dragged' : is_dragged }"
-            :className="className" 
-            :style="{ [resizeType]: activity_panel_percent+'%'}" 
-            :split="split" 
-            @mousedown.native="onMouseDown" 
+          <Resizer
+            :class="{ 'is--dragged': is_dragged }"
+            :className="className"
+            :style="{ [resizeType]: activity_panel_percent + '%' }"
+            :split="split"
+            @mousedown.native="onMouseDown"
             @click.native="onClick"
           />
 
-          <pane 
+          <pane
             v-if="false && $root.do_navigation.view !== 'ProjectView'"
-            class="splitter-pane splitter-paneR" 
-            :class="{ 'is--dragged' : is_dragged }"
-            :split="split" 
-            :style="{ [type]: 100-activity_panel_percent+'%'}">
-            <div 
+            class="splitter-pane splitter-paneR"
+            :class="{ 'is--dragged': is_dragged }"
+            :split="split"
+            :style="{ [type]: 100 - activity_panel_percent + '%' }"
+          >
+            <div
               class="m_activitiesPanel--doc"
-              :class="{ 'is--open' : $root.settings.show_publi_panel }"
+              :class="{ 'is--open': $root.settings.show_publi_panel }"
             >
               <button
                 v-if="$root.screen_is_wide"
                 class="publiButton"
-                :title="$t('mix_medias')" 
-                v-tippy='{
-                  placement : "left",
-                  delay: [600, 0]
-                }'
-                :class="{ 
-                  'is--open' : $root.settings.show_publi_panel, 
-                  'is--dragged' : is_dragged,
-                  'is--allthewaytotheleft' : activity_panel_percent === 0 
+                :title="$t('mix_medias')"
+                v-tippy="{
+                  placement: 'left',
+                  delay: [600, 0],
+                }"
+                :class="{
+                  'is--open': $root.settings.show_publi_panel,
+                  'is--dragged': is_dragged,
+                  'is--allthewaytotheleft': activity_panel_percent === 0,
                 }"
                 @mousedown.stop.prevent="dragPubliPanel($event, 'mouse')"
-                @touchstart.stop.prevent="dragPubliPanel($event, 'touch')"   
+                @touchstart.stop.prevent="dragPubliPanel($event, 'touch')"
                 :key="'openPubli'"
               >
                 <!-- v-if="$root.do_navigation.view !== 'CaptureView'" -->
-                <img src="/images/i_marmite.svg" width="48" height="48" draggable="false" />
+                <img
+                  src="/images/i_marmite.svg"
+                  width="48"
+                  height="48"
+                  draggable="false"
+                />
                 <span class="margin-small">
-                  {{ $t('publication') }}
+                  {{ $t("publication") }}
                 </span>
               </button>
 
@@ -148,102 +163,161 @@
                 </transition>
                 <transition name="ProjectView" :duration="0">
                   <PagePublication
-                    v-if="$root.settings.current_publication.slug !== false && $root.store.publications[$root.settings.current_publication.slug].template === 'page_by_page'"
+                    v-if="
+                      $root.settings.current_publication.slug !== false &&
+                      $root.store.publications[
+                        $root.settings.current_publication.slug
+                      ].template === 'page_by_page'
+                    "
                     :slugPubliName="$root.settings.current_publication.slug"
-                    :publication="$root.store.publications[$root.settings.current_publication.slug]"
+                    :publication="
+                      $root.store.publications[
+                        $root.settings.current_publication.slug
+                      ]
+                    "
                     :read_only="!$root.state.connected"
                   />
                   <VideoPublication
-                    v-else-if="$root.settings.current_publication.slug !== false && $root.store.publications[$root.settings.current_publication.slug].template === 'video_assemblage'"
+                    v-else-if="
+                      $root.settings.current_publication.slug !== false &&
+                      $root.store.publications[
+                        $root.settings.current_publication.slug
+                      ].template === 'video_assemblage'
+                    "
                     :slugPubliName="$root.settings.current_publication.slug"
-                    :publication="$root.store.publications[$root.settings.current_publication.slug]"
+                    :publication="
+                      $root.store.publications[
+                        $root.settings.current_publication.slug
+                      ]
+                    "
                     :read_only="!$root.state.connected"
                   />
                   <DrawingPad
-                    v-else-if="$root.settings.current_publication.slug !== false && $root.store.publications[$root.settings.current_publication.slug].template === 'drawing_pad'"
+                    v-else-if="
+                      $root.settings.current_publication.slug !== false &&
+                      $root.store.publications[
+                        $root.settings.current_publication.slug
+                      ].template === 'drawing_pad'
+                    "
                     :slugPubliName="$root.settings.current_publication.slug"
-                    :publication="$root.store.publications[$root.settings.current_publication.slug]"
+                    :publication="
+                      $root.store.publications[
+                        $root.settings.current_publication.slug
+                      ]
+                    "
                     :read_only="!$root.state.connected"
                   />
                   <StopmotionAnimation
-                    v-else-if="$root.settings.current_publication.slug !== false && $root.store.publications[$root.settings.current_publication.slug].template === 'stopmotion_animation'"
+                    v-else-if="
+                      $root.settings.current_publication.slug !== false &&
+                      $root.store.publications[
+                        $root.settings.current_publication.slug
+                      ].template === 'stopmotion_animation'
+                    "
                     :slugPubliName="$root.settings.current_publication.slug"
-                    :publication="$root.store.publications[$root.settings.current_publication.slug]"
+                    :publication="
+                      $root.store.publications[
+                        $root.settings.current_publication.slug
+                      ]
+                    "
                     :read_only="!$root.state.connected"
                   />
                   <MixAudioAndVideo
-                    v-else-if="$root.settings.current_publication.slug !== false && $root.store.publications[$root.settings.current_publication.slug].template === 'mix_audio_and_video'"
+                    v-else-if="
+                      $root.settings.current_publication.slug !== false &&
+                      $root.store.publications[
+                        $root.settings.current_publication.slug
+                      ].template === 'mix_audio_and_video'
+                    "
                     :slugPubliName="$root.settings.current_publication.slug"
-                    :publication="$root.store.publications[$root.settings.current_publication.slug]"
+                    :publication="
+                      $root.store.publications[
+                        $root.settings.current_publication.slug
+                      ]
+                    "
                     :read_only="!$root.state.connected"
-                  />                  
+                  />
                   <MixAudioAndImage
-                    v-else-if="$root.settings.current_publication.slug !== false && $root.store.publications[$root.settings.current_publication.slug].template === 'mix_audio_and_image'"
+                    v-else-if="
+                      $root.settings.current_publication.slug !== false &&
+                      $root.store.publications[
+                        $root.settings.current_publication.slug
+                      ].template === 'mix_audio_and_image'
+                    "
                     :slugPubliName="$root.settings.current_publication.slug"
-                    :publication="$root.store.publications[$root.settings.current_publication.slug]"
+                    :publication="
+                      $root.store.publications[
+                        $root.settings.current_publication.slug
+                      ]
+                    "
                     :read_only="!$root.state.connected"
-                  />                  
+                  />
                 </transition>
               </div>
             </div>
           </pane>
-        
         </div>
       </div>
       <EditMedia
         v-if="$root.media_modal.open"
         :slugMediaName="$root.media_modal.current_metaFileName"
         :slugProjectName="$root.media_modal.current_slugProjectName"
-        :media="$root.store.projects[$root.media_modal.current_slugProjectName].medias[$root.media_modal.current_metaFileName]"
+        :media="
+          $root.store.projects[$root.media_modal.current_slugProjectName]
+            .medias[$root.media_modal.current_metaFileName]
+        "
         @close="$root.closeMedia()"
         :read_only="!$root.state.connected"
       >
-      </EditMedia>      
-
-    </template>  
-    <template 
-      v-else-if="$root.state.mode === 'export_publication' || $root.state.mode === 'print_publication'"
-    >    
+      </EditMedia>
+    </template>
+    <template
+      v-else-if="
+        $root.state.mode === 'export_publication' ||
+        $root.state.mode === 'print_publication'
+      "
+    >
       <PagePublication
         v-if="$root.settings.current_publication.slug !== false"
         :slugPubliName="$root.settings.current_publication.slug"
-        :publication="$root.store.publications[$root.settings.current_publication.slug]"
+        :publication="
+          $root.store.publications[$root.settings.current_publication.slug]
+        "
         :read_only="!$root.state.connected"
       />
-    </template>    
+    </template>
 
     <portal-target name="modal_container" />
-
   </div>
 </template>
 
 <script>
-import SystemBar from './SystemBar.vue';
-import TopBar from './TopBar.vue';
-import HomeView from './HomeView.vue';
-import ConfigView from './ConfigView.vue';
-import CreateOrResumeView from './CreateOrResumeView.vue';
-import ListView from './ListView.vue';
-import ProjectView from './ProjectView.vue';
-import CaptureView from './CaptureView.vue';
-import EditMedia from './components/modals/EditMedia.vue';
-import SessionPassword from './components/modals/SessionPassword.vue';
+import SystemBar from "./SystemBar.vue";
+import TopBar from "./TopBar.vue";
+import HomeView from "./HomeView.vue";
+import ConfigView from "./ConfigView.vue";
+import CreateOrResumeView from "./CreateOrResumeView.vue";
+import ListView from "./ListView.vue";
+import ProjectView from "./ProjectView.vue";
+import CaptureView from "./CaptureView.vue";
+import EditMedia from "./components/modals/EditMedia.vue";
+import SessionPassword from "./components/modals/SessionPassword.vue";
 
-import MediaContent from './components/subcomponents/MediaContent.vue';
-import Publications from './Publications.vue';
+import MediaContent from "./components/subcomponents/MediaContent.vue";
+import Publications from "./Publications.vue";
 
-import PagePublication from './components/publication_templates/PagePublication.vue';
-import VideoPublication from './components/publication_templates/VideoPublication.vue';
-import DrawingPad from './components/publication_templates/DrawingPad.vue';
-import StopmotionAnimation from './components/publication_templates/StopmotionAnimation.vue';
-import MixAudioAndVideo from './components/publication_templates/MixAudioAndVideo.vue';
-import MixAudioAndImage from './components/publication_templates/MixAudioAndImage.vue';
+import PagePublication from "./components/publication_templates/PagePublication.vue";
+import VideoPublication from "./components/publication_templates/VideoPublication.vue";
+import DrawingPad from "./components/publication_templates/DrawingPad.vue";
+import StopmotionAnimation from "./components/publication_templates/StopmotionAnimation.vue";
+import MixAudioAndVideo from "./components/publication_templates/MixAudioAndVideo.vue";
+import MixAudioAndImage from "./components/publication_templates/MixAudioAndImage.vue";
 
-import Resizer from './components/splitpane/Resizer.vue'
-import Pane from './components/splitpane/Pane.vue'
+import Resizer from "./components/splitpane/Resizer.vue";
+import Pane from "./components/splitpane/Pane.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     SystemBar,
     TopBar,
@@ -262,51 +336,48 @@ export default {
     StopmotionAnimation,
     MixAudioAndVideo,
     MixAudioAndImage,
-    Resizer, 
+    Resizer,
     Pane,
-    MediaContent
+    MediaContent,
   },
-  props: {
-  },
+  props: {},
   data() {
     return {
       minPercent: 0,
-      split: 'vertical',
+      split: "vertical",
       is_dragged: false,
       drag_offset: 0,
       hasMoved: false,
       height: null,
       percent: 100,
-      type: 'width',
-      resizeType: 'left'
+      type: "width",
+      resizeType: "left",
     };
   },
-  watch: {
-  },
-  created() {
-  },
+  watch: {},
+  created() {},
   computed: {
     userSelect() {
-      return this.is_dragged ? 'none' : ''
+      return this.is_dragged ? "none" : "";
     },
     cursor() {
-      return this.is_dragged ? 'col-resize' : ''
+      return this.is_dragged ? "col-resize" : "";
     },
     activitiesPanel_is_comfortable() {
-      if((this.percent/100*this.$root.settings.windowWidth) < 850) {
+      if ((this.percent / 100) * this.$root.settings.windowWidth < 850) {
         return false;
       }
-      if(this.$root.settings.windowHeight < 650) {
+      if (this.$root.settings.windowHeight < 650) {
         return false;
       }
       return true;
     },
     activity_panel_percent() {
-      if(!this.$root.screen_is_wide) {
+      if (!this.$root.screen_is_wide) {
         return 100;
       }
       return this.percent;
-    }
+    },
   },
   methods: {
     // stopDragtogglePubli() {
@@ -321,69 +392,73 @@ export default {
     //   }
     // },
     dragPubliPanel(event, type) {
-      if (this.$root.state.dev_mode === 'debug') {
-        console.log(`METHODS • App: dragPubliPanel with type = ${type} and is_dragged = ${this.is_dragged}`);
+      if (this.$root.state.dev_mode === "debug") {
+        console.log(
+          `METHODS • App: dragPubliPanel with type = ${type} and is_dragged = ${this.is_dragged}`
+        );
       }
-      
-      this.drag_offset = - event.target.offsetWidth + event.offsetX;
-      if(!this.drag_offset) {
+
+      this.drag_offset = -event.target.offsetWidth + event.offsetX;
+      if (!this.drag_offset) {
         this.drag_offset = 0;
       }
 
-      if(type === 'mouse') {
-        window.addEventListener('mousemove', this.dragMove);
-        window.addEventListener('mouseup', this.dragUp);
-      } else if(type === 'touch') {
-        window.addEventListener('touchmove', this.dragMove);
-        window.addEventListener('touchend', this.dragUp);
+      if (type === "mouse") {
+        window.addEventListener("mousemove", this.dragMove);
+        window.addEventListener("mouseup", this.dragUp);
+      } else if (type === "touch") {
+        window.addEventListener("touchmove", this.dragMove);
+        window.addEventListener("touchend", this.dragUp);
       }
     },
     dragMove(event) {
-      console.log('METHODS • App: dragMove');
+      console.log("METHODS • App: dragMove");
 
       if (!this.is_dragged) {
         this.is_dragged = true;
       } else {
-
         let pageX = !!event.pageX ? event.pageX : event.touches[0].pageX;
         pageX = pageX - this.drag_offset;
 
-        const percent = Math.floor((pageX / this.$root.settings.windowWidth) * 10000) / 100
+        const percent =
+          Math.floor((pageX / this.$root.settings.windowWidth) * 10000) / 100;
 
         if (percent > this.minPercent && percent < 100 - this.minPercent) {
-          this.percent = percent
+          this.percent = percent;
         }
 
-        this.$emit('resize')
-        this.hasMoved = true
+        this.$emit("resize");
+        this.hasMoved = true;
       }
     },
     dragUp(event) {
-      if (this.$root.state.dev_mode === 'debug') {
-        console.log(`METHODS • App: dragUp with is_dragged = ${this.is_dragged}`);
+      if (this.$root.state.dev_mode === "debug") {
+        console.log(
+          `METHODS • App: dragUp with is_dragged = ${this.is_dragged}`
+        );
       }
-      window.removeEventListener('mousemove', this.dragMove);
-      window.removeEventListener('mouseup', this.dragUp);
-      window.removeEventListener('touchmove', this.dragMove);
-      window.removeEventListener('touchend', this.dragUp);
+      window.removeEventListener("mousemove", this.dragMove);
+      window.removeEventListener("mouseup", this.dragUp);
+      window.removeEventListener("touchmove", this.dragMove);
+      window.removeEventListener("touchend", this.dragUp);
 
       if (this.is_dragged) {
         this.is_dragged = false;
 
-        if(this.percent >= 90) {
+        if (this.percent >= 90) {
           this.percent = 100;
           this.$root.closePubliPanel();
           return;
-        } 
-        
-        if(this.$root.settings.show_publi_panel === false) {
+        }
+
+        if (this.$root.settings.show_publi_panel === false) {
           this.$root.openPubliPanel();
-        }      
-        if(this.percent <= 10) {
+        }
+        if (this.percent <= 10) {
           this.percent = 0;
         }
       } else {
-        if(!this.$root.settings.show_publi_panel) {
+        if (!this.$root.settings.show_publi_panel) {
           this.percent = 50;
           this.$root.openPubliPanel();
         } else {
@@ -393,8 +468,8 @@ export default {
       }
 
       return false;
-    }
-  }
+    },
+  },
 };
 </script>
 
