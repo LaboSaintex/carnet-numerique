@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="main-container">
     <WorkshopMessage class="message" />
 
@@ -71,19 +71,5 @@ textarea {
 }
 </style>
 <script>
-import WorkshopMessage from "./viewmessages/WorkshopMessage.vue";
 
-export default {
-  data() {
-    return {};
-  },
-  watch: {
-    text: function () {
-      this.$root.currentProject.description = this.text;
-    },
-  },
-  components: {
-    WorkshopMessage,
-  },
-};
-</script>
+</script> -->

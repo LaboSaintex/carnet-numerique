@@ -27,7 +27,6 @@
             <div class="workshop-titles">
               <div class="label-rows">
                 <label for="workshop-title">Titre: </label>
-                <label for="workshop-tags">Tags: </label>
               </div>
               <div class="input-rows">
                 <input
@@ -35,12 +34,6 @@
                   name="workshop-title"
                   placeholder="Création d'un robot"
                   v-model="$root.store.config.workshop_title"
-                />
-                <input
-                  type="text"
-                  name="workshop-tags"
-                  placeholder="robot; ... ; .... ; ...."
-                  v-model="tags"
                 />
               </div>
             </div>
@@ -144,9 +137,9 @@ export default {
           value: "Atelier Scientifique",
         },
         {
-          id: "goûter-numérique",
+          id: "Goûter-numérique",
           name: "robotique",
-          value: "goûter numérique",
+          value: "Goûter numérique",
         },
         { id: "autre", name: "autre", value: "Autre" },
       ],
@@ -278,6 +271,6 @@ select {
   max-width: 70px;
 }
 #music {
-  max-width: inherit;
+  min-width: 300px;
 }
 </style>

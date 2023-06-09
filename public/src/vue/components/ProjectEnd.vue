@@ -84,7 +84,6 @@ export default {
         clip3_desc: this.$root.currentProject.clip3_desc,
         clip4_desc: this.$root.currentProject.clip4_desc,
         clip5_desc: this.$root.currentProject.clip5_desc,
-        project_desc: this.$root.currentProject.description,
         workshop_type: this.$root.currentProject.workshop_type,
         title: this.$root.currentProject.name,
       }

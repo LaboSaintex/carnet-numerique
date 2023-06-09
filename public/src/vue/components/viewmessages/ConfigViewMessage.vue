@@ -512,7 +512,6 @@ export default {
         age_group: this.$root.store.config.workshop_age_group,
         number_of_authors: this.$root.store.config.workshop_members,
         last_unfinished_step: "ProjectView.authorList",
-        description: "",
         workshop_type: this.$root.store.config.workshop_type,
         video_durations: this.$root.store.config.video_durations.map(duration => ({"duration": duration})),
         video_generated: false,
