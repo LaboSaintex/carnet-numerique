@@ -1,13 +1,11 @@
 <template>
   <div class="author">
-    <div class="profile">
-      <p>Clique pour prendre une photo !</p>
-    </div>
-    <select 
-    @change="$emit('author-selected', cardIndex, selectedAuthor)" name="author"
-     v-model="selectedAuthor"
+    <select
+      @change="$emit('author-selected', cardIndex, selectedAuthor)"
+      name="author"
+      v-model="selectedAuthor"
     >
-      <option value="" selected disabled>[prénom]</option>
+      <option value="" selected disabled>Auteurs</option>
       <option v-for="author in authors" :key="author" :value="author">
         {{ $root.store.authors[author].name }}
       </option>
@@ -19,7 +17,7 @@ export default {
   props: {
     cardIndex: {
       Type: Number,
-      required: true
+      required: true,
     },
     authors: {
       Type: Array,
@@ -28,9 +26,9 @@ export default {
   },
   data() {
     return {
-      selectedAuthor: ""
-    }
-  }
+      selectedAuthor: "",
+    };
+  },
 };
 </script>
 <style scoped>
