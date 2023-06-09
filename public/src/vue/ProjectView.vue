@@ -122,7 +122,8 @@ export default {
     reset: function () {
       this.saveRecordedVideo = this.isVideoRecorded = false;
 
-      this.$root.do_navigation.view = this.nextView || currentView; 
+      this.$root.do_navigation.view = this.nextView || currentView;
+
     },
     updateSaveRecordedVideo: function (event) {
       this.saveRecordedVideo = true;

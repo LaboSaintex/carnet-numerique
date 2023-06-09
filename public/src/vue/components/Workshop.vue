@@ -3,12 +3,16 @@
     <WorkshopMessage class="message" />
 
     <div class="editable-bubble-container">
-      <h1>{{ this.$root.currentProject.workshop_type }} </h1>
-      <h2> {{ this.$root.currentProject.name }} </h2>
+      <h1>{{ this.$root.currentProject.workshop_type }}</h1>
+      <h2>{{ this.$root.currentProject.name }}</h2>
       <img src="../../../assets/editable-bubble.svg" />
 
-      <textarea v-model="text" rows="5" cols="33">
-        text
+      <textarea
+        v-model="text"
+        rows="5"
+        cols="33"
+        placeholder="description de l'atelier"
+      >
       </textarea>
     </div>
   </div>
@@ -62,7 +66,7 @@ textarea {
   outline: none;
   background-color: rgba(0, 0, 0, 0);
   font-family: Cobol;
-  font-weight: 'Cobol, Normal';
+  font-weight: "Cobol, Normal";
   resize: none;
 }
 </style>
@@ -71,14 +75,12 @@ import WorkshopMessage from "./viewmessages/WorkshopMessage.vue";
 
 export default {
   data() {
-    return {
-      text: "(description de l'atelier)"
-    }
+    return {};
   },
   watch: {
-    text: function() {
+    text: function () {
       this.$root.currentProject.description = this.text;
-    }
+    },
   },
   components: {
     WorkshopMessage,
