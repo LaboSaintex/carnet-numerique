@@ -104,7 +104,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scope>
 .overlay-svg {
   position: absolute;
   top: 0;
@@ -120,6 +120,9 @@ export default {
 .end-view .centered .clickable {
   width: auto;
   height: 12%;
+  z-index: 2;
+}
+.video-player {
   z-index: 2;
 }
 .end-view .centered .video-player {

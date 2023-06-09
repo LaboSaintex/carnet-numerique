@@ -57,14 +57,14 @@
                     v-show="$root.do_navigation.view === 'HomeView'"
                   />
                 </transition>
-                <transition name="HomeView" :duration="500">
-                  <ConfigView
-                    v-show="$root.do_navigation.view === 'ConfigView'"
-                  />
-                </transition>
                 <transition name="CreateOrResumeView" :duration="500">
                   <CreateOrResumeView
                     v-show="$root.do_navigation.view === 'CreateOrResumeView'"
+                  />
+                </transition>
+                <transition name="HomeView" :duration="500">
+                  <ConfigView
+                    v-show="$root.do_navigation.view === 'ConfigView'"
                   />
                 </transition>
                 <transition name="ListView" :duration="500">

@@ -36,7 +36,7 @@
           >
         </label>
 
-        <transition name="fade_fast" :duration="150">
+        <transition name="fade_fast" :duration="50">
           <div 
             v-if="!read_only && show_drop_container"
             @drop="dropHandler($event)"

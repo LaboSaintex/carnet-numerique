@@ -676,7 +676,7 @@
          transform="matrix(1,0,0,-1,374.9434,563.8936)"><tspan
            id="tspan2506"
            y="0"
-           x="0 12.78 21.672001 29.844 36.936001 43.074001 51.966 57.366001 66.258003 75.150002 88.524002 101.898 110.79 118.9602 126.0522 131.45219 136.34821 145.2402 154.1322 163.0242 170.09821 175.4982 183.81419 193.21021 202.1022 210.9942 216.3942 225.79021 234.68221 243.07021 248.4702 257.36221 264.43619 273.32819 281.3562 288.44821 292.84021 301.73221 310.62421 319.01221">Montre comment jouer avec vos créations.</tspan></text>
+           x="0">Montre comment jouer avec vos créations.</tspan></text>
 <g
          transform="translate(289.4866,533.8038)"
          id="g2518"><path
@@ -718,8 +718,16 @@
            id="path2548"
            style="fill:none;stroke:#181817;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
            d="m 0,0 c -0.015,-0.417 -0.306,-6.573 -4.57,-8.673 -2.025,-0.996 -4.173,-0.699 -5.97,-0.451 -1.261,0.174 -3.838,0.562 -6.397,2.482 -2.948,2.212 -4.084,5.12 -4.477,6.318 2.844,-0.884 5.265,-1.381 7.039,-1.676 2.471,-0.41 3.706,-0.615 5.5,-0.5 2.627,0.169 4.796,0.911 6.125,1.375 C -1.595,-0.722 -0.657,-0.31 0,0 Z" /></g></g></g></svg>
+          <img src="../../../../images/i_arrow_left.svg" @click="previousPage" class="clickable" style="height: 10%; width: 10%; position: absolute; bottom: 1.5rem; left: 7rem; z-index: 99999;" />
 </div>
 </template>
 <script>
-export default ({})
+export default ({
+  methods: {
+    previousPage: function() {
+      this.$root.do_navigation.view = 'ProjectView.step4';
+      return;
+    }
+  }
+})
 </script>

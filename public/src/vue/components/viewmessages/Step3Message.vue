@@ -481,7 +481,7 @@
          transform="matrix(1,0,0,-1,362.7285,564.9897)"><tspan
            id="tspan1590"
            y="0"
-           x="0 12.78 21.672001 29.844 36.936001 43.074001 51.966 57.366001 61.757999 70.650002 79.038002 84.438004 93.330002 99.468002 108.36 117.252 126.144 130.536 138.924 144.32401 153.216 162.108 167.508 176.90401 185.79601 194.18401 199.584 206.00999 214.90199 221.994 230.886 237.024 245.916 254.304 259.70401 268.59601 275.67001 284.56201 292.59 299.68201 304.07401 312.966 321.858 330.246">Montre les croquis de vos futures créations.</tspan></text>
+           x="0">Montre les croquis de vos futures créations.</tspan></text>
 <g
          transform="translate(288.4397,536.0547)"
          id="g1602"><path
@@ -523,8 +523,16 @@
            id="path1632"
            style="fill:none;stroke:#181817;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
            d="m 0,0 c -0.015,-0.417 -0.306,-6.573 -4.57,-8.673 -2.025,-0.996 -4.173,-0.699 -5.97,-0.451 -1.261,0.175 -3.838,0.562 -6.397,2.482 -2.948,2.212 -4.084,5.12 -4.477,6.318 2.843,-0.884 5.265,-1.381 7.039,-1.676 2.471,-0.41 3.706,-0.615 5.5,-0.5 2.627,0.169 4.796,0.911 6.125,1.375 C -1.595,-0.722 -0.657,-0.31 0,0 Z" /></g></g></g></svg>
+        <img src="../../../../images/i_arrow_left.svg" @click="previousPage" class="clickable" style="height: 10%; width: 10%; position: absolute; bottom: 1.5rem; left: 7rem; z-index: 99999;" />
 </div>
 </template>
 <script>
-export default ({})
+export default ({
+  methods: {
+    previousPage: function() {
+      this.$root.do_navigation.view = 'ProjectView.step2';
+      return;
+    }
+  }
+})
 </script>

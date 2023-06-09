@@ -20,8 +20,11 @@ for($i = 1; $i <= count($clipsToDescribe); $i++) {
 	$clipFrames = (int) shell_exec("cd $projectPath && ffprobe -v error -select_streams v:0 -count_packets -show_entries stream=nb_read_packets -of csv=p=0 $clipsToDescribe[$clipIndex]");
 	$clipDuration = (float) ($clipFrames / $clipFrameRate) - 0.5;
 	file_put_contents("$projectPath/clip${i}_desc.txt", $parameters["clip${i}_desc"]);
-	file_put_contents("$projectPath/clip${i}_name.txt", $parameters["clip${i}_name"]);
-	shell_exec("cd $projectPath && ffmpeg -i $clipsToDescribe[$clipIndex] -vf 'drawtext=fontfile=$fontPath: textfile=clip${i}_name.txt: fontcolor=white: fontsize=46: box=1: boxcolor=black@0.5: boxborderw=5: x=(w-text_w)/2: y=(h-text_h-500): fix_bounds=true, fade=t=in:st=0:d=0.5,fade=t=out:st=$clipDuration:d=0.5' -b:v 3000K -b:a 192K clip${i}.webm");
+
+	//file_put_contents("$projectPath/clip${i}_name.txt", $parameters["clip${i}_name"]);
+	shell_exec("cd $projectPath && ffmpeg -i $clipsToDescribe[$clipIndex] -vf 'drawtext=fontfile=$fontPath: textfile=clip${i}_desc.txt: fontcolor=white: fontsize=46: box=1: boxcolor=black@0.5: boxborderw=5: x=(w-text_w)/2: y=(h-text_h-50): fix_bounds=true, fade=t=in:st=0:d=0.3,fade=t=out:st=$clipDuration:d=0.3' -b:v 3000K -b:a 192K clip${i}.webm");	
+	//shell_exec("cd $projectPath && ffmpeg -i $clipsToDescribe[$clipIndex] -vf 'drawtext=fontfile=$fontPath: textfile=clip${i}_name.txt: fontcolor=white: fontsize=46: box=1: boxcolor=black@0.5: boxborderw=5: x=(w-text_w)/2: y=(h-text_h-500): fix_bounds=true, fade=t=in:st=0:d=0.5,fade=t=out:st=$clipDuration:d=0.5' -b:v 3000K -b:a 192K clip${i}.webm");
+
 }
 array_map('unlink', glob("$projectPath/*desc.txt"));
 
@@ -30,13 +33,13 @@ shell_exec("cd $projectPath && ffmpeg -i blank.webm -i $carnetLogoPath -filter_c
 
 $workshop = $parameters["workshop_type"];
 $title = $parameters["title"];
-shell_exec("cd $projectPath && ffmpeg -f lavfi -i color=size=1280x720:duration=5:rate=30:color=black -vf 'drawtext=text=$workshop:fontfile=$fontPath:fontcolor=white:fontsize=46:x=(w-text_w)/2:y=(h-text_h)/2, drawtext=text=$title:fontfile=$fontPath:fontcolor=white:fontsize=46:x=(w-text_w)/2:y=((h-text_h)/2)+lh+5' opening.webm");
+shell_exec("cd $projectPath && ffmpeg -f lavfi -i color=size=1280x720:duration=3:rate=30:color=black -vf 'drawtext=text=$workshop:fontfile=$fontPath:fontcolor=white:fontsize=46:x=(w-text_w)/2:y=(h-text_h)/2, drawtext=text=$title:fontfile=$fontPath:fontcolor=white:fontsize=46:x=(w-text_w)/2:y=((h-text_h)/2)+lh+5' opening.webm");
 unlink("$projectPath/blank.webm");
 
 $videosFile = "file 'logo.webm'\n";
 $videosFile .= "file 'opening.webm'\n";{
 	file_put_contents("$projectPath/project_desc.txt", $parameters["project_desc"]);
-	shell_exec("cd $projectPath && ffmpeg -f lavfi -i color=size=1280x720:duration=5:rate=30:color=black -vf 'drawtext=fontfile=$fontPath:fontsize=46:fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2:textfile=project_desc.txt' project_desc.webm");
+	shell_exec("cd $projectPath && ffmpeg -f lavfi -i color=size=1280x720:duration=3:rate=30:color=black -vf 'drawtext=fontfile=$fontPath:fontsize=46:fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2:textfile=project_desc.txt' project_desc.webm");
 	unlink("$projectPath/project_desc.txt");
 	$videosFile .= "file 'project_desc.webm'\n";
 } 

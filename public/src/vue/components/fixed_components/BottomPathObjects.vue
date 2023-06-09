@@ -7,38 +7,38 @@
   <div class="bottom-path-objects">
     <LinePath />
     <!-- Chosing the right version of the objects composing the path depending on which stage of the project viewing or creation -->
-    <transition name="ProjectView" :duration="500">
-      <ColoredBackpack v-if="this.indexOfPathProgress() >= 2"/>
+    <transition name="ProjectView">
+      <ColoredBackpack v-if="this.indexOfPathProgress() >= 2" />
       <UncoloredBackpack v-else />
     </transition>
 
-    <transition name="ProjectView" :duration="500">
-      <ColoredRobot v-if="this.indexOfPathProgress() >= 3"/>
-      <UncoloredRobot v-else/>
+    <transition name="ProjectView">
+      <ColoredRobot v-if="this.indexOfPathProgress() >= 3" />
+      <UncoloredRobot v-else />
     </transition>
 
-    <transition name="ProjectView" :duration="500">
-      <ColoredSchoolTools v-if="this.indexOfPathProgress() >= 4"/>
+    <transition name="ProjectView" :duration="1000">
+      <ColoredSchoolTools v-if="this.indexOfPathProgress() >= 4" />
       <UncoloredSchoolTools v-else />
     </transition>
 
-    <transition name="ProjectView" :duration="500">
-      <ColoredLearning v-if="this.indexOfPathProgress() >= 5"/>
+    <transition name="ProjectView" :duration="1000">
+      <ColoredLearning v-if="this.indexOfPathProgress() >= 5" />
       <UncoloredLearning v-else />
     </transition>
 
-    <transition name="ProjectView" :duration="500">
-      <ColoredLaptopGroup v-if="this.indexOfPathProgress() >= 6"/>
+    <transition name="ProjectView" :duration="1000">
+      <ColoredLaptopGroup v-if="this.indexOfPathProgress() >= 6" />
       <UncoloredLaptopGroup v-else />
     </transition>
 
-    <transition name="ProjectView" :duration="500">
-      <ColoredPlaneGroup v-if="this.indexOfPathProgress() >= 7"/>
+    <transition name="ProjectView" :duration="1000">
+      <ColoredPlaneGroup v-if="this.indexOfPathProgress() >= 7" />
       <UncoloredPlaneGroup v-else />
     </transition>
 
-    <transition name="ProjectView" :duration="500">
-      <ColoredFinishGroup v-if="this.indexOfPathProgress() >= 8"/>
+    <transition name="ProjectView" :duration="1000">
+      <ColoredFinishGroup v-if="this.indexOfPathProgress() >= 8" />
       <UncoloredFinishGroup v-else />
     </transition>
   </div>
@@ -67,7 +67,7 @@ import ColoredFinishGroup from "../stepcomponents/ColoredFinishGroup.vue";
 
 export default {
   props: {
-    currentView: String
+    currentView: String,
   },
   components: {
     LinePath,
@@ -87,31 +87,36 @@ export default {
     ColoredLaptopGroup,
     ColoredPlaneGroup,
     ColoredFinishGroup,
-
   },
   data() {
     return {
       pathProgress: [
-        "ProjectView", "ProjectView.authorList", "ProjectView.workshop", 
-        "ProjectView.step1", "ProjectView.step2", "ProjectView.step3", 
-        "ProjectView.step4", "ProjectView.step5", "ProjectView.end"
-      ]
+        "ProjectView",
+        "ProjectView.authorList",
+        "ProjectView.workshop",
+        "ProjectView.step1",
+        "ProjectView.step2",
+        "ProjectView.step3",
+        "ProjectView.step4",
+        "ProjectView.step5",
+        "ProjectView.end",
+      ],
     };
   },
   methods: {
-    indexOfPathProgress: function() {
+    indexOfPathProgress: function () {
       return this.pathProgress.indexOf(this.currentView);
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
-  /* overlay all the child SVGs on top of each others */
-  .bottom-path-objects svg{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-  }
+/* overlay all the child SVGs on top of each others */
+.bottom-path-objects svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
 </style>

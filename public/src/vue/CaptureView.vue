@@ -338,7 +338,7 @@
         </div>
 
         <div class="m_panel--buttons">
-          <div
+          <div v-if="!is_recorded" 
             class="m_panel--buttons--row"
             :class="{ 'bg-orange': is_recording }"
           >
@@ -351,10 +351,10 @@
                 @touchstart.stop.prevent="captureOrStop()"
               >
                 <img
-                  v-if="!is_recording"
+                  v-if="!is_recording && !is_recorded"
                   src="../../assets/buttons/rec_or_redo.svg"
                 />
-                <img v-else src="/images/i_stop.svg" />
+                <img v-else-if="is_recording" src="/images/i_stop.svg" />
               </button>
 
               <button
@@ -435,7 +435,7 @@
       cols="31"
       wrap="hard"
       type="text"
-      style="max-width: 470px; margin: 0 auto"
+      style="max-width: 470px; margin: 2rem auto; min-height: 3rem;"
       v-model="$root.currentProject[`clip${$root.do_navigation.view.substr($root.do_navigation.view.length - 1)}_desc`]" 
       placeholder="ajouter une description ..." 
     ></textarea>
@@ -493,6 +493,7 @@ export default {
       available_devices: {},
       mode_just_changed: false,
       is_recording: false,
+      is_recorded: false,
       timer_recording: false,
 
       actual_current_video_resolution: false,
@@ -955,6 +956,7 @@ export default {
     startRecordCameraFeed(withAudio = false) {
       return new Promise((resolve, reject) => {
         this.startCameraFeed(withAudio).then(() => {
+          this.is_recorded = false;
           let recordVideoFeed = RecordRTC(this.videoStream);
 
           const options = {
@@ -967,6 +969,7 @@ export default {
             this.$eventHub.$off("capture.stopRecording");
             recordVideoFeed.stopRecording(() => {
               this.is_recording = false;
+              this.is_recorded = true;
               const videoBlob = recordVideoFeed.getBlob();
               recordVideoFeed = null;
               return resolve(videoBlob);
@@ -975,6 +978,7 @@ export default {
 
           setTimeout(() => {
             recordVideoFeed.startRecording(options);
+            this.is_recorded = false;
 
             const VIDEO_MAX_DURATION = parseInt(this.$root.currentProject.video_durations[
               this.$root.do_navigation.view.substr(this.$root.do_navigation.view.length - 1) - 1
@@ -1120,6 +1124,7 @@ export default {
 
           this.media_is_being_sent = true;
           this.media_being_sent_percent = 0;
+          this.is_recorded = false
 
           // TODO : possibilité de cancel
           axios
@@ -1180,6 +1185,7 @@ export default {
       this.$emit('getBackToInitialState');
       this.media_to_validate = false;
       this.$root.settings.capture_mode_cant_be_changed = false;
+      this.is_recorded = false;
     },
     updateSingleImage($event) {
       this.stopmotion.onion_skin_img = $event;

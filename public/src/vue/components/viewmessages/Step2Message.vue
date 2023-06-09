@@ -387,7 +387,7 @@
          transform="matrix(1,0,0,-1,354.1582,574.0381)"><tspan
            id="tspan1434"
            y="0"
-           x="0 12.78 21.672001 29.844 36.936001 43.074001 51.966 57.366001 65.680199 75.076202 83.968201 92.860199 98.260201 107.1522 116.0442 124.2162 128.6082 134.00819 143.40421 152.2962 161.1882 169.5762 174.9762 182.6082 187.0002 191.3922 199.4382 207.6282 213.0282 220.1022 228.9942 236.6244 241.0164 245.4084 253.7964 262.68839 269.76239 275.16241 284.55661 293.44861 301.83661 307.2366 316.1286 323.20261 332.0946 340.12259 347.2146 351.6066 360.4986 369.39059 377.77859">Montre avec quoi vous allez réaliser vos créations.</tspan><tspan
+           x="0">Montre avec quoi vous allez réaliser vos créations.</tspan><tspan
            id="tspan1436"
            y="21.6"
            x="0 4.6440001 18.018 26.91 35.801998 43.973999 48.366001 57.257999 65.213997 69.264 74.664001 79.056 87.947998 96.839996 101.232 109.4022 113.7942 121.4262 125.4582 129.50819 134.9082 142.90021 149.9922 158.8842">(machine, logiciel, etc)</tspan></text>
@@ -432,8 +432,16 @@
            id="path1478"
            style="fill:none;stroke:#181817;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
            d="m 0,0 c -0.015,-0.417 -0.306,-6.573 -4.57,-8.673 -2.025,-0.997 -4.173,-0.699 -5.97,-0.451 -1.261,0.174 -3.838,0.562 -6.397,2.481 -2.948,2.213 -4.084,5.12 -4.477,6.319 2.844,-0.884 5.265,-1.381 7.039,-1.676 2.471,-0.41 3.706,-0.615 5.5,-0.5 2.627,0.169 4.796,0.911 6.125,1.375 C -1.595,-0.722 -0.657,-0.31 0,0 Z" /></g></g></g></svg>
+        <img src="../../../../images/i_arrow_left.svg" @click="previousPage" class="clickable" style="height: 10%; width: 10%; position: absolute; bottom: 1.5rem; left: 7rem; z-index: 99999;" />
 </div>
 </template>
 <script>
-export default ({})
+export default ({
+  methods: {
+    previousPage: function() {
+      this.$root.do_navigation.view = 'ProjectView.step1';
+      return;
+    }
+  }
+});
 </script>

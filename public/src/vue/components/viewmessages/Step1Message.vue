@@ -288,10 +288,10 @@
        transform="matrix(1,0,0,-1,332.1953,575.0371)"
        style="font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18px;font-family:'Cobol';-inkscape-font-specification:Cobol, Normal;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
        id="text640"><tspan
-         x="0 12.78 21.672001 29.844 36.936001 43.074001 51.966 57.366001 66.258003 75.150002 80.550003 89.442001 98.334 107.226 112.626 122.0202 130.9122 139.8042 148.1922 153.59219 161.2224 165.6144 170.00639 178.0524 186.2424 191.6424 198.7164 207.6084 215.2404 219.6324 224.0244 232.4124 241.3044 248.3784 253.7784 262.67041 269.74438 278.63641 287.52841 296.42041 301.8204 310.7124 316.1124 325.00439 333.89639 342.28439 347.68439 356.18039 365.3244 374.2164 387.59039 395.22241 399.61441 408.50641 416.89441 422.2944 431.1864 440.0784 444.4704"
+         x="0"
          y="0"
          id="tspan636">Montrez ce que vous allez réaliser grâce à des exemples qui </tspan><tspan
-         x="0 8.4960003 18 22.392 30.24 36.430199 45.322201 53.494202 60.586201 65.986198 74.878197 83.770203 88.666199 97.558197"
+         x="0"
          y="21.6"
          id="tspan638">existent déjà.</tspan></text>
 <g
@@ -334,11 +334,30 @@
        transform="translate(263.2511,532.2149)"><path
          d="m 0,0 c -0.014,-0.417 -0.306,-6.574 -4.569,-8.673 -2.025,-0.997 -4.174,-0.7 -5.971,-0.451 -1.26,0.174 -3.838,0.562 -6.396,2.481 -2.948,2.213 -4.085,5.12 -4.477,6.319 2.843,-0.885 5.264,-1.382 7.038,-1.676 2.471,-0.41 3.706,-0.615 5.5,-0.5 2.627,0.169 4.797,0.911 6.125,1.375 C -1.595,-0.722 -0.657,-0.311 0,0 Z"
          style="fill:none;stroke:#181817;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-         id="path1112" /></g></g></svg>
+
+         id="path1112" /></g>
+
+        <g
+         id="g962"
+         clip-path="url(#clipPath966)" />
+         </g>
+         </svg>
+         <img src="../../../../images/i_arrow_left.svg" @click="previousPage" class="clickable" style="height: 10%; width: 10%; position: absolute; bottom: 1.5rem; left: 7rem; z-index: 99999;" />
+        <!-- <form>
+          <label for="step-input" style="position: absolute; left: 30%; top: 4%;color: black;"> Ecrivez ici ce que vous allez faire lors de cette étape </label>
+          <input id="step-input" type="text" autofocus style="position: absolute; left: 40%; top: 7.5%;display: inline-block;color: black;z-index: 60000;min-width: 3em;max-width: 15rem;min-height: 1em;border: 1px solid black;" />
+        </form> -->
+
   </div>
 </template>
 
 <script>
 export default ({
+  methods: {
+    previousPage: function() {
+      this.$root.do_navigation.view = 'ConfigView';
+      return;
+    }
+  }
 });
 </script>

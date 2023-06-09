@@ -82,8 +82,19 @@
               id="music"
               v-model="$root.store.config.music_name"
             >
-              <option v-for="music in this.musics_list" :key="music" :value="music">{{ music }}</option>
+              <option
+                v-for="music in this.musics_list"
+                :key="music"
+                :value="music"
+              >
+                {{ music }}
+              </option>
             </select>
+            <audio
+              v-if="$root.store.config.music_name !== undefined"
+              :src="'/_musics/' + $root.store.config.music_name"
+              controls
+            />
           </div>
         </div>
 
@@ -92,8 +103,15 @@
           <div class="workshop-titles">
             <div class="label-rows">
               <div class="video-time-row" v-for="i in 5" :key="i">
-                <label>Video <span v-if="i === 1" style="color: rgba(0,0,0,0)">1</span>{{ i }} :</label>
-                <input type="number" v-model.number="$root.store.config.video_durations[i - 1]"/>
+                <label
+                  >Video
+                  <span v-if="i === 1" style="color: rgba(0, 0, 0, 0)">1</span
+                  >{{ i }} :</label
+                >
+                <input
+                  type="number"
+                  v-model.number="$root.store.config.video_durations[i - 1]"
+                />
               </div>
             </div>
           </div>
@@ -135,7 +153,7 @@ export default {
     };
   },
   created() {
-    axios.get("/musics").then(response => {
+    axios.get("/musics").then((response) => {
       console.log("RECEIVED MUSICS LIST");
       console.log(response.data);
       this.musics_list = response.data.split("\n");
@@ -230,7 +248,8 @@ label {
 input {
   max-width: 200px;
 }
-input[type="text"], input[type="number"] {
+input[type="text"],
+input[type="number"] {
   border: 2px solid black;
   border-radius: 0px;
   background-color: rgb(200, 200, 200);
