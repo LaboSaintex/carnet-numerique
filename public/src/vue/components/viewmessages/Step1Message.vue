@@ -347,6 +347,8 @@
           <label for="step-input" style="position: absolute; left: 30%; top: 4%;color: black;"> Ecrivez ici ce que vous allez faire lors de cette étape </label>
           <input id="step-input" type="text" autofocus style="position: absolute; left: 40%; top: 7.5%;display: inline-block;color: black;z-index: 60000;min-width: 3em;max-width: 15rem;min-height: 1em;border: 1px solid black;" />
         </form> -->
+
+
   </div>
 </template>
 
